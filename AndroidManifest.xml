@@ -3,7 +3,7 @@
     package="com.bbaf.mpos"
     android:versionCode="1"
     android:versionName="1.0" >
-
+    
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="16" />
@@ -15,12 +15,18 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
+            android:label="@string/title_activity_edit_product"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

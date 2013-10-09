@@ -72,7 +72,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			return -1;
 		}
 	}
-	
+
 	public long setQuantity(ProductDescription product, int quantity) {
 		try {
 			SQLiteDatabase db = this.getWritableDatabase();
@@ -80,7 +80,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			ContentValues value = new ContentValues();
 			value.put("ProductId", product.getId());
 			value.put("ProductQuantity", quantity);
-			
+
 			long rows = db.insert(TABLE_QUANTITY, null, value);
 
 			db.close();
@@ -90,7 +90,6 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			return -1;
 		}
 	}
-	
 
 	public ProductDescription getProduct(int id) {
 		try {
@@ -98,7 +97,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			ProductDescription product = null;
 			Log.d("table", "before cursor");
 			Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" },
-					"ProductId=?", new String[] {String.valueOf(id)}, null,
+					"ProductId=?", new String[] { String.valueOf(id) }, null,
 					null, null, null);
 			Log.d("table", "before if");
 			if (cursor != null) {
@@ -151,14 +150,14 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			return null;
 		}
 	}
-	
+
 	public ProductQuantity getQuantity(int id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			ProductQuantity quantity = null;
 
 			Cursor cursor = db.query(TABLE_QUANTITY, new String[] { "*" },
-					"ProductId=?", new String[] {String.valueOf(id)}, null,
+					"ProductId=?", new String[] { String.valueOf(id) }, null,
 					null, null, null);
 
 			if (cursor != null) {
@@ -178,29 +177,66 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			return null;
 		}
 	}
-	
-	private void editProduct() {
-		
+
+	public long editProduct(ProductDescription oldProduct,
+			ProductDescription newProduct) {
+		try {
+
+			SQLiteDatabase db = this.getWritableDatabase();
+
+			ContentValues value = new ContentValues();
+			value.put("ProductId", newProduct.getId());
+			value.put("ProductName", newProduct.getName());
+			value.put("Price", newProduct.getPrice());
+			value.put("Cost", newProduct.getCost());
+			long rows = db.update(TABLE_INVENTORY, value, " ProductId=?",
+					new String[] { String.valueOf(oldProduct.getId()) });
+
+			db.close();
+			return rows;
+
+		} catch (Exception e) {
+			return -1;
+		}
+
 	}
-	
-	private void editQuantity() {
-		
+
+	public long editQuantity(ProductQuantity oldQuantity,
+			ProductQuantity newQuantity) {
+		try {
+
+			SQLiteDatabase db = this.getWritableDatabase();
+
+			ContentValues value = new ContentValues();
+			value.put("ProductId", newQuantity.getId());
+			value.put("ProductQuantity", newQuantity.getQuantity());
+			long rows = db.update(TABLE_QUANTITY, value, " ProductId=?",
+					new String[] { String.valueOf(oldQuantity.getId()) });
+
+			db.close();
+			return rows;
+
+		} catch (Exception e) {
+			return -1;
+		}
 	}
-	
+
 	public long removeProduct(ProductDescription product) {
 		try {
-			
+
 			SQLiteDatabase db = this.getWritableDatabase();
-				
-			long rows =  db.delete(TABLE_INVENTORY, "ProductId=?", new String[] {String.valueOf(product.getId())});
-			db.delete(TABLE_QUANTITY, "ProductId=?", new String[] {String.valueOf(product.getId())});
+
+			long rows = db.delete(TABLE_INVENTORY, "ProductId=?",
+					new String[] { String.valueOf(product.getId()) });
+			db.delete(TABLE_QUANTITY, "ProductId=?",
+					new String[] { String.valueOf(product.getId()) });
 
 			db.close();
 			return rows; // return rows delete.
 
-		 } catch (Exception e) {
-		    return -1;
-		 }
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 
 }

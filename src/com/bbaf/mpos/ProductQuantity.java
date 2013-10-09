@@ -1,6 +1,8 @@
 package com.bbaf.mpos;
 
-public class ProductQuantity {
+import java.io.Serializable;
+
+public class ProductQuantity implements Serializable {
 	
 	private int id;
 	private int quantity;
@@ -8,10 +10,6 @@ public class ProductQuantity {
 	public ProductQuantity(int id, int quantity) {
 		this.id = id;
 		this.quantity = quantity;
-	}
-	
-	public ProductQuantity(String id, String quantity) {
-		this(Integer.parseInt(id), Integer.parseInt(quantity));
 	}
 	
 	public int getId() {

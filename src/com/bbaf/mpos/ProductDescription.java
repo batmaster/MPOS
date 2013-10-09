@@ -1,6 +1,8 @@
 package com.bbaf.mpos;
 
-public class ProductDescription {
+import java.io.Serializable;
+
+public class ProductDescription implements Serializable {
 	
 	private int key;
 	private int id;
@@ -20,11 +22,6 @@ public class ProductDescription {
 	
 	public ProductDescription(int id, String name, double price, double cost) {
 		this(0, id, name, price, cost, "");
-	}
-	
-	// maybe not used
-	public ProductDescription(String key, String id, String name, String price, String cost, String dateModified) {
-		this(Integer.parseInt(key), Integer.parseInt(id), name, Double.parseDouble(price), Double.parseDouble(cost), dateModified);
 	}
 	
 	public int getKey() {
