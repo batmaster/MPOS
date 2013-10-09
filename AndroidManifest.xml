@@ -30,5 +30,5 @@
             android:screenOrientation="portrait" >
         </activity>
     </application>
-
+	<!-- asd -->
 </manifest>
