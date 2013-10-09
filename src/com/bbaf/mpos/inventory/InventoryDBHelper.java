@@ -42,10 +42,10 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String sql = "DROP TABLE IF EXISTS " + TABLE_INVENTORY;
+		String sql = "USE TABLE IF EXISTS " + TABLE_INVENTORY;
 		db.execSQL(sql);
 
-		sql = "DROP TABLE IF EXISTS " + TABLE_QUANTITY;
+		sql = "USE TABLE IF EXISTS " + TABLE_QUANTITY;
 		db.execSQL(sql);
 	}
 
