@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class ProductQuantity implements Serializable {
 	
-	private int id;
+	private String id;
 	private int quantity;
 	
-	public ProductQuantity(int id, int quantity) {
+	public ProductQuantity(String id, int quantity) {
 		this.id = id;
 		this.quantity = quantity;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	

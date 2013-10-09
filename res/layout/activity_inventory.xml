@@ -70,6 +70,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Remove" />
+                        
+                        <Button
+                            android:id="@+id/buttonRemoveAll"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RemoveAll" />
                     </LinearLayout>
                 </LinearLayout>
 

@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class ProductDescription implements Serializable {
 	
 	private int key;
-	private int id;
+	private String id;
 	private String name;
 	private double price;
 	private double cost;
 	private String dateModified;
 	
-	public ProductDescription(int key, int id, String name, double price, double cost, String dateModified) {
+	public ProductDescription(int key, String id, String name, double price, double cost, String dateModified) {
 		this.key = key;
 		this.id = id;
 		this.name = name;
@@ -20,7 +20,7 @@ public class ProductDescription implements Serializable {
 		this.dateModified = dateModified;
 	}
 	
-	public ProductDescription(int id, String name, double price, double cost) {
+	public ProductDescription(String id, String name, double price, double cost) {
 		this(0, id, name, price, cost, "");
 	}
 	
@@ -28,7 +28,7 @@ public class ProductDescription implements Serializable {
 		return key;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	

@@ -74,9 +74,8 @@ public class EditProductActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				String idText = editTextProductId.getText().toString();
-				int id = Integer.parseInt(idText);
-				if (idText.equals("")) {
+				String id = editTextProductId.getText().toString();
+				if (id.equals("")) {
 					if (dbHelper.getProduct(id) != null) {
 						Toast.makeText(getApplicationContext(),
 								"Product ID must not be empty.", Toast.LENGTH_SHORT)

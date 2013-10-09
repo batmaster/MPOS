@@ -30,7 +30,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// date text yyyy-MM-dd HH:mm:ss
 		String sql = String
-				.format("CREATE TABLE %s (_key INTEGER PRIMARY KEY, ProductId INTEGER, ProductName TEXT, Price DOUBLE, Cost DOUBLE, DateModified TEXT);",
+				.format("CREATE TABLE %s (_key INTEGER PRIMARY KEY, ProductId TEXT, ProductName TEXT, Price DOUBLE, Cost DOUBLE, DateModified TEXT);",
 						TABLE_INVENTORY);
 		db.execSQL(sql);
 
@@ -42,10 +42,10 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String sql = "USE TABLE IF EXISTS " + TABLE_INVENTORY;
+		String sql = "DROP TABLE IF EXISTS " + TABLE_INVENTORY;
 		db.execSQL(sql);
 
-		sql = "USE TABLE IF EXISTS " + TABLE_QUANTITY;
+		sql = "DROP TABLE IF EXISTS " + TABLE_QUANTITY;
 		db.execSQL(sql);
 	}
 
@@ -91,13 +91,13 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
-	public ProductDescription getProduct(int id) {
+	public ProductDescription getProduct(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			ProductDescription product = null;
 			Log.d("table", "before cursor");
 			Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" },
-					"ProductId=?", new String[] { String.valueOf(id) }, null,
+					"ProductId=?", new String[] { id }, null,
 					null, null, null);
 			Log.d("table", "before if");
 			if (cursor != null) {
@@ -109,7 +109,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 					 * 5 = DateModified
 					 */
 					product = new ProductDescription(cursor.getInt(0),
-							cursor.getInt(1), cursor.getString(2),
+							cursor.getString(1), cursor.getString(2),
 							cursor.getDouble(3), cursor.getDouble(4),
 							cursor.getString(5));
 				}
@@ -136,7 +136,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 				if (cursor.moveToFirst()) {
 					do {
 						ProductDescription product = new ProductDescription(
-								cursor.getInt(0), cursor.getInt(1),
+								cursor.getInt(0), cursor.getString(1),
 								cursor.getString(2), cursor.getDouble(3),
 								cursor.getDouble(4), cursor.getString(5));
 						productList.add(product);
@@ -151,13 +151,13 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
-	public ProductQuantity getQuantity(int id) {
+	public ProductQuantity getQuantity(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			ProductQuantity quantity = null;
 
 			Cursor cursor = db.query(TABLE_QUANTITY, new String[] { "*" },
-					"ProductId=?", new String[] { String.valueOf(id) }, null,
+					"ProductId=?", new String[] { id }, null,
 					null, null, null);
 
 			if (cursor != null) {
@@ -166,7 +166,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 					 * 0 = _key 1 = ProductId 2 = ProductName 3 = Price 4 = Cost
 					 * 5 = DateModified
 					 */
-					quantity = new ProductQuantity(cursor.getInt(0),
+					quantity = new ProductQuantity(cursor.getString(0),
 							cursor.getInt(1));
 				}
 			}

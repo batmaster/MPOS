@@ -14,7 +14,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +41,7 @@ public class InventoryActivity extends Activity {
 	private TableLayout tableLayout;
 	private Button buttonEdit;
 	private Button buttonRemove;
+	private Button buttonRemoveAll;
 
 	private TabSpec tabAdd;
 	private EditText editTextProductId;
@@ -129,9 +132,45 @@ public class InventoryActivity extends Activity {
 						dbHelper.removeProduct(row.getProduct());
 					}
 				}
+				// tabHost.invalidate();
+				// tabHost.refreshDrawableState();
 				refreshTable();
 			}
 		});
+
+		buttonRemoveAll = (Button) findViewById(R.id.buttonRemoveAll);
+		buttonRemoveAll.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				final AlertDialog.Builder adb = new AlertDialog.Builder(getApplicationContext());
+				adb.setTitle("Confirm?");
+				adb.setMessage("Plese Confirm");
+				adb.setNegativeButton("Cancel", null);
+				adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						for (int i = 1; i < tableLayout.getChildCount(); i++) {
+							try {
+								InventoryTableRow row = (InventoryTableRow) tableLayout
+										.getChildAt(i);
+
+								dbHelper.removeProduct(row.getProduct());
+							} catch (ClassCastException e) {
+								// prevent casting TableHead
+							}
+						}
+						// tabHost.invalidate();
+						// tabHost.refreshDrawableState();
+						refreshTable();
+						
+					}
+				});
+				adb.show();
+			}
+		});
+		buttonRemoveAll.setVisibility(View.GONE);
 
 		editTextProductId = (EditText) findViewById(R.id.editTextProductId);
 		editTextProductName = (EditText) findViewById(R.id.editTextProductName);
@@ -154,9 +193,8 @@ public class InventoryActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				String idText = editTextProductId.getText().toString();
-				if (!idText.equals("")) {
-					int id = Integer.parseInt(idText);
+				String id = editTextProductId.getText().toString();
+				if (!id.equals("")) {
 					Log.d("table", dbHelper.getProduct(id) + "");
 					if (dbHelper.getProduct(id) != null) {
 						Toast.makeText(
@@ -188,6 +226,8 @@ public class InventoryActivity extends Activity {
 										"Product add to row %d successfully.",
 										row), Toast.LENGTH_SHORT).show();
 						clear();
+						// tabHost.invalidate();
+						// tabHost.refreshDrawableState();
 						refreshTable();
 					}
 				} else {
@@ -208,6 +248,8 @@ public class InventoryActivity extends Activity {
 			}
 		});
 
+		// tabHost.invalidate();
+		// tabHost.refreshDrawableState();
 		refreshTable();
 	}
 
@@ -239,7 +281,7 @@ public class InventoryActivity extends Activity {
 			}
 			for (int i = 0; i < productList.size(); i++) {
 				ProductDescription product = productList.get(i);
-				int id = product.getId();
+				String id = product.getId();
 				ProductQuantity quantity = dbHelper.getQuantity(id);
 
 				InventoryTableRow row = new InventoryTableRow(this,
@@ -257,35 +299,36 @@ public class InventoryActivity extends Activity {
 	}
 
 	@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // for tracking
-        Log.d("res", "requestCode " + requestCode);
-        Log.d("res", "resultCode " + resultCode);
-        
-        if (requestCode == EDIT_ACTIVITY_REQUESTCODE){
-        	/**
-        	 * 0 = EDIT_CANCEL
-        	 * 1 = EDIT_SUCCESS
-        	 */
-        	if (resultCode == 0) {
-        		// no need to refresh
-        	}
-        	else if (resultCode == 1) {
-        		refreshTable();
-        	}
-        }
-        else if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
-            IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		// for tracking
+		Log.d("res", "requestCode " + requestCode);
+		Log.d("res", "resultCode " + resultCode);
 
-            // although scanner is canceled, scanningResult is not null but scanningResult.getContents()
-        	if (scanningResult != null) {
-        		editTextProductId.setText(scanningResult.getContents());
-        		editTextProductName.requestFocus();
-        	}
-        	else {
-        	    Toast.makeText(getApplicationContext(),"No scan data received!", Toast.LENGTH_SHORT).show();
-        	}
-        }
-    }
+		if (requestCode == EDIT_ACTIVITY_REQUESTCODE) {
+			/**
+			 * 0 = EDIT_CANCEL 1 = EDIT_SUCCESS
+			 */
+			if (resultCode == 0) {
+				// no need to refresh
+			} else if (resultCode == 1) {
+				// tabHost.invalidate();
+				// tabHost.refreshDrawableState();
+				refreshTable();
+			}
+		} else if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
+			IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+					requestCode, resultCode, data);
+
+			// although scanner is canceled, scanningResult is not null but
+			// scanningResult.getContents()
+			if (scanningResult != null) {
+				editTextProductId.setText(scanningResult.getContents());
+				editTextProductName.requestFocus();
+			} else {
+				Toast.makeText(getApplicationContext(),
+						"No scan data received!", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
 }
