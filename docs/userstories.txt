@@ -1,0 +1,30 @@
+﻿Inventory System
+
+
+- As an owner , I want to add a product so I can have my product in my inventory.
+- As an owner , I want to remove a product so I can delete my product that I don’t want to sell from inventory.
+- As an owner, I want to edit description so I can change the description of the product.
+- As a seller , I want to make sale so that I can sell the product.
+- As a cashier I want to record a receipt so that I can record sale to ledger.
+- As a seller , I want to check product quantity so that I can know the product availability.
+
+
+Sales System
+
+
+- As an owner, I want to make sale of this product by pressing the button related to this product.
+- As an owner, I want to make a receipt of the recent sale so I can give it to the customer.
+- As a customer, I want the sale to show my total price so I can pay accordingly.
+- As a customer, I want the sale to show the change.
+
+
+Basic User Management System
+
+
+- As an owner, I want to identify my employee so that I can know who sells the product.
+
+
+Basic Customer Management System
+
+
+- As an owner, I want to record the sale that customer make so that I can know what customer interest.
