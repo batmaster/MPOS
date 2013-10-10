@@ -43,7 +43,7 @@ public class EditOnClickListener implements OnClickListener {
 					editActivity.putExtra("ProductQuantity", quantity);
 
 					// EDIT_ACTIVITY_REQUESTCODE = 1
-					activity.startActivityForResult(editActivity, -1);
+					activity.startActivityForResult(editActivity, 1);
 				}
 
 			} catch (ClassCastException e) {

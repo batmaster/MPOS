@@ -83,7 +83,7 @@ public class EditProductActivity extends Activity {
 					}
 				}
 				else {
-					if (id != oldProduct.getId()) {
+					if (!id.equals(oldProduct.getId())) {
 						if (dbHelper.getProduct(id) != null) {
 							Toast.makeText(
 									getApplicationContext(),

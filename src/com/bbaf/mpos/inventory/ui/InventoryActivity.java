@@ -83,6 +83,8 @@ public class InventoryActivity extends Activity {
 		tableLayout = (TableLayout) findViewById(R.id.tableLayout);
 		InventoryTableHead tableHead = new InventoryTableHead(this);
 		tableLayout.addView(tableHead);
+		tableLayout.setShrinkAllColumns(false);
+		tableLayout.setStretchAllColumns(true);
 
 		buttonEdit = (Button) findViewById(R.id.buttonEdit);
 		OnClickListener editListener = new EditOnClickListener(tableLayout,

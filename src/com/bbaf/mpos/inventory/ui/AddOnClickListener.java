@@ -66,6 +66,7 @@ public class AddOnClickListener implements OnClickListener {
 				editTextPrice.setText("");
 				editTextCost.setText("");
 				editTextQuantity.setText("");
+				editTextProductId.requestFocus();
 				//
 				
 				activity.refreshTable();

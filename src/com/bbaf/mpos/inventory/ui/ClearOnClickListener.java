@@ -29,5 +29,6 @@ public class ClearOnClickListener implements OnClickListener {
 		editTextPrice.setText("");
 		editTextCost.setText("");
 		editTextQuantity.setText("");
+		editTextProductId.requestFocus();
 	}
 }

@@ -1,6 +1,7 @@
 package com.bbaf.mpos.inventory.ui;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
@@ -21,6 +22,7 @@ public class InventoryTableHead extends TableRow {
 
 		headProductId = new TextView(context);
 		headProductId.setText("ProductId");
+		headProductId.setTypeface(null, Typeface.BOLD);
 		headProductId.setPadding(0, 0, 20, 0);
 		headProductId.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
@@ -28,13 +30,15 @@ public class InventoryTableHead extends TableRow {
 
 		headProductName = new TextView(context);
 		headProductName.setText("ProductName");
+		headProductName.setTypeface(null, Typeface.BOLD);
 		headProductName.setPadding(0, 0, 20, 0);
 		headProductName.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		addView(headProductName);
 
 		headQuantity = new TextView(context);
-		headQuantity.setText("Quantity");
+		headQuantity.setText("Qt.");
+		headQuantity.setTypeface(null, Typeface.BOLD);
 		headQuantity.setLayoutParams(new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		addView(headQuantity);
