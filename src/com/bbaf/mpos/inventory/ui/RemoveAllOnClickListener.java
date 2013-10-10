@@ -12,21 +12,24 @@ public class RemoveAllOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
 	private InventoryDBHelper dbDAO;
-	private Activity activity;
-	
-	public RemoveAllOnClickListener(TableLayout tableLayout,InventoryDBHelper dbDAO,Activity activity) {
+	private InventoryActivity activity;
+
+	public RemoveAllOnClickListener(TableLayout tableLayout,
+			InventoryDBHelper dbDAO, InventoryActivity activity) {
 		this.tableLayout = tableLayout;
 		this.dbDAO = dbDAO;
 		this.activity = activity;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
-		final AlertDialog.Builder adb = new AlertDialog.Builder(activity.getApplicationContext());
+		final AlertDialog.Builder adb = new AlertDialog.Builder(
+				activity);
 		adb.setTitle("Confirm?");
 		adb.setMessage("Plese Confirm");
 		adb.setNegativeButton("Cancel", null);
-		adb.setPositiveButton("Ok", new DialogOnClickListener(tableLayout,dbDAO,activity));
+		adb.setPositiveButton("Ok", new DialogOnClickListener(tableLayout,
+				dbDAO, activity));
 		adb.show();
 	}
 

@@ -149,7 +149,6 @@ public class EditProductActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.edit_product, menu);
 		return true;
 	}
@@ -161,7 +160,7 @@ public class EditProductActivity extends Activity {
         if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
             IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
-            // although scanner is canceled, scanningResult is not null but scanningResult.getContents()
+            // bat: although scanner is canceled, scanningResult is not null but scanningResult.getContents()
         	if (scanningResult != null) {
         		editTextProductId.setText(scanningResult.getContents());
         		editTextProductName.requestFocus();
@@ -169,7 +168,7 @@ public class EditProductActivity extends Activity {
         	else {
         	    Toast.makeText(getApplicationContext(),"No scan data received!", Toast.LENGTH_SHORT).show();
         	}
-        }
-    }
+		}
+	}
 
 }

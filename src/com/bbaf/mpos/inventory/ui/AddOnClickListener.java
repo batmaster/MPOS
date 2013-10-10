@@ -59,9 +59,15 @@ public class AddOnClickListener implements OnClickListener {
 						String.format(
 								"Product add to row %d successfully.",
 								row), Toast.LENGTH_SHORT).show();
-				activity.clear();
-				// tabHost.invalidate();
-				// tabHost.refreshDrawableState();
+
+				// bat: moved from clear() in InventoryActivity
+				editTextProductId.setText("");
+				editTextProductName.setText("");
+				editTextPrice.setText("");
+				editTextCost.setText("");
+				editTextQuantity.setText("");
+				//
+				
 				activity.refreshTable();
 			}
 		} else {
@@ -70,5 +76,4 @@ public class AddOnClickListener implements OnClickListener {
 					.show();
 		}
 	}
-
 }

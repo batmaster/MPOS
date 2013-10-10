@@ -12,18 +12,18 @@ public class RemoveOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
 	private InventoryDBHelper dbDAO;
-	private Activity activity;
-	
-	public RemoveOnClickListener(TableLayout tableLayout,InventoryDBHelper dbDAO,Activity activity) {
+	private InventoryActivity activity;
+
+	public RemoveOnClickListener(TableLayout tableLayout,
+			InventoryDBHelper dbDAO, InventoryActivity activity) {
 		this.tableLayout = tableLayout;
 		this.dbDAO = dbDAO;
 		this.activity = activity;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		for (int i = 1; i < tableLayout.getChildCount(); i++) {
-			Log.d("rem", "loop");
 			InventoryTableRow row = (InventoryTableRow) tableLayout
 					.getChildAt(i);
 
@@ -31,9 +31,7 @@ public class RemoveOnClickListener implements OnClickListener {
 				dbDAO.removeProduct(row.getProduct());
 			}
 		}
-		// tabHost.invalidate();
-		// tabHost.refreshDrawableState();
-		((InventoryActivity)activity).refreshTable();
+		activity.refreshTable();
 	}
 
 }

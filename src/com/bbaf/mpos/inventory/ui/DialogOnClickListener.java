@@ -11,9 +11,9 @@ public class DialogOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
 	private InventoryDBHelper dbDAO;
-	private Activity activity;
+	private InventoryActivity activity;
 	
-	public DialogOnClickListener(TableLayout tableLayout,InventoryDBHelper dbDAO,Activity activity) {
+	public DialogOnClickListener(TableLayout tableLayout,InventoryDBHelper dbDAO,InventoryActivity activity) {
 		this.tableLayout = tableLayout;
 		this.dbDAO = dbDAO;
 		this.activity = activity;
@@ -28,12 +28,10 @@ public class DialogOnClickListener implements OnClickListener {
 
 				dbDAO.removeProduct(row.getProduct());
 			} catch (ClassCastException e) {
-				// prevent casting TableHead
+				// bat: prevent casting TableHead
 			}
 		}
-		// tabHost.invalidate();
-		// tabHost.refreshDrawableState();
-		((InventoryActivity)activity).refreshTable();
+		activity.refreshTable();
 	}
 
 }

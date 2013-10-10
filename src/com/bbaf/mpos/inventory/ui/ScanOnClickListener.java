@@ -8,16 +8,15 @@ import android.view.View.OnClickListener;
 
 public class ScanOnClickListener implements OnClickListener {
 
-	private Activity activity;
-	
-	public ScanOnClickListener(Activity activity) {
+	private InventoryActivity activity;
+
+	public ScanOnClickListener(InventoryActivity activity) {
 		this.activity = activity;
 	}
-	
+
 	@Override
 	public void onClick(View v) {
-		IntentIntegrator scanIntegrator = new IntentIntegrator(
-				activity);
+		IntentIntegrator scanIntegrator = new IntentIntegrator(activity);
 		scanIntegrator.initiateScan();
 	}
 
