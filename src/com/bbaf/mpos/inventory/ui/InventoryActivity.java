@@ -85,7 +85,10 @@ public class InventoryActivity extends Activity {
 		InventoryTableHead tableHead = new InventoryTableHead(this);
 		tableLayout.addView(tableHead);
 		buttonEdit = (Button) findViewById(R.id.buttonEdit);
-		buttonEdit.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		OnClickListener editListener = new EditOnClickListener(tableLayout,dbHelper,this);
+		buttonEdit.setOnClickListener(editListener);
+/*		buttonEdit.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -117,9 +120,12 @@ public class InventoryActivity extends Activity {
 				}
 			}
 		});
-
+*/
 		buttonRemove = (Button) findViewById(R.id.buttonRemove);
-		buttonRemove.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		OnClickListener removeListener = new RemoveOnClickListener(tableLayout,dbHelper,this);
+		buttonRemove.setOnClickListener(removeListener);
+/*		buttonRemove.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -137,9 +143,12 @@ public class InventoryActivity extends Activity {
 				refreshTable();
 			}
 		});
-
+*/
 		buttonRemoveAll = (Button) findViewById(R.id.buttonRemoveAll);
-		buttonRemoveAll.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		OnClickListener removeAllListener = new RemoveAllOnClickListener(tableLayout,dbHelper,this);
+		buttonRemoveAll.setOnClickListener(removeAllListener);
+/*		buttonRemoveAll.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -170,6 +179,7 @@ public class InventoryActivity extends Activity {
 				adb.show();
 			}
 		});
+*/
 		buttonRemoveAll.setVisibility(View.GONE);
 
 		editTextProductId = (EditText) findViewById(R.id.editTextProductId);
@@ -178,7 +188,10 @@ public class InventoryActivity extends Activity {
 		editTextCost = (EditText) findViewById(R.id.editTextCost);
 		editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
 		buttonScan = (Button) findViewById(R.id.buttonScan);
-		buttonScan.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		OnClickListener scanListener = new ScanOnClickListener(this);
+		buttonScan.setOnClickListener(scanListener);
+/*		buttonScan.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -187,9 +200,12 @@ public class InventoryActivity extends Activity {
 				scanIntegrator.initiateScan();
 			}
 		});
-
+*/
 		buttonAdd = (Button) findViewById(R.id.buttonAdd);
-		buttonAdd.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		OnClickListener addListener = new AddOnClickListener(dbHelper,this);
+		buttonAdd.setOnClickListener(addListener);
+/*		buttonAdd.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -238,30 +254,35 @@ public class InventoryActivity extends Activity {
 
 			}
 		});
-
+*/
 		buttonClear = (Button) findViewById(R.id.buttonClear);
-		buttonClear.setOnClickListener(new OnClickListener() {
+		// next to line i was change to separate class if it crash u can comment it and use old one instead.
+		// also with clear() method i comment it and move it to ClearOnClickListener
+		OnClickListener clearListener = new ClearOnClickListener(this);
+		buttonClear.setOnClickListener(clearListener);
+/*		buttonClear.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				clear();
 			}
 		});
-
+*/
 		// tabHost.invalidate();
 		// tabHost.refreshDrawableState();
 		refreshTable();
 	}
 
-	private void clear() {
+/*	public void clear() {
 		editTextProductId.setText("");
 		editTextProductName.setText("");
 		editTextPrice.setText("");
 		editTextCost.setText("");
 		editTextQuantity.setText("");
 	}
-
-	private void refreshTable() {
+*/
+	//change to public because i can't use it when use in different class.
+	public void refreshTable() {
 		tableLayout.removeAllViews();
 		tableLayout.addView(new InventoryTableHead(this));
 
@@ -330,5 +351,9 @@ public class InventoryActivity extends Activity {
 						"No scan data received!", Toast.LENGTH_SHORT).show();
 			}
 		}
+	}
+	
+	public EditText[] getAllEditText() {
+		return new EditText[]{editTextProductId,editTextProductName,editTextPrice,editTextCost,editTextQuantity};
 	}
 }
