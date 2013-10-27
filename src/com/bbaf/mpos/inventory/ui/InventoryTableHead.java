@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.TableRow.LayoutParams;
 
 public class InventoryTableHead extends TableRow {
 

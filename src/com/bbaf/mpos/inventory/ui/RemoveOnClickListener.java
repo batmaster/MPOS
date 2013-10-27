@@ -2,8 +2,6 @@ package com.bbaf.mpos.inventory.ui;
 
 import com.bbaf.mpos.inventory.InventoryDBHelper;
 
-import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TableLayout;

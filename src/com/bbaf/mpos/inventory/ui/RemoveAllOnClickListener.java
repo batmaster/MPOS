@@ -2,7 +2,6 @@ package com.bbaf.mpos.inventory.ui;
 
 import com.bbaf.mpos.inventory.InventoryDBHelper;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
