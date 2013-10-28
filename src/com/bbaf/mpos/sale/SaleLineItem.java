@@ -4,8 +4,8 @@ import com.bbaf.mpos.ProductDescription;
 
 /**
  * SaleLineItem to Show Detail of line item in sale
- * @author Atit Leelasuksan 5510546221
- * @version Oct 27, 2013
+ * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
+ * @version Oct 28, 2013
  */
 public class SaleLineItem {
 	

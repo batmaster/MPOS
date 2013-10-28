@@ -2,21 +2,29 @@ package com.bbaf.mpos.sale;
 
 import java.util.ArrayList;
 
+import com.bbaf.mpos.inventory.InventoryDBHelper;
+
 /**
  * Class for sale function.
- * @author Atit Leelasuksan 5510546221
- * @version Oct 27, 2013
+ * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
+ * @version Oct 28, 2013
  */
 public class Sale {
 	
 	/** List of SaleLineItem in this sale. */
 	private ArrayList<SaleLineItem> lineOfItem;
 	
+	private InventoryDBHelper inventory;
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */
 	public Sale() {
 		lineOfItem = new ArrayList<SaleLineItem>();
+	}
+	
+	public Sale(InventoryDBHelper inventory){
+		this();
+		this.inventory = inventory;
 	}
 	
 	/**
@@ -53,11 +61,29 @@ public class Sale {
 	 * Calculate total price.
 	 * @return total price
 	 */
-	public double GetTotal(){
+	public double getTotal(){
 		double total = 0;
 		for(SaleLineItem sli : lineOfItem){
 			total += sli.GetTotal();
 		}
 		return total;
+	}
+	
+	/**
+	 * return change that calculate from money and total price
+	 * @param money customer pay
+	 * @return money minus total price
+	 */
+	public double change(double money){
+		return money - getTotal();
+	}
+	
+	/**
+	 * decrease quantity that match which id.
+	 * @param id that match which inventory.
+	 * @param quantity amount of quantity that decrease from total quantity in inventory.
+	 */
+	public void decrease(String id,int quantity){
+		inventory.setQuantity(inventory.getProduct(id), inventory.getQuantity(id).getQuantity()-quantity);
 	}
 }
