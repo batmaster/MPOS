@@ -49,4 +49,15 @@ public class Sale {
 		return null;
 	}
 	
+	/**
+	 * Calculate total price.
+	 * @return total price
+	 */
+	public double GetTotal(){
+		double total = 0;
+		for(SaleLineItem sli : lineOfItem){
+			total += sli.GetTotal();
+		}
+		return total;
+	}
 }

@@ -62,4 +62,12 @@ public class SaleLineItem {
 		if(amount>0) return true;
 		else return false;
 	}
+	
+	/**
+	 * Calculate price of this item
+	 * @return total item price
+	 */
+	public double GetTotal(){
+		return quantity*productDesc.getPrice();
+	}
 }
