@@ -14,7 +14,7 @@ public class Sale {
 	/** List of SaleLineItem in this sale. */
 	private ArrayList<SaleLineItem> lineOfItem;
 	
-	private InventoryDBHelper inventory;
+	private InventoryDBHelper dbhelper;
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */
@@ -24,7 +24,7 @@ public class Sale {
 	
 	public Sale(InventoryDBHelper inventory){
 		this();
-		this.inventory = inventory;
+		this.dbhelper = inventory;
 	}
 	
 	/**
@@ -84,6 +84,6 @@ public class Sale {
 	 * @param quantity amount of quantity that decrease from total quantity in inventory.
 	 */
 	public void decrease(String id,int quantity){
-		inventory.setQuantity(inventory.getProduct(id), inventory.getQuantity(id).getQuantity()-quantity);
+		dbhelper.setQuantity(dbhelper.getProduct(id), dbhelper.getQuantity(id).getQuantity()-quantity);
 	}
 }
