@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView1"
+                                android:id="@+id/textViewStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Product ID"
@@ -115,7 +115,7 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/textViewSubtotal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Product Name"
@@ -154,7 +154,7 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView4"
+                                android:id="@+id/textViewTotal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Cost"
@@ -174,7 +174,7 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView5"
+                                android:id="@+id/textViewTotalPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Quantity"
@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content" >
 						
                         <Button
-                            android:id="@+id/buttonAdd"
+                            android:id="@+id/buttonAddSale"
                             style="?android:attr/buttonStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

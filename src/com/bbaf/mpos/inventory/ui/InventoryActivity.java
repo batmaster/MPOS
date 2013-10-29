@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.SaleActivity;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -54,7 +55,10 @@ public class InventoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
-
+		
+		Intent testSale = new Intent(getApplicationContext(),SaleActivity.class);
+		startActivity(testSale);
+		
 		dbDAO = new InventoryDBHelper(this);
 
 		// bat: initial tab host
@@ -104,7 +108,7 @@ public class InventoryActivity extends Activity {
 		OnClickListener scanListener = new ScanOnClickListener(this);
 		buttonScan.setOnClickListener(scanListener);
 
-		buttonAdd = (Button) findViewById(R.id.buttonAdd);
+		buttonAdd = (Button) findViewById(R.id.buttonAddSale);
 		OnClickListener addListener = new AddOnClickListener(dbDAO, this);
 		buttonAdd.setOnClickListener(addListener);
 

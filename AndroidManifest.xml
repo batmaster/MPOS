@@ -3,8 +3,7 @@
     package="com.bbaf.mpos"
     android:versionCode="1"
     android:versionName="1.0" >
-    
-    
+
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="16" />
@@ -29,6 +28,11 @@
             android:label="@string/title_activity_edit_product"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.bbaf.mpos.SaleActivity"
+            android:label="@string/title_activity_sale" >
+        </activity>
     </application>
-	<!-- asd -->
+    <!-- asd -->
+
 </manifest>
