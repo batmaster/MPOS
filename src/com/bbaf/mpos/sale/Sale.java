@@ -2,6 +2,7 @@ package com.bbaf.mpos.sale;
 
 import java.util.ArrayList;
 
+import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
 
 /**
@@ -30,17 +31,18 @@ public class Sale {
 	/**
 	 * Add SaleLineItem to List if SaleLineItem doesn't exist in List.
 	 * Add SaleLineItem instead if it exist in List.
-	 * @param lineItem is SaleLineItem to add.
+	 * @param productDesc is product.
+	 * @param quantity is quantity of product to add.
 	 * @return true if add new SaleLineItem.
 	 * 		false if add quantity instead.
 	 */
-	public boolean AddSaleLineItem(SaleLineItem lineItem) {
-		SaleLineItem line = checkItemInLine(lineItem);
+	public boolean AddSaleLineItem(ProductDescription productDesc,int quantity) {
+		SaleLineItem line = checkItemInLine(new SaleLineItem(productDesc,quantity));
 		if(!line.equals(null)) {
-			line.addQuantity(lineItem.getQuantity());
+			line.addQuantity(line.getQuantity());
 			return false;
 		}
-		lineOfItem.add(lineItem);
+		lineOfItem.add(line);
 		return true;
 	}
 	
@@ -85,5 +87,13 @@ public class Sale {
 	 */
 	public void decrease(String id,int quantity){
 		dbhelper.setQuantity(dbhelper.getProduct(id), dbhelper.getQuantity(id).getQuantity()-quantity);
+	}
+	
+	/**
+	 * return list of sale line item.
+	 * @return list of sale line item.
+	 */
+	public ArrayList<SaleLineItem> getList() {
+		return lineOfItem;
 	}
 }
