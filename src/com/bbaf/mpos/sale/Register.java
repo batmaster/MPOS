@@ -39,19 +39,59 @@ public class Register {
 	 * add item to sale.
 	 * @param productDesc is item to add.
 	 * @param quantity of item to add.
+	 * @return 
 	 */
-	public void addItem(ProductDescription productDesc,int quantity) {
-		if(!sale.equals(null))
+	public boolean addItem(ProductDescription productDesc,int quantity) {
+		if(!sale.equals(null)) {
 			sale.AddSaleLineItem(productDesc,quantity);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * remove item in sale.
+	 * @param productDesc is item to add.
+	 * @return 
+	 */
+	public boolean removeItem(ProductDescription productDesc) {
+		if(!sale.equals(null)) {
+			sale.RemoveSaleLineItem(productDesc);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * remove all item in sale.
+	 * @param productDesc is item to add.
+	 * @return 
+	 */
+	public boolean removeAllItem() {
+		if(!sale.equals(null)) {
+			sale.RemoveAllSaleLineItem();
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * get all list of item in sale.
+	 * @return all list of item in current sale.
+	 */
+	public ArrayList<SaleLineItem> getAllSaleLineItemList() {
+		if(!sale.equals(null))
+			return sale.getAllList();
+		return null;
 	}
 	
 	/**
 	 * get list of item in sale.
 	 * @return list of item in current sale.
 	 */
-	public ArrayList<SaleLineItem> getSaleLineItemList() {
+	public SaleLineItem getSaleLineItemList(ProductDescription product) {
 		if(!sale.equals(null))
-			return sale.getList();
+			return sale.getList(product);
 		return null;
 	}
 	

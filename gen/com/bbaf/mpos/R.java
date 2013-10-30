@@ -8,6 +8,9 @@
 package com.bbaf.mpos;
 
 public final class R {
+    public static final class array {
+        public static final int activities_array=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -24,55 +27,62 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080000;
-        public static final int LinearLayout2=0x7f08001d;
-        public static final int action_settings=0x7f080026;
-        public static final int buttonAddSale=0x7f08001b;
-        public static final int buttonCancel=0x7f08000c;
-        public static final int buttonClear=0x7f08001c;
-        public static final int buttonClearSale=0x7f080025;
-        public static final int buttonEdit=0x7f080012;
-        public static final int buttonRemove=0x7f080013;
-        public static final int buttonRemoveAll=0x7f080014;
-        public static final int buttonSave=0x7f08000b;
-        public static final int buttonScan=0x7f08000d;
-        public static final int buttonSubmitSale=0x7f080024;
-        public static final int editTextCost=0x7f080019;
-        public static final int editTextID=0x7f080022;
-        public static final int editTextPrice=0x7f080018;
-        public static final int editTextProductId=0x7f080016;
-        public static final int editTextProductName=0x7f080017;
-        public static final int editTextQuantity=0x7f08001a;
-        public static final int edit_editTextCost=0x7f080008;
-        public static final int edit_editTextPrice=0x7f080006;
-        public static final int edit_editTextProductId=0x7f080002;
-        public static final int edit_editTextProductName=0x7f080004;
-        public static final int edit_editTextQuantity=0x7f08000a;
-        public static final int listViewSaleItem=0x7f080020;
-        public static final int scrollView1=0x7f080010;
-        public static final int tabAdd=0x7f080015;
-        public static final int tabInventory=0x7f08000f;
-        public static final int tabhost=0x7f08000e;
-        public static final int tableLayout=0x7f080011;
-        public static final int textView3=0x7f080005;
-        public static final int textViewID=0x7f080021;
-        public static final int textViewQuatity=0x7f080023;
-        public static final int textViewStatus=0x7f080001;
-        public static final int textViewSubtotal=0x7f080003;
-        public static final int textViewTotal=0x7f080007;
-        public static final int textViewTotalPrice=0x7f080009;
-        public static final int textViewTotalSale=0x7f08001e;
-        public static final int textViewTotalSalePrice=0x7f08001f;
+        public static final int LinearLayout1=0x7f090000;
+        public static final int LinearLayout2=0x7f090021;
+        public static final int action_settings=0x7f09002c;
+        public static final int buttonAddSale=0x7f09001c;
+        public static final int buttonCancel=0x7f09000c;
+        public static final int buttonClear=0x7f09001d;
+        public static final int buttonClearSale=0x7f09002a;
+        public static final int buttonEdit=0x7f090012;
+        public static final int buttonInventory=0x7f09002b;
+        public static final int buttonRemove=0x7f090013;
+        public static final int buttonRemoveAll=0x7f090014;
+        public static final int buttonSale=0x7f090015;
+        public static final int buttonSave=0x7f09000b;
+        public static final int buttonScan=0x7f09000d;
+        public static final int buttonSubmitSale=0x7f090029;
+        public static final int content_frame=0x7f09001f;
+        public static final int drawer_layout=0x7f09001e;
+        public static final int editTextCost=0x7f09001a;
+        public static final int editTextId=0x7f090027;
+        public static final int editTextPrice=0x7f090019;
+        public static final int editTextProductId=0x7f090017;
+        public static final int editTextProductName=0x7f090018;
+        public static final int editTextQuantity=0x7f09001b;
+        public static final int edit_editTextCost=0x7f090008;
+        public static final int edit_editTextPrice=0x7f090006;
+        public static final int edit_editTextProductId=0x7f090002;
+        public static final int edit_editTextProductName=0x7f090004;
+        public static final int edit_editTextQuantity=0x7f09000a;
+        public static final int left_drawer=0x7f090020;
+        public static final int scrollView1=0x7f090010;
+        public static final int scrollView2=0x7f090024;
+        public static final int tabAdd=0x7f090016;
+        public static final int tabInventory=0x7f09000f;
+        public static final int tabhost=0x7f09000e;
+        public static final int tableLayout=0x7f090011;
+        public static final int tableLayoutSale=0x7f090025;
+        public static final int textView3=0x7f090005;
+        public static final int textViewId=0x7f090026;
+        public static final int textViewQuatity=0x7f090028;
+        public static final int textViewStatus=0x7f090001;
+        public static final int textViewSubtotal=0x7f090003;
+        public static final int textViewTotal=0x7f090007;
+        public static final int textViewTotalPrice=0x7f090009;
+        public static final int textViewTotalSale=0x7f090022;
+        public static final int textViewTotalSalePrice=0x7f090023;
     }
     public static final class layout {
         public static final int activity_edit_product=0x7f030000;
         public static final int activity_inventory=0x7f030001;
         public static final int activity_sale=0x7f030002;
+        public static final int drawer_list_item=0x7f030003;
     }
     public static final class menu {
-        public static final int edit_product=0x7f070000;
-        public static final int inventory=0x7f070001;
-        public static final int sale=0x7f070002;
+        public static final int edit_product=0x7f080000;
+        public static final int inventory=0x7f080001;
+        public static final int sale=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -103,10 +113,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

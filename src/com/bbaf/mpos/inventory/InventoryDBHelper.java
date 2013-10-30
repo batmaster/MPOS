@@ -150,30 +150,24 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
-	public ProductQuantity getQuantity(String id) {
+	public int getQuantity(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
-			ProductQuantity quantity = null;
-
+			int quantity = -1;
 			Cursor cursor = db.query(TABLE_QUANTITY, new String[] { "*" },
 					"ProductId=?", new String[] { id }, null,
 					null, null, null);
 
 			if (cursor != null) {
 				if (cursor.moveToFirst()) {
-					/**
-					 * 0 = _key 1 = ProductId 2 = ProductName 3 = Price 4 = Cost
-					 * 5 = DateModified
-					 */
-					quantity = new ProductQuantity(cursor.getString(0),
-							cursor.getInt(1));
+					quantity = cursor.getInt(1);
 				}
 			}
 			cursor.close();
 			db.close();
 			return quantity;
 		} catch (Exception e) {
-			return null;
+			return -1;
 		}
 	}
 

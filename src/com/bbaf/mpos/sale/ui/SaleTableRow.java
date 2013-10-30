@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.sale.ui;
 
 import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
@@ -8,18 +8,19 @@ import android.widget.CheckBox;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class InventoryTableRow extends TableRow {
+public class SaleTableRow extends TableRow {
 
 	private ProductDescription product;
 	private int quantity;
 	private CheckBox rowCheckBox;
 	private TextView rowProductId;
 	private TextView rowProductName;
+	private TextView rowUnitPrice;
 	private TextView rowQuantity;
 
-	public InventoryTableRow(Context context,
+	public SaleTableRow(Context context,
 			ProductDescription productDescription,
-			int quantity) {
+			double unitPrice, int quantity) {
 		super(context);
 
 		this.product = productDescription;
@@ -40,6 +41,12 @@ public class InventoryTableRow extends TableRow {
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		addView(rowProductName);
 
+		rowUnitPrice = new TextView(context);
+		rowUnitPrice.setText(String.valueOf(unitPrice));
+		rowUnitPrice.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.WRAP_CONTENT));
+		addView(rowUnitPrice);
+		
 		rowQuantity = new TextView(context);
 		rowQuantity.setText(String.valueOf(quantity));
 		rowQuantity.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,

@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,9 @@ public class InventoryActivity extends Activity {
 	private Button buttonEdit;
 	private Button buttonRemove;
 	private Button buttonRemoveAll;
+	////
+	private Button buttonSale;
+	////
 
 	private TabSpec tabAdd;
 	private EditText editTextProductId;
@@ -55,9 +59,6 @@ public class InventoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
-		
-		Intent testSale = new Intent(getApplicationContext(),SaleActivity.class);
-		startActivity(testSale);
 		
 		dbDAO = new InventoryDBHelper(this);
 
@@ -97,6 +98,20 @@ public class InventoryActivity extends Activity {
 				tableLayout, dbDAO, this);
 		buttonRemoveAll.setOnClickListener(removeAllListener);
 		//buttonRemoveAll.setVisibility(View.GONE);
+		
+		////
+		buttonSale = (Button)findViewById(R.id.buttonSale);
+		buttonSale.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent testSale = new Intent(getApplicationContext(),SaleActivity.class);
+				startActivity(testSale);
+				finish();
+				
+			}
+		});
+		////
 
 		editTextProductId = (EditText) findViewById(R.id.editTextProductId);
 		editTextProductName = (EditText) findViewById(R.id.editTextProductName);
@@ -141,7 +156,7 @@ public class InventoryActivity extends Activity {
 			for (int i = 0; i < productList.size(); i++) {
 				ProductDescription product = productList.get(i);
 				String id = product.getId();
-				ProductQuantity quantity = dbDAO.getQuantity(id);
+				int quantity = dbDAO.getQuantity(id);
 
 				InventoryTableRow row = new InventoryTableRow(this,
 						productList.get(i), quantity);

@@ -2,6 +2,9 @@ package com.bbaf.mpos.sale;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
 
@@ -38,11 +41,31 @@ public class Sale {
 	 */
 	public boolean AddSaleLineItem(ProductDescription productDesc,int quantity) {
 		SaleLineItem line = checkItemInLine(new SaleLineItem(productDesc,quantity));
-		if(!line.equals(null)) {
-			line.addQuantity(line.getQuantity());
+		if(!(line == null)) {
+			line.addQuantity(quantity);
+			return true;
+		}
+		lineOfItem.add(new SaleLineItem(productDesc));
+		return true;
+	}
+	
+	public boolean RemoveSaleLineItem(ProductDescription productDesc) {
+		try {
+			lineOfItem.remove(productDesc);
+		}
+		catch (Exception ex) {
 			return false;
 		}
-		lineOfItem.add(line);
+		return true;
+	}
+	
+	public boolean RemoveAllSaleLineItem() {
+		try {
+			lineOfItem.clear();
+		}
+		catch (Exception ex) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -54,7 +77,8 @@ public class Sale {
 	 */
 	private SaleLineItem checkItemInLine(SaleLineItem lineItem) {
 		for(int i = 0 ; i < lineOfItem.size() ; i++) {
-			if(lineItem.getProductDescription().equals(lineOfItem.get(i).getProductDescription())) return lineOfItem.get(i);
+			if(lineItem.getProductDescription().equals(lineOfItem.get(i).getProductDescription()))
+				return lineOfItem.get(i);
 		}
 		return null;
 	}
@@ -86,14 +110,26 @@ public class Sale {
 	 * @param quantity amount of quantity that decrease from total quantity in inventory.
 	 */
 	public void decrease(String id,int quantity){
-		dbhelper.setQuantity(dbhelper.getProduct(id), dbhelper.getQuantity(id).getQuantity()-quantity);
+		dbhelper.setQuantity(dbhelper.getProduct(id), dbhelper.getQuantity(id)-quantity);
+	}
+	
+	/**
+	 * return all list of sale line item.
+	 * @return all list of sale line item.
+	 */
+	public ArrayList<SaleLineItem> getAllList() {
+		return lineOfItem;
 	}
 	
 	/**
 	 * return list of sale line item.
 	 * @return list of sale line item.
 	 */
-	public ArrayList<SaleLineItem> getList() {
-		return lineOfItem;
+	public SaleLineItem getList(ProductDescription product) {
+		for (int i = 0; i < lineOfItem.size(); i++) {
+			if (lineOfItem.get(i).getProductDescription().equals(product))
+				return lineOfItem.get(i);
+		}
+		return null;
 	}
 }

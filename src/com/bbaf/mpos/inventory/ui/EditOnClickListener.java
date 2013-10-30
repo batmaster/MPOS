@@ -38,7 +38,7 @@ public class EditOnClickListener implements OnClickListener {
 							EditProductActivity.class);
 					ProductDescription product = row.getProduct();
 					editActivity.putExtra("ProductDescription", product);
-					ProductQuantity quantity = dbDAO.getQuantity(product
+					int quantity = dbDAO.getQuantity(product
 							.getId());
 					editActivity.putExtra("ProductQuantity", quantity);
 
