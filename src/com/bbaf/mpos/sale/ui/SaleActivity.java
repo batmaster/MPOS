@@ -1,9 +1,11 @@
-package com.bbaf.mpos;
+package com.bbaf.mpos.sale.ui;
 
 import java.util.ArrayList;
 
 import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.R.array;
+import com.bbaf.mpos.R.id;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
@@ -13,8 +15,6 @@ import com.bbaf.mpos.inventory.ui.InventoryTableHead;
 import com.bbaf.mpos.inventory.ui.InventoryTableRow;
 import com.bbaf.mpos.sale.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
-import com.bbaf.mpos.sale.ui.SaleTableHead;
-import com.bbaf.mpos.sale.ui.SaleTableRow;
 
 import android.os.Bundle;
 import android.app.Activity;

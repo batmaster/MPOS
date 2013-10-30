@@ -29,7 +29,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.bbaf.mpos.SaleActivity"
+            android:name="com.bbaf.mpos.sale.ui.SaleActivity"
             android:label="@string/title_activity_sale" >
         </activity>
     </application>
