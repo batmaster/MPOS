@@ -42,8 +42,8 @@ public class EditProductActivity extends Activity {
 		dbHelper = new InventoryDBHelper(this);
 		final ProductDescription oldProduct = (ProductDescription) getIntent()
 				.getSerializableExtra("ProductDescription");
-		final ProductQuantity oldQuantity = (ProductQuantity) getIntent()
-				.getSerializableExtra("ProductQuantity");
+		final int oldQuantity = getIntent()
+				.getIntExtra("ProductQuantity", 0);
 
 		editTextProductId = (EditText) findViewById(R.id.edit_editTextProductId);
 		editTextProductId.setText(String.valueOf(oldProduct.getId()));
@@ -54,7 +54,7 @@ public class EditProductActivity extends Activity {
 		editTextCost = (EditText) findViewById(R.id.edit_editTextCost);
 		editTextCost.setText(String.valueOf(oldProduct.getCost()));
 		editTextQuantity = (EditText) findViewById(R.id.edit_editTextQuantity);
-		editTextQuantity.setText(String.valueOf(oldQuantity.getQuantity()));
+		editTextQuantity.setText(String.valueOf(oldQuantity));
 		buttonScan = (Button) findViewById(R.id.buttonScan);
 		buttonScan.setOnClickListener(new OnClickListener() {
 
@@ -100,9 +100,7 @@ public class EditProductActivity extends Activity {
 
 							int quantity = Integer.parseInt(editTextQuantity
 									.getText().toString());
-							ProductQuantity newQuantity = new ProductQuantity(id,
-									quantity);
-							dbHelper.editQuantity(oldQuantity, newQuantity);
+							dbHelper.editQuantity(oldProduct, newProduct, quantity);
 
 							setResult(EDIT_SUCCESS);
 							finish();
@@ -121,9 +119,7 @@ public class EditProductActivity extends Activity {
 
 						int quantity = Integer.parseInt(editTextQuantity
 								.getText().toString());
-						ProductQuantity newQuantity = new ProductQuantity(id,
-								quantity);
-						dbHelper.editQuantity(oldQuantity, newQuantity);
+						dbHelper.editQuantity(oldProduct, newProduct, quantity);
 
 						setResult(EDIT_SUCCESS);
 						finish();

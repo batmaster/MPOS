@@ -66,8 +66,8 @@ public class SaleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
 		
-		register = new Register();
-		register.startSale();
+		register = (Register) getIntent().getSerializableExtra("register");
+		
 		dbDAO = new InventoryDBHelper(this);
 		
 		textViewStatus = (TextView)findViewById(R.id.textViewStatus);

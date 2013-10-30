@@ -7,6 +7,7 @@ import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.SaleActivity;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.sale.Register;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -49,6 +50,8 @@ public class InventoryActivity extends Activity {
 	private Button buttonScan;
 	private Button buttonAdd;
 	private Button buttonClear;
+	
+	private Register register = new Register();
 
 	private InventoryDBHelper dbDAO;
 	// bat: maybe collect as same location later
@@ -105,7 +108,9 @@ public class InventoryActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				if (!register.isSale()) register.startSale(); 
 				Intent testSale = new Intent(getApplicationContext(),SaleActivity.class);
+				testSale.putExtra("register", register);
 				startActivity(testSale);
 				finish();
 				

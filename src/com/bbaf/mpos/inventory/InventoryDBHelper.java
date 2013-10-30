@@ -194,17 +194,17 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 
 	}
 
-	public long editQuantity(ProductQuantity oldQuantity,
-			ProductQuantity newQuantity) {
+	public long editQuantity(ProductDescription oldProduct, ProductDescription newProduct,
+			int newQuantity) {
 		try {
 
 			SQLiteDatabase db = this.getWritableDatabase();
 
 			ContentValues value = new ContentValues();
-			value.put("ProductId", newQuantity.getId());
-			value.put("ProductQuantity", newQuantity.getQuantity());
+			value.put("ProductId", newProduct.getId());
+			value.put("ProductQuantity", newQuantity);
 			long rows = db.update(TABLE_QUANTITY, value, " ProductId=?",
-					new String[] { String.valueOf(oldQuantity.getId()) });
+					new String[] { String.valueOf(oldProduct.getId()) });
 
 			db.close();
 			return rows;

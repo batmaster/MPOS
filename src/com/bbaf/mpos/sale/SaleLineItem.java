@@ -1,5 +1,7 @@
 package com.bbaf.mpos.sale;
 
+import java.io.Serializable;
+
 import com.bbaf.mpos.ProductDescription;
 
 /**
@@ -7,7 +9,7 @@ import com.bbaf.mpos.ProductDescription;
  * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 28, 2013
  */
-public class SaleLineItem {
+public class SaleLineItem implements Serializable {
 	
 	/** ProductDescription of this line item. */
 	private ProductDescription productDesc;

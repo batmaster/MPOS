@@ -1,5 +1,6 @@
 package com.bbaf.mpos.sale;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.bbaf.mpos.ProductDescription;
@@ -9,7 +10,7 @@ import com.bbaf.mpos.ProductDescription;
  * @author Atit Leelasuksan 5510546221
  * @version Oct 29, 2013
  */
-public class Register {
+public class Register implements Serializable {
 	
 	/** sale for register. */
 	private Sale sale;
@@ -23,7 +24,8 @@ public class Register {
 	 * create new sale.
 	 */
 	public void startSale() {
-		sale = new Sale();
+		if(sale==null)
+			sale = new Sale();
 	}
 	
 	/**
@@ -100,5 +102,14 @@ public class Register {
 	 */
 	public void endSale() {
 		if(!sale.equals(null)) sale = null;
+	}
+	
+	/**
+	 * get sale status.
+	 * @return true if sale not null otherwise false.
+	 */
+	public boolean isSale() {
+		if(sale==null) return false;
+		return true;
 	}
 }

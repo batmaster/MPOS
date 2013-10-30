@@ -1,5 +1,6 @@
 package com.bbaf.mpos.sale;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.util.Log;
@@ -13,7 +14,7 @@ import com.bbaf.mpos.inventory.InventoryDBHelper;
  * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 28, 2013
  */
-public class Sale {
+public class Sale implements Serializable {
 	
 	/** List of SaleLineItem in this sale. */
 	private ArrayList<SaleLineItem> lineOfItem;
