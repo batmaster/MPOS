@@ -126,11 +126,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="1"
             android:ems="10"
             android:inputType="number" />
 
         <Button
             android:id="@+id/buttonAddSale"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add" />
@@ -143,12 +145,14 @@
 
         <Button
             android:id="@+id/buttonSubmitSale"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit" />
 
         <Button
             android:id="@+id/buttonClearSale"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clear" />

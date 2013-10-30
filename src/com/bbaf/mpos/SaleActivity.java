@@ -103,18 +103,27 @@ public class SaleActivity extends Activity {
 					else {
 						String quantityText = editTextQuantity.getText().toString();
 						int quantity = quantityText.equals("") ? 1 : Integer.parseInt(quantityText);
-						Log.d("OnClickAdd", quantity + "");
-						if (register.addItem(product, quantity)) {
-							// not sure it should be here
-							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
-							refreshTable();
-							
-							String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
-							textViewStatus.setText(status);
-							
+						int tmp = 0;
+						if (register.getSaleLineItemList(product) != null)
+							tmp = register.getSaleLineItemList(product).getQuantity();
+						int stock = dbDAO.getQuantity(id) - tmp;
+						
+						if (stock < quantity) {
+							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " has only " + stock + ".", Toast.LENGTH_SHORT).show();
 						}
 						else {
-							Toast.makeText(getApplicationContext(), "Adding not successful.", Toast.LENGTH_SHORT).show();
+							if (register.addItem(product, quantity)) {
+								// not sure it should be here
+								Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
+								refreshTable();
+								
+								String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
+								textViewStatus.setText(status);
+								
+							}
+							else {
+								Toast.makeText(getApplicationContext(), "Adding not successful.", Toast.LENGTH_SHORT).show();
+							}
 						}
 					}
 				}
@@ -138,6 +147,10 @@ public class SaleActivity extends Activity {
 			public void onClick(View v) {
 				register.removeAllItem();
 				refreshTable();
+				textViewStatus.setText("Welcome");
+				textViewTotalSalePrice.setText("0.0");
+				editTextId.setText("");
+				editTextQuantity.setText("");
 			}
 		});
 		
