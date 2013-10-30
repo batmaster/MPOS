@@ -45,7 +45,7 @@ public class Sale {
 			line.addQuantity(quantity);
 			return true;
 		}
-		lineOfItem.add(new SaleLineItem(productDesc));
+		lineOfItem.add(new SaleLineItem(productDesc, quantity));
 		return true;
 	}
 	

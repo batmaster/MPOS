@@ -31,7 +31,7 @@ public class SaleLineItem {
 	 */
 	public SaleLineItem(ProductDescription product,int q) {
 		productDesc = product;
-		if(quantity>0) quantity = q;
+		if(q>0) quantity = q;
 		else quantity = 1;
 	}
 	
