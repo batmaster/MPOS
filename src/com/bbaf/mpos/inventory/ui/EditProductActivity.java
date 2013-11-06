@@ -39,7 +39,7 @@ public class EditProductActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_product);
 
-		dbHelper = new InventoryDBHelper(this);
+		dbHelper = InventoryDBHelper.getInstance(this);
 		final ProductDescription oldProduct = (ProductDescription) getIntent()
 				.getSerializableExtra("ProductDescription");
 		final int oldQuantity = getIntent()

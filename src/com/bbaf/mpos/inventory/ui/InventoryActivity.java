@@ -63,7 +63,7 @@ public class InventoryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
 		
-		dbDAO = new InventoryDBHelper(this);
+		dbDAO = InventoryDBHelper.getInstance(this);
 
 		// bat: initial tab host
 		tabHost = (TabHost) findViewById(R.id.tabhost);

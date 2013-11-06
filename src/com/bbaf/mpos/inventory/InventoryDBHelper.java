@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.bbaf.mpos.ProductDescription;
-import com.bbaf.mpos.ProductQuantity;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -20,11 +19,21 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 	private static final String TABLE_INVENTORY = "inventory";
 	private static final String TABLE_QUANTITY = "quantity";
 	private static final int DATABASE_VERSION = 1;
+	private static InventoryDBHelper dao;
 
-	public InventoryDBHelper(Context context) {
+	private InventoryDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
-
+	
+	public static InventoryDBHelper getInstance(Context context) {
+		if(dao==null) dao = new InventoryDBHelper(context);
+		return dao;
+	}
+	
+	public static InventoryDBHelper getInstance() {
+		return dao;
+	}
+	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// date text yyyy-MM-dd HH:mm:ss
