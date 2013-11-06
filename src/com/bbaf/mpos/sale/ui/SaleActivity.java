@@ -13,6 +13,7 @@ import com.bbaf.mpos.inventory.ui.ClearOnClickListener;
 import com.bbaf.mpos.inventory.ui.InventoryActivity;
 import com.bbaf.mpos.inventory.ui.InventoryTableHead;
 import com.bbaf.mpos.inventory.ui.InventoryTableRow;
+import com.bbaf.mpos.sale.Inventory;
 import com.bbaf.mpos.sale.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
 
@@ -59,17 +60,19 @@ public class SaleActivity extends Activity {
 	private Button buttonInventory;
 	
 	private Register register;
-	private InventoryDBHelper dbDAO;
+	//private InventoryDBHelper dbDAO;
+	private Inventory inventory;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
 		
-		register = (Register) getIntent().getSerializableExtra("register");
+		register = Register.getInstance();
+		//register = (Register) getIntent().getSerializableExtra("register");
 		
-		dbDAO = InventoryDBHelper.getInstance(this);
-		
+		//dbDAO = InventoryDBHelper.getInstance(this);
+		inventory = register.getInventory();
 		textViewStatus = (TextView)findViewById(R.id.textViewStatus);
 		textViewStatus.setText("Welcome");
 		
@@ -96,7 +99,7 @@ public class SaleActivity extends Activity {
 					Toast.makeText(getApplicationContext(), "ID must not be empty.", Toast.LENGTH_SHORT).show();
 				}
 				else {
-					ProductDescription product = dbDAO.getProduct(id);
+					ProductDescription product = inventory.getProduct(id);
 					if (product == null) {
 						Toast.makeText(getApplicationContext(), "ID has not registered.", Toast.LENGTH_SHORT).show();
 					}
@@ -106,12 +109,12 @@ public class SaleActivity extends Activity {
 						int tmp = 0;
 						if (register.getSaleLineItemList(product) != null)
 							tmp = register.getSaleLineItemList(product).getQuantity();
-						int stock = dbDAO.getQuantity(id) - tmp;
+						//int stock = inventory.getQuantity(id) - tmp;
 						
-						if (stock < quantity) {
-							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " has only " + stock + ".", Toast.LENGTH_SHORT).show();
-						}
-						else {
+//						if (stock < quantity) {
+//							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " has only " + stock + ".", Toast.LENGTH_SHORT).show();
+//						}
+//						else {
 							if (register.addItem(product, quantity)) {
 								// not sure it should be here
 								Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
@@ -124,7 +127,7 @@ public class SaleActivity extends Activity {
 							else {
 								Toast.makeText(getApplicationContext(), "Adding not successful.", Toast.LENGTH_SHORT).show();
 							}
-						}
+//						}
 					}
 				}
 			}
@@ -135,8 +138,17 @@ public class SaleActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				ArrayList<SaleLineItem> sli = register.getAllSaleLineItemList();
+				for(int i = 0 ;i < sli.size();i++){
+					register.decrease(sli.get(i).getProductDescription().getId(), sli.get(i).getQuantity());
+				}
+//				for (SaleLineItem sl : sli) {
+//					register.decrease(sl.getProductDescription().getId(), sl.getQuantity());
+//				}
 				
+				register.endSale();
+				Toast.makeText(getApplicationContext(), "Sale end.", Toast.LENGTH_SHORT).show();
+				finish();
 			}
 		});
 		
@@ -194,6 +206,12 @@ public class SaleActivity extends Activity {
 		
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		refreshTable();
+	}
+
 	public void refreshTable() {
 		tableLayoutSale.removeAllViews();
 		tableLayoutSale.addView(new SaleTableHead(this));

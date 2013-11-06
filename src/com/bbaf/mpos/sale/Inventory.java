@@ -1,14 +1,21 @@
 package com.bbaf.mpos.sale;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.bbaf.mpos.ProductDescription;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 
-public class Inventory {
+import com.bbaf.mpos.ProductDescription;
+import com.bbaf.mpos.inventory.InventoryDBHelper;
+
+public class Inventory implements Serializable {
 	private ArrayList<ProductDescription> product;
+	private InventoryDBHelper dbDAO;
 	
 	public Inventory(){
 		product = new ArrayList<ProductDescription>();
+		dbDAO = InventoryDBHelper.getInstance();
 	}
 	
 	public void addProduct(ProductDescription product){
@@ -27,6 +34,32 @@ public class Inventory {
 				return p;
 		}
 		return null;
+	}
+	
+	public long setQuantity(ProductDescription product, int quantity) {
+		return dbDAO.setQuantity(product, quantity);
+	}
+
+	public ProductDescription getProduct(String id) {
+		return dbDAO.getProduct(id);
+	}
+
+	public int getQuantity(String id) {
+		return dbDAO.getQuantity(id);
+	}
+
+	public void editProduct(ProductDescription oldProduct,
+			ProductDescription newProduct) {
+		dbDAO.editProduct(oldProduct, newProduct);
+	}
+
+	public void editQuantity(ProductDescription oldProduct,
+			ProductDescription newProduct, int quantity) {
+		dbDAO.editQuantity(oldProduct, newProduct, quantity);
+	}
+	
+	public ArrayList<ProductDescription> getProductBySomething(String something) {
+		return dbDAO.getProductBySomething(something);
 	}
 	
 }

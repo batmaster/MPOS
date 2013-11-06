@@ -29,7 +29,6 @@ public class AddOnClickListener implements OnClickListener {
 		EditText editTextQuantity = text[4];
 		String id = editTextProductId.getText().toString();
 		if (!id.equals("")) {
-			Log.d("table", dbDAO.getProduct(id) + "");
 			if (dbDAO.getProduct(id) != null) {
 				Toast.makeText(
 						activity.getApplicationContext(),
@@ -52,7 +51,7 @@ public class AddOnClickListener implements OnClickListener {
 						name, price, cost);
 
 				long row = dbDAO.addProduct(product);
-				dbDAO.setQuantity(product, quantity);
+				dbDAO.addQuantity(product, quantity);
 
 				Toast.makeText(
 						activity.getApplicationContext(),

@@ -6,6 +6,7 @@ import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.sale.Inventory;
 import com.bbaf.mpos.sale.Register;
 import com.bbaf.mpos.sale.ui.SaleActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -29,6 +30,12 @@ import android.widget.Toast;
 
 public class InventoryActivity extends Activity {
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		refreshTable();
+	}
+
 	private ArrayList<ProductDescription> productList;
 
 	private TabHost tabHost;
@@ -39,6 +46,8 @@ public class InventoryActivity extends Activity {
 	private Button buttonRemoveAll;
 	////
 	private Button buttonSale;
+	private EditText editTextSomething;
+	private Button buttonFilter;
 	////
 
 	private TabSpec tabAdd;
@@ -51,7 +60,7 @@ public class InventoryActivity extends Activity {
 	private Button buttonAdd;
 	private Button buttonClear;
 	
-	private Register register = new Register();
+	private Register register;
 
 	private InventoryDBHelper dbDAO;
 	// bat: maybe collect as same location later
@@ -62,9 +71,8 @@ public class InventoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
-		
 		dbDAO = InventoryDBHelper.getInstance(this);
-
+		register = Register.getInstance(new Inventory());
 		// bat: initial tab host
 		tabHost = (TabHost) findViewById(R.id.tabhost);
 		tabHost.setup();
@@ -110,9 +118,27 @@ public class InventoryActivity extends Activity {
 			public void onClick(View v) {
 				if (!register.isSale()) register.startSale(); 
 				Intent testSale = new Intent(getApplicationContext(),SaleActivity.class);
-				testSale.putExtra("register", register);
+				//testSale.putExtra("register", register);
 				startActivity(testSale);
-				finish();
+				//finish();
+				
+			}
+		});
+		
+		editTextSomething = (EditText)findViewById(R.id.editTextSomething);
+		
+		buttonFilter = (Button)findViewById(R.id.buttonFilter);
+		buttonFilter.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				if (!editTextSomething.getText().toString().equals("")) {
+					ArrayList<ProductDescription> filtered = register.getInventory().getProductBySomething(editTextSomething.getText().toString());
+					refreshTableFilter(filtered);
+				}
+				else {
+					refreshTable();
+				}
 				
 			}
 		});
@@ -145,6 +171,35 @@ public class InventoryActivity extends Activity {
 		tableLayout.addView(new InventoryTableHead(this));
 
 		productList = dbDAO.getAllProduct();
+		Toast.makeText(getApplicationContext(), productList.toString(),
+				Toast.LENGTH_SHORT);
+		if (productList != null) {
+			if (productList.size() == 0) {
+				TableRow free = new TableRow(this);
+				TextView c = new TextView(this);
+				free.addView(c);
+				TextView v = new TextView(this);
+				v.setText("Empty");
+				free.addView(v);
+				tableLayout.addView(free);
+				return;
+			}
+			for (int i = 0; i < productList.size(); i++) {
+				ProductDescription product = productList.get(i);
+				String id = product.getId();
+				int quantity = dbDAO.getQuantity(id);
+
+				InventoryTableRow row = new InventoryTableRow(this,
+						productList.get(i), quantity);
+				tableLayout.addView(row);
+			}
+		}
+	}
+	
+	public void refreshTableFilter(ArrayList<ProductDescription> productList) {
+		tableLayout.removeAllViews();
+		tableLayout.addView(new InventoryTableHead(this));
+		
 		Toast.makeText(getApplicationContext(), productList.toString(),
 				Toast.LENGTH_SHORT);
 		if (productList != null) {

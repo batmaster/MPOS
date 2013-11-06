@@ -19,7 +19,7 @@ public class Sale implements Serializable {
 	/** List of SaleLineItem in this sale. */
 	private ArrayList<SaleLineItem> lineOfItem;
 	
-	private InventoryDBHelper dbhelper;
+	private Inventory inventory;
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */
@@ -27,9 +27,9 @@ public class Sale implements Serializable {
 		lineOfItem = new ArrayList<SaleLineItem>();
 	}
 	
-	public Sale(InventoryDBHelper inventory){
+	public Sale(Inventory inventory){
 		this();
-		this.dbhelper = inventory;
+		this.inventory = inventory;
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class Sale implements Serializable {
 	 * @param id that match which inventory.
 	 * @param quantity amount of quantity that decrease from total quantity in inventory.
 	 */
-	public void decrease(String id,int quantity){
-		dbhelper.setQuantity(dbhelper.getProduct(id), dbhelper.getQuantity(id)-quantity);
+	public void decrease(String id,int quantity) {
+		inventory.setQuantity(inventory.getProduct(id), inventory.getQuantity(id)-quantity);
 	}
 	
 	/**

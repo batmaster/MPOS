@@ -1,5 +1,6 @@
 package com.bbaf.mpos.inventory;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class InventoryDBHelper extends SQLiteOpenHelper {
+public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable {
 
 	private static final String DATABASE_NAME = "bbafmpos.db";
 	private static final String TABLE_INVENTORY = "inventory";
@@ -80,8 +81,8 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 			return -1;
 		}
 	}
-
-	public long setQuantity(ProductDescription product, int quantity) {
+	
+	public long addQuantity(ProductDescription product, int quantity) {
 		try {
 			SQLiteDatabase db = this.getWritableDatabase();
 
@@ -99,19 +100,35 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
+	public long setQuantity(ProductDescription product, int quantity) {
+		try {
+			SQLiteDatabase db = this.getWritableDatabase();
+
+			ContentValues value = new ContentValues();
+			value.put("ProductId", product.getId());
+			value.put("ProductQuantity", quantity);
+
+			//long rows = db.insert(TABLE_QUANTITY, null, value);
+			long rows = db.update(TABLE_QUANTITY, value, " ProductId=?",
+					new String[] { String.valueOf(product.getId()) });
+
+			db.close();
+			return rows; // return rows inserted.
+
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
 	public ProductDescription getProduct(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			ProductDescription product = null;
-			Log.d("table", "before cursor");
 			Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" },
 					"ProductId=?", new String[] { id }, null,
 					null, null, null);
-			Log.d("table", "before if");
 			if (cursor != null) {
-				Log.d("table", "if");
 				if (cursor.moveToFirst()) {
-					Log.d("table", "if loop");
 					/**
 					 * 0 = _key 1 = ProductId 2 = ProductName 3 = Price 4 = Cost
 					 * 5 = DateModified
@@ -238,6 +255,36 @@ public class InventoryDBHelper extends SQLiteOpenHelper {
 
 		} catch (Exception e) {
 			return -1;
+		}
+	}
+	
+	// bat: for test, get a part of string and find the products that have the string in its name
+	// 
+	public ArrayList<ProductDescription> getProductBySomething(String something) {
+		try {
+			SQLiteDatabase db = this.getReadableDatabase();
+			ArrayList<ProductDescription> productList = new ArrayList<ProductDescription>();
+			
+			Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" }, 
+	                "ProductName LIKE '%" + something + "%'", null, null, null, null);
+			
+			if (cursor != null) {
+				if (cursor.moveToFirst()) {
+					do {
+						ProductDescription product = new ProductDescription(
+								cursor.getInt(0), cursor.getString(1),
+								cursor.getString(2), cursor.getDouble(3),
+								cursor.getDouble(4), cursor.getString(5));
+						productList.add(product);
+					} while (cursor.moveToNext());
+				}
+			}
+			cursor.close();
+			db.close();
+			return productList;
+		} catch (Exception e) {
+			Log.d("table", "ex");
+			return null;
 		}
 	}
 

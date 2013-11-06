@@ -3,6 +3,8 @@ package com.bbaf.mpos.sale;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import com.bbaf.mpos.ProductDescription;
 
 /**
@@ -15,17 +17,32 @@ public class Register implements Serializable {
 	/** sale for register. */
 	private Sale sale;
 	
+	private Inventory inventory;
+	
+	private static Register register;
+	
 	/**
 	 * initialize.
 	 */
-	public Register() {}
+	private Register(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
+	public static Register getInstance(Inventory inventory) {
+		if(register==null) register = new Register(inventory);
+		return register;
+	}
+	
+	public static Register getInstance() {
+		return register;
+	}
 	
 	/**
 	 * create new sale.
 	 */
 	public void startSale() {
 		if(sale==null)
-			sale = new Sale();
+			sale = new Sale(inventory);
 	}
 	
 	/**
@@ -111,5 +128,17 @@ public class Register implements Serializable {
 	public boolean isSale() {
 		if(sale==null) return false;
 		return true;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
+	public void decrease(String id,int quantity) {
+		inventory.setQuantity(inventory.getProduct(id), inventory.getQuantity(id) - quantity);
+	}
+	
+	public Sale getSale() {
+		return sale;	
 	}
 }

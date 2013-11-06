@@ -3,7 +3,8 @@ package com.bbaf.mpos.inventory.ui;
 import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
-import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.sale.Inventory;
+import com.bbaf.mpos.sale.Register;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -28,8 +29,8 @@ public class EditProductActivity extends Activity {
 	private Button buttonSave;
 	private Button buttonCancel;
 
-	private InventoryDBHelper dbHelper;
-	
+	//private Inventoryinventory inventory;
+	private Inventory inventory;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 	private static final int EDIT_CANCEL = 0;
 	private static final int EDIT_SUCCESS = 1;
@@ -39,7 +40,8 @@ public class EditProductActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_product);
 
-		dbHelper = InventoryDBHelper.getInstance(this);
+		//inventory = Inventoryinventory.getInstance(this);
+		inventory = Register.getInstance().getInventory();
 		final ProductDescription oldProduct = (ProductDescription) getIntent()
 				.getSerializableExtra("ProductDescription");
 		final int oldQuantity = getIntent()
@@ -73,7 +75,7 @@ public class EditProductActivity extends Activity {
 			public void onClick(View arg0) {
 				String id = editTextProductId.getText().toString();
 				if (id.equals("")) {
-					if (dbHelper.getProduct(id) != null) {
+					if (inventory.getProduct(id) != null) {
 						Toast.makeText(getApplicationContext(),
 								"Product ID must not be empty.", Toast.LENGTH_SHORT)
 								.show();
@@ -81,7 +83,7 @@ public class EditProductActivity extends Activity {
 				}
 				else {
 					if (!id.equals(oldProduct.getId())) {
-						if (dbHelper.getProduct(id) != null) {
+						if (inventory.getProduct(id) != null) {
 							Toast.makeText(
 									getApplicationContext(),
 									String.format("Product : %s is already added.",
@@ -96,11 +98,11 @@ public class EditProductActivity extends Activity {
 									.toString());
 							ProductDescription newProduct = new ProductDescription(
 									id, name, price, cost);
-							dbHelper.editProduct(oldProduct, newProduct);
+							inventory.editProduct(oldProduct, newProduct);
 
 							int quantity = Integer.parseInt(editTextQuantity
 									.getText().toString());
-							dbHelper.editQuantity(oldProduct, newProduct, quantity);
+							inventory.editQuantity(oldProduct, newProduct, quantity);
 
 							setResult(EDIT_SUCCESS);
 							finish();
@@ -115,11 +117,11 @@ public class EditProductActivity extends Activity {
 								.toString());
 						ProductDescription newProduct = new ProductDescription(
 								id, name, price, cost);
-						dbHelper.editProduct(oldProduct, newProduct);
+						inventory.editProduct(oldProduct, newProduct);
 
 						int quantity = Integer.parseInt(editTextQuantity
 								.getText().toString());
-						dbHelper.editQuantity(oldProduct, newProduct, quantity);
+						inventory.editQuantity(oldProduct, newProduct, quantity);
 
 						setResult(EDIT_SUCCESS);
 						finish();

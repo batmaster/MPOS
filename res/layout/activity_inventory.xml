@@ -41,8 +41,8 @@
                     <ScrollView
                         android:id="@+id/scrollView1"
                         android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2" >
+                        android:layout_height="350dp" >
+                        <!-- android:layout_weight="5" > -->
 
                         <TableLayout
                             android:id="@+id/tableLayout"
@@ -54,8 +54,8 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8" >
+                        android:layout_height="wrap_content" >
+                        <!-- android:layout_weight="8" > -->
 
                         <Button
                             android:id="@+id/buttonEdit"
@@ -85,6 +85,29 @@
                             android:text="Sale" />
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                        <!-- android:layout_weight="2" > -->
+
+                        <EditText
+                            android:id="@+id/editTextSomething"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10" />
+
+                        <Button
+                            android:id="@+id/buttonFilter"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Filter" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
