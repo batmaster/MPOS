@@ -160,9 +160,9 @@ public class SaleActivity extends Activity {
 //					register.decrease(sl.getProductDescription().getId(), sl.getQuantity());
 //				}
 				
-				/////// bat do these ///////
+				/////// bat do these ////////////////////////
 				ledger.record(register.getSale());         //
-				////////////////////////////
+				/////////////////////////////////////////////
 				
 				register.endSale();
 				Toast.makeText(getApplicationContext(), "Sale end.", Toast.LENGTH_SHORT).show();

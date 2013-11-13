@@ -181,8 +181,7 @@ public class InventoryActivity extends Activity {
 		tableLayout.addView(new InventoryTableHead(this));
 
 		productList = dbDAO.getAllProduct();
-		Toast.makeText(getApplicationContext(), productList.toString(),
-				Toast.LENGTH_SHORT);
+		
 		if (productList != null) {
 			if (productList.size() == 0) {
 				TableRow free = new TableRow(this);

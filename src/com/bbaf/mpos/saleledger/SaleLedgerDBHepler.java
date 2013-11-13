@@ -14,10 +14,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 
-	private static final String DATABASE_NAME = "bbafmpos.db";
+	private static final String DATABASE_NAME = "bbafmpos2.db";
 	private static final String TABLE_SALE_LEDGER = "saleledger";
 	private static final String TABLE_PRODUCT_LEDGER = "productledger";
 	private static final int DATABASE_VERSION = 1;
@@ -69,14 +70,14 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 		/** add Sale Ledger **/
 		try {
 			SQLiteDatabase db = this.getWritableDatabase();
-
 			ContentValues value = new ContentValues();
 			value.put("Date", current);
 			value.put("TotalPrice", sale.getTotal());
-			db.insert(TABLE_SALE_LEDGER, null, value);
+			long row = db.insert(TABLE_SALE_LEDGER, null, value);
 
 			db.close();
-
+			Log.d("add sale", "add SL r:" + row + " " + value.toString());
+			
 		} catch (Exception e) {
 			return -1;
 		}
@@ -94,8 +95,9 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 				value.put("ProductName", item.getProductDescription().getName());
 				value.put("UnitPrice", item.getProductDescription().getPrice());
 				value.put("Price", item.getTotal());
-				db.insert(TABLE_PRODUCT_LEDGER, null, value);
+				long row = db.insert(TABLE_PRODUCT_LEDGER, null, value);
 				
+				Log.d("add sale", "add PL r:" + row + " " + i + "/" + lines.size() + " " + value.toString());
 			}
 			
 			db.close();

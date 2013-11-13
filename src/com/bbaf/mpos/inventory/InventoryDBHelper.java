@@ -37,13 +37,14 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		// date text yyyy-MM-dd HH:mm:ss
 		String sql = String
-				.format("CREATE TABLE %s (_key INTEGER PRIMARY KEY, ProductId TEXT, ProductName TEXT, Price DOUBLE, Cost DOUBLE);",
+				.format("CREATE TABLE %s (_key INTEGER PRIMARY KEY, ProductId TEXT, ProductName TEXT, Price DOUBLE, Cost DOUBLE, DateModified TEXT);",
 						TABLE_INVENTORY);
 		db.execSQL(sql);
 
 		sql = String
-				.format("CREATE TABLE %s (ProductId INTEGER, ProductQuantity INTEGER, Date TEXT);",
+				.format("CREATE TABLE %s (ProductId INTEGER, ProductQuantity INTEGER);",
 						TABLE_QUANTITY);
 		db.execSQL(sql);
 	}
@@ -66,6 +67,10 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 			value.put("ProductName", product.getName());
 			value.put("Price", product.getPrice());
 			value.put("Cost", product.getCost());
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String current = sdf.format(new Date());
+			value.put("DateModified", current);
 
 			long rows = db.insert(TABLE_INVENTORY, null, value);
 
@@ -126,6 +131,7 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 				if (cursor.moveToFirst()) {
 					/**
 					 * 0 = _key 1 = ProductId 2 = ProductName 3 = Price 4 = Cost
+					 * 5 = DateModified
 					 */
 					product = new ProductDescription(cursor.getInt(0),
 							cursor.getString(1), cursor.getString(2),
