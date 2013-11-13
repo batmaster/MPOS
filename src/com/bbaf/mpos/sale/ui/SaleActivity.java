@@ -16,6 +16,8 @@ import com.bbaf.mpos.inventory.ui.InventoryTableRow;
 import com.bbaf.mpos.sale.Inventory;
 import com.bbaf.mpos.sale.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
+import com.bbaf.mpos.saleledger.Ledger;
+import com.bbaf.mpos.saleledger.SaleLedgerDBHepler;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -60,19 +62,31 @@ public class SaleActivity extends Activity {
 	private Button buttonInventory;
 	
 	private Register register;
-	//private InventoryDBHelper dbDAO;
+	private SaleLedgerDBHepler dbDAO;
 	private Inventory inventory;
+	
+	////////// bat do these ////
+	private Ledger ledger;    //
+	////////////////////////////
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sale);
-		
+		dbDAO = SaleLedgerDBHepler.getInstance(this);
 		register = Register.getInstance();
+		
+		/////// bat do these ////////
+		ledger = new Ledger();     //
+		register.setLedger(ledger);//
+		/////////////////////////////
+		
+		
 		//register = (Register) getIntent().getSerializableExtra("register");
 		
 		//dbDAO = InventoryDBHelper.getInstance(this);
 		inventory = register.getInventory();
+		
 		textViewStatus = (TextView)findViewById(R.id.textViewStatus2);
 		textViewStatus.setText("Welcome");
 		
@@ -145,6 +159,10 @@ public class SaleActivity extends Activity {
 //				for (SaleLineItem sl : sli) {
 //					register.decrease(sl.getProductDescription().getId(), sl.getQuantity());
 //				}
+				
+				/////// bat do these ///////
+				ledger.record(register.getSale());         //
+				////////////////////////////
 				
 				register.endSale();
 				Toast.makeText(getApplicationContext(), "Sale end.", Toast.LENGTH_SHORT).show();

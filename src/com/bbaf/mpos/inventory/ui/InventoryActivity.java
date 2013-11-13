@@ -63,7 +63,7 @@ public class InventoryActivity extends Activity {
 	private Register register;
 
 	private InventoryDBHelper dbDAO;
-	// bat: maybe collect as same location later
+	// bat: maybe collect at same location later
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.util.Log;
 
 import com.bbaf.mpos.ProductDescription;
+import com.bbaf.mpos.saleledger.Ledger;
 
 /**
  * Register is controlled for sale.
@@ -18,6 +19,7 @@ public class Register implements Serializable {
 	private Sale sale;
 	
 	private Inventory inventory;
+	private Ledger ledger;
 	
 	private static Register register;
 	
@@ -140,5 +142,13 @@ public class Register implements Serializable {
 	
 	public Sale getSale() {
 		return sale;	
+	}
+	
+	public void setLedger(Ledger ledger) {
+		this.ledger = ledger;
+	}
+	
+	public Ledger getLedger() {
+		return ledger;
 	}
 }

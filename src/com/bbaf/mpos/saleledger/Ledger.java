@@ -1,22 +1,31 @@
-package com.bbaf.mpos.sale;
+package com.bbaf.mpos.saleledger;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {
 	private ArrayList<Sale> listOfSale;
 	private Calendar date;
 	
-	public Ledger(){
+	private SaleLedgerDBHepler dbDAO;
+	
+	public Ledger() {
+		dbDAO = SaleLedgerDBHepler.getInstance();
+		
 		date = Calendar.getInstance();
 		listOfSale = new ArrayList<Sale>();
 	}
 	
 	public void record(Sale sale){
+		dbDAO.addSale(sale);
+		
 		listOfSale.add(sale);
 	}
 	
-	public ArrayList<Sale> getDaily(){
+	public ArrayList<Sale> getDaily() {
 		ArrayList<Sale> ret = new ArrayList<Sale>();
 		for(Sale sale : listOfSale){
 			if(sale.getDate().get(Calendar.DATE) == date.get(Calendar.DATE))
@@ -42,4 +51,5 @@ public class Ledger {
 		}
 		return ret;
 	}
+	
 }
