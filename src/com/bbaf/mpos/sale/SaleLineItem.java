@@ -16,6 +16,7 @@ public class SaleLineItem implements Serializable {
 	/** Quantity of product in this line item. */
 	private int quantity;
 	
+	private double price;
 	/**
 	 * initialize SaleLineItem with ProductDescription.
 	 * it will invoke other constructor with quantity of 1 instead.
@@ -33,6 +34,7 @@ public class SaleLineItem implements Serializable {
 	 */
 	public SaleLineItem(ProductDescription product,int q) {
 		productDesc = product;
+		price = product.getPrice();
 		if(q>0) quantity = q;
 		else quantity = 1;
 	}
@@ -69,7 +71,11 @@ public class SaleLineItem implements Serializable {
 	 * Calculate price of this item
 	 * @return total item price
 	 */
-	public double GetTotal(){
-		return quantity*productDesc.getPrice();
+	public double getTotal(){
+		return quantity*price;
+	}
+	
+	public void editPrice(double price){
+		this.price = price;
 	}
 }

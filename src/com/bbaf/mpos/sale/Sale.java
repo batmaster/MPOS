@@ -1,7 +1,9 @@
 package com.bbaf.mpos.sale;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -20,10 +22,13 @@ public class Sale implements Serializable {
 	private ArrayList<SaleLineItem> lineOfItem;
 	
 	private Inventory inventory;
+	
+	private static Calendar date;
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */
 	public Sale() {
+		date = Calendar.getInstance();
 		lineOfItem = new ArrayList<SaleLineItem>();
 	}
 	
@@ -91,7 +96,7 @@ public class Sale implements Serializable {
 	public double getTotal(){
 		double total = 0;
 		for(SaleLineItem sli : lineOfItem){
-			total += sli.GetTotal();
+			total += sli.getTotal();
 		}
 		return total;
 	}
@@ -132,5 +137,9 @@ public class Sale implements Serializable {
 				return lineOfItem.get(i);
 		}
 		return null;
+	}
+	
+	public Calendar getDate(){
+		return date;
 	}
 }
