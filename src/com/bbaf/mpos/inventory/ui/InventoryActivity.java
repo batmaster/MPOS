@@ -74,18 +74,28 @@ public class InventoryActivity extends Activity {
 		dbDAO = InventoryDBHelper.getInstance(this);
 		register = Register.getInstance(new Inventory());
 		// bat: initial tab host
-		tabHost = (TabHost) findViewById(R.id.tabhost);
-		tabHost.setup();
-
-		tabInventory = tabHost.newTabSpec("tabInventory");
-		tabInventory.setContent(R.id.tabInventory);
-		tabInventory.setIndicator("Inventory");
-		tabHost.addTab(tabInventory);
-
-		tabAdd = tabHost.newTabSpec("tabAdd");
-		tabAdd.setContent(R.id.tabAdd);
-		tabAdd.setIndicator("Add");
-		tabHost.addTab(tabAdd);
+		
+		//TODO test
+		
+		Intent inven2 = new Intent(
+				getApplicationContext(),
+				InventoryActivity2.class);
+		
+		this.startActivity(inven2);
+		
+		
+//		tabHost = (TabHost) findViewById(R.id.tabhost);
+//		tabHost.setup();
+//
+//		tabInventory = tabHost.newTabSpec("tabInventory");
+//		tabInventory.setContent(R.id.tabInventory);
+//		tabInventory.setIndicator("Inventory");
+//		tabHost.addTab(tabInventory);
+//
+//		tabAdd = tabHost.newTabSpec("tabAdd");
+//		tabAdd.setContent(R.id.tabAdd);
+//		tabAdd.setIndicator("Add");
+//		tabHost.addTab(tabAdd);
 		//
 
 		tableLayout = (TableLayout) findViewById(R.id.tableLayout);
@@ -148,13 +158,13 @@ public class InventoryActivity extends Activity {
 		editTextProductName = (EditText) findViewById(R.id.editTextProductName);
 		editTextPrice = (EditText) findViewById(R.id.editTextPrice);
 		editTextCost = (EditText) findViewById(R.id.editTextCost);
-		editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
+		editTextQuantity = (EditText) findViewById(R.id.editTextQuantity2);
 
 		buttonScan = (Button) findViewById(R.id.buttonScan);
 		OnClickListener scanListener = new ScanOnClickListener(this);
 		buttonScan.setOnClickListener(scanListener);
 
-		buttonAdd = (Button) findViewById(R.id.buttonAddSale);
+		buttonAdd = (Button) findViewById(R.id.buttonAddSale2);
 		OnClickListener addListener = new AddOnClickListener(dbDAO, this);
 		buttonAdd.setOnClickListener(addListener);
 

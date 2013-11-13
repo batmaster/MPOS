@@ -6,10 +6,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_edit_product">EditProductActivity</string>
     <string name="title_activity_sale">SaleActivity</string>
-    
+
     <string-array name="activities_array">
         <item>Sale</item>
         <item>Inventory</item>
     </string-array>
+
+    <string name="title_activity_inventory_activity2">InventoryActivity2</string>
 
 </resources>

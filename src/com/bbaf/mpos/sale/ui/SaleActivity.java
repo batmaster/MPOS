@@ -73,23 +73,23 @@ public class SaleActivity extends Activity {
 		
 		//dbDAO = InventoryDBHelper.getInstance(this);
 		inventory = register.getInventory();
-		textViewStatus = (TextView)findViewById(R.id.textViewStatus);
+		textViewStatus = (TextView)findViewById(R.id.textViewStatus2);
 		textViewStatus.setText("Welcome");
 		
-		textViewTotalSalePrice = (TextView)findViewById(R.id.textViewTotalSalePrice);
+		textViewTotalSalePrice = (TextView)findViewById(R.id.textViewTotalSalePrice2);
 		textViewTotalSalePrice.setText("0.0");
 		
-		tableLayoutSale = (TableLayout)findViewById(R.id.tableLayoutSale);
+		tableLayoutSale = (TableLayout)findViewById(R.id.tableLayoutSale2);
 		SaleTableHead tableHead = new SaleTableHead(this);
 		tableLayoutSale.addView(tableHead);
 		tableLayoutSale.setShrinkAllColumns(false);
 		tableLayoutSale.setStretchAllColumns(true);
 		
-		editTextId = (EditText)findViewById(R.id.editTextId);
+		editTextId = (EditText)findViewById(R.id.editTextId2);
 		
-		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity);
+		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity2);
 		
-		buttonAddSale = (Button)findViewById(R.id.buttonAddSale);
+		buttonAddSale = (Button)findViewById(R.id.buttonAddSale2);
 		buttonAddSale.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -133,7 +133,7 @@ public class SaleActivity extends Activity {
 			}
 		});
 
-		buttonSubmitSale = (Button)findViewById(R.id.buttonSubmitSale);
+		buttonSubmitSale = (Button)findViewById(R.id.buttonSubmitSale2);
 		buttonSubmitSale.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -152,7 +152,7 @@ public class SaleActivity extends Activity {
 			}
 		});
 		
-		buttonClearSale = (Button)findViewById(R.id.buttonClearSale);
+		buttonClearSale = (Button)findViewById(R.id.buttonClearSale2);
 		buttonClearSale.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -166,7 +166,7 @@ public class SaleActivity extends Activity {
 			}
 		});
 		
-		buttonInventory = (Button)findViewById(R.id.buttonInventory);
+		buttonInventory = (Button)findViewById(R.id.buttonInventory2);
 		buttonInventory.setOnClickListener(new OnClickListener() {
 			
 			@Override

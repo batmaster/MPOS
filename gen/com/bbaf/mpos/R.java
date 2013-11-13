@@ -28,69 +28,88 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
-        public static final int LinearLayout2=0x7f090023;
-        public static final int action_settings=0x7f09002e;
-        public static final int buttonAddSale=0x7f09001e;
+        public static final int LinearLayout2=0x7f090020;
+        public static final int LinearLayoutInven2_1=0x7f090033;
+        public static final int action_settings=0x7f09003e;
+        public static final int buttonAddSale2=0x7f09001e;
         public static final int buttonCancel=0x7f09000c;
         public static final int buttonClear=0x7f09001f;
-        public static final int buttonClearSale=0x7f09002c;
+        public static final int buttonClearSale2=0x7f09003c;
         public static final int buttonEdit=0x7f090012;
         public static final int buttonFilter=0x7f090017;
-        public static final int buttonInventory=0x7f09002d;
+        public static final int buttonInventory2=0x7f09003d;
         public static final int buttonRemove=0x7f090013;
         public static final int buttonRemoveAll=0x7f090014;
         public static final int buttonSale=0x7f090015;
         public static final int buttonSave=0x7f09000b;
         public static final int buttonScan=0x7f09000d;
-        public static final int buttonSubmitSale=0x7f09002b;
-        public static final int content_frame=0x7f090021;
-        public static final int drawer_layout=0x7f090020;
+        public static final int buttonSubmitSale2=0x7f09003b;
+        public static final int content_frame=0x7f090031;
+        public static final int drawer_layout=0x7f090030;
         public static final int editTextCost=0x7f09001c;
-        public static final int editTextId=0x7f090029;
+        public static final int editTextId2=0x7f090039;
+        public static final int editTextInputID=0x7f090027;
         public static final int editTextPrice=0x7f09001b;
         public static final int editTextProductId=0x7f090019;
         public static final int editTextProductName=0x7f09001a;
-        public static final int editTextQuantity=0x7f09001d;
+        public static final int editTextQuantity=0x7f090029;
+        public static final int editTextQuantity2=0x7f09001d;
         public static final int editTextSomething=0x7f090016;
         public static final int edit_editTextCost=0x7f090008;
         public static final int edit_editTextPrice=0x7f090006;
         public static final int edit_editTextProductId=0x7f090002;
         public static final int edit_editTextProductName=0x7f090004;
         public static final int edit_editTextQuantity=0x7f09000a;
-        public static final int left_drawer=0x7f090022;
+        public static final int imageButtonAdd=0x7f090024;
+        public static final int imageButtonEdit=0x7f09002e;
+        public static final int imageButtonRemoveInven=0x7f09002f;
+        public static final int imageButtonRemoveSale=0x7f09002b;
+        public static final int imageButtonScan=0x7f090025;
+        public static final int imageButtonSubmit=0x7f09002a;
+        public static final int left_drawer=0x7f090032;
+        public static final int listViewItem=0x7f09002d;
         public static final int scrollView1=0x7f090010;
-        public static final int scrollView2=0x7f090026;
+        public static final int scrollView2Sale2=0x7f090036;
         public static final int tabAdd=0x7f090018;
         public static final int tabInventory=0x7f09000f;
-        public static final int tabhost=0x7f09000e;
+        public static final int tabInventory2=0x7f09002c;
+        public static final int tabSale=0x7f090022;
+        public static final int tabhost1=0x7f09000e;
+        public static final int tabhost2=0x7f090021;
         public static final int tableLayout=0x7f090011;
-        public static final int tableLayoutSale=0x7f090027;
-        public static final int textView3=0x7f090005;
-        public static final int textViewId=0x7f090028;
-        public static final int textViewQuatity=0x7f09002a;
-        public static final int textViewStatus=0x7f090001;
+        public static final int tableLayoutSale2=0x7f090037;
+        public static final int textViewID=0x7f090026;
+        public static final int textViewId2=0x7f090038;
+        public static final int textViewQuantity=0x7f090028;
+        public static final int textViewQuatity2=0x7f09003a;
+        public static final int textViewStatus=0x7f090023;
+        public static final int textViewStatus2=0x7f090001;
         public static final int textViewSubtotal=0x7f090003;
-        public static final int textViewTotal=0x7f090007;
         public static final int textViewTotalPrice=0x7f090009;
-        public static final int textViewTotalSale=0x7f090024;
-        public static final int textViewTotalSalePrice=0x7f090025;
+        public static final int textViewTotalPriceText=0x7f090005;
+        public static final int textViewTotalSale2=0x7f090034;
+        public static final int textViewTotalSalePrice2=0x7f090035;
+        public static final int textViewTotalText=0x7f090007;
     }
     public static final class layout {
         public static final int activity_edit_product=0x7f030000;
         public static final int activity_inventory=0x7f030001;
-        public static final int activity_sale=0x7f030002;
-        public static final int drawer_list_item=0x7f030003;
+        public static final int activity_inventory_activity2=0x7f030002;
+        public static final int activity_sale=0x7f030003;
+        public static final int drawer_list_item=0x7f030004;
     }
     public static final class menu {
         public static final int edit_product=0x7f080000;
         public static final int inventory=0x7f080001;
-        public static final int sale=0x7f080002;
+        public static final int inventory_activity2=0x7f080002;
+        public static final int sale=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
         public static final int title_activity_edit_product=0x7f050003;
+        public static final int title_activity_inventory_activity2=0x7f050005;
         public static final int title_activity_sale=0x7f050004;
     }
     public static final class style {

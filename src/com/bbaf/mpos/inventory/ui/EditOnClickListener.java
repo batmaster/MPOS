@@ -33,9 +33,13 @@ public class EditOnClickListener implements OnClickListener {
 				// bat: can you break until first finish??, i try to use
 				// startActivityForResult() instead startActivity() but it still don't break
 				if (row.isChecked()) {
+					
+					//TODO remove comment
+					
 					Intent editActivity = new Intent(
 							activity.getApplicationContext(),
 							EditProductActivity.class);
+					
 					ProductDescription product = row.getProduct();
 					editActivity.putExtra("ProductDescription", product);
 					int quantity = dbDAO.getQuantity(product

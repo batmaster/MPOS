@@ -32,6 +32,10 @@
             android:name="com.bbaf.mpos.sale.ui.SaleActivity"
             android:label="@string/title_activity_sale" >
         </activity>
+        <activity
+            android:name="com.bbaf.mpos.inventory.ui.InventoryActivity2"
+            android:label="@string/title_activity_inventory_activity2" >
+        </activity>
     </application>
     <!-- asd -->
 
