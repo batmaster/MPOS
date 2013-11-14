@@ -25,6 +25,10 @@ public class Ledger {
 		listOfSale.add(sale);
 	}
 	
+	public ArrayList<Sale> getAllSaleLedger() {
+		return dbDAO.getAllSale();
+	}
+	
 	public ArrayList<Sale> getDaily() {
 		ArrayList<Sale> ret = new ArrayList<Sale>();
 		for(Sale sale : listOfSale){

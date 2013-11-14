@@ -156,16 +156,15 @@ public class SaleActivity extends Activity {
 				for(int i = 0 ;i < sli.size();i++){
 					register.decrease(sli.get(i).getProductDescription().getId(), sli.get(i).getQuantity());
 				}
-//				for (SaleLineItem sl : sli) {
-//					register.decrease(sl.getProductDescription().getId(), sl.getQuantity());
-//				}
 				
-				/////// bat do these ////////////////////////
-				ledger.record(register.getSale());         //
-				/////////////////////////////////////////////
-				
+				if (sli.size() != 0) {
+					ledger.record(register.getSale());
+					Toast.makeText(getApplicationContext(), "Sale ended with " + sli.size() + " line item(s).", Toast.LENGTH_SHORT).show();
+				}
+				else {
+					Toast.makeText(getApplicationContext(), "Sale cancelled ", Toast.LENGTH_SHORT).show();
+				}
 				register.endSale();
-				Toast.makeText(getApplicationContext(), "Sale end.", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		});
