@@ -7,7 +7,6 @@ import com.bbaf.mpos.inventory.InventoryDBHelper;
 import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {
-	private ArrayList<Sale> listOfSale;
 	private Calendar date;
 	
 	private SaleLedgerDBHepler dbDAO;
@@ -16,13 +15,10 @@ public class Ledger {
 		dbDAO = SaleLedgerDBHepler.getInstance();
 		
 		date = Calendar.getInstance();
-		listOfSale = new ArrayList<Sale>();
 	}
 	
 	public void record(Sale sale){
 		dbDAO.addSale(sale);
-		
-		listOfSale.add(sale);
 	}
 	
 	public ArrayList<Sale> getAllSaleLedger() {
@@ -31,7 +27,7 @@ public class Ledger {
 	
 	public ArrayList<Sale> getDaily() {
 		ArrayList<Sale> ret = new ArrayList<Sale>();
-		for(Sale sale : listOfSale){
+		for(Sale sale : dbDAO.getAllSale()){
 			if(sale.getDate().get(Calendar.DATE) == date.get(Calendar.DATE))
 				ret.add(sale);
 		}
@@ -40,7 +36,7 @@ public class Ledger {
 	
 	public ArrayList<Sale> getWeek(){
 		ArrayList<Sale> ret = new ArrayList<Sale>();
-		for(Sale sale : listOfSale){
+		for(Sale sale : dbDAO.getAllSale()){
 			if(sale.getDate().get(Calendar.WEEK_OF_YEAR) == date.get(Calendar.WEEK_OF_YEAR))
 				ret.add(sale);
 		}
@@ -49,7 +45,7 @@ public class Ledger {
 	
 	public ArrayList<Sale> getMonth(){
 		ArrayList<Sale> ret = new ArrayList<Sale>();
-		for(Sale sale : listOfSale){
+		for(Sale sale : dbDAO.getAllSale()){
 			if(sale.getDate().get(Calendar.MONTH) == date.get(Calendar.MONTH))
 				ret.add(sale);
 		}
