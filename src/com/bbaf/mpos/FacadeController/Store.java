@@ -1,4 +1,6 @@
-package com.bbaf.mpos.sale;
+package com.bbaf.mpos.FacadeController;
+
+import com.bbaf.mpos.inventory.Inventory;
 
 public class Store {
 	private Inventory inventory;

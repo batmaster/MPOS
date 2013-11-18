@@ -1,7 +1,7 @@
 package com.bbaf.mpos.sale.ui;
 
-import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 import android.content.Context;
 import android.widget.CheckBox;

@@ -1,13 +1,13 @@
-package com.bbaf.mpos.sale;
+package com.bbaf.mpos.inventory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import DAO.InventoryDBHelper;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.bbaf.mpos.ProductDescription;
-import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public class Inventory implements Serializable {
 	private ArrayList<ProductDescription> product;

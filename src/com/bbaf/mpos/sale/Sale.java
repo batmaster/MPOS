@@ -5,11 +5,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import DAO.InventoryDBHelper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.bbaf.mpos.ProductDescription;
-import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.inventory.Inventory;
 
 /**
  * Class for sale function.

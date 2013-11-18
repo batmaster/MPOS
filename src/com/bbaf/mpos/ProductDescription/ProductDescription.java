@@ -1,4 +1,4 @@
-package com.bbaf.mpos;
+package com.bbaf.mpos.ProductDescription;
 
 import java.io.Serializable;
 

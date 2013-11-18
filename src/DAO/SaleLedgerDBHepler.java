@@ -1,12 +1,12 @@
-package com.bbaf.mpos.saleledger;
+package DAO;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.bbaf.mpos.ProductDescription;
-import com.bbaf.mpos.sale.Register;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.sale.Sale;
 import com.bbaf.mpos.sale.SaleLineItem;
 

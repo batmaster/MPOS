@@ -2,7 +2,7 @@ package com.bbaf.mpos.sale;
 
 import java.io.Serializable;
 
-import com.bbaf.mpos.ProductDescription;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 /**
  * SaleLineItem to Show Detail of line item in sale

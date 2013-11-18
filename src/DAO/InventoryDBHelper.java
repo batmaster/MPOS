@@ -1,11 +1,11 @@
-package com.bbaf.mpos.inventory;
+package DAO;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.bbaf.mpos.ProductDescription;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 import android.content.ContentValues;
 import android.content.Context;

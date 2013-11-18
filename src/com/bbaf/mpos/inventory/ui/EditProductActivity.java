@@ -1,10 +1,10 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
-import com.bbaf.mpos.sale.Inventory;
-import com.bbaf.mpos.sale.Register;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.inventory.Inventory;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

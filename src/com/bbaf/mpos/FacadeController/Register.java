@@ -1,11 +1,14 @@
-package com.bbaf.mpos.sale;
+package com.bbaf.mpos.FacadeController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.util.Log;
 
-import com.bbaf.mpos.ProductDescription;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.inventory.Inventory;
+import com.bbaf.mpos.sale.Sale;
+import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.Ledger;
 
 /**

@@ -2,23 +2,23 @@ package com.bbaf.mpos.sale.ui;
 
 import java.util.ArrayList;
 
-import com.bbaf.mpos.ProductDescription;
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.array;
 import com.bbaf.mpos.R.id;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
-import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.inventory.Inventory;
 import com.bbaf.mpos.inventory.ui.ClearOnClickListener;
 import com.bbaf.mpos.inventory.ui.InventoryActivity;
 import com.bbaf.mpos.inventory.ui.InventoryTableHead;
 import com.bbaf.mpos.inventory.ui.InventoryTableRow;
-import com.bbaf.mpos.sale.Inventory;
-import com.bbaf.mpos.sale.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.Ledger;
-import com.bbaf.mpos.saleledger.SaleLedgerDBHepler;
 
+import DAO.InventoryDBHelper;
+import DAO.SaleLedgerDBHepler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;

@@ -1,8 +1,8 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.ProductDescription;
-import com.bbaf.mpos.inventory.InventoryDBHelper;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
+import DAO.InventoryDBHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
