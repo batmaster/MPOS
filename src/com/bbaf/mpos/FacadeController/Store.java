@@ -49,4 +49,8 @@ public class Store {
 	public ArrayList<ProductDescription> getAllProduct() {
 		return inventory.getAllProduct();
 	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
 }

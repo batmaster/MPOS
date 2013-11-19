@@ -67,7 +67,7 @@ public class InventoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
-		register = Register.getInstance(new Inventory());
+		register = Register.getInstance(Store.getInstance().getInventory());
 		// bat: initial tab host
 		
 		//TODO test
