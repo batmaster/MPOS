@@ -1,17 +1,14 @@
 package com.bbaf.mpos.inventory.ui;
 
 import java.util.ArrayList;
-
-import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 import com.bbaf.mpos.sale.ui.SaleActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import DAO.InventoryDBHelper;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -62,7 +59,6 @@ public class InventoryActivity extends Activity {
 	
 	private Register register;
 
-	private InventoryDBHelper dbDAO;
 	// bat: maybe collect at same location later
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
@@ -71,7 +67,6 @@ public class InventoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory);
-		dbDAO = InventoryDBHelper.getInstance(this);
 		register = Register.getInstance(new Inventory());
 		// bat: initial tab host
 		
@@ -163,7 +158,7 @@ public class InventoryActivity extends Activity {
 		buttonScan.setOnClickListener(scanListener);
 
 		buttonAdd = (Button) findViewById(R.id.buttonAddSale2);
-		OnClickListener addListener = new AddOnClickListener(dbDAO, this);
+		OnClickListener addListener = new AddOnClickListener(this);
 		buttonAdd.setOnClickListener(addListener);
 
 		buttonClear = (Button) findViewById(R.id.buttonClear);
@@ -178,7 +173,7 @@ public class InventoryActivity extends Activity {
 		tableLayout.removeAllViews();
 		tableLayout.addView(new InventoryTableHead(this));
 
-		productList = dbDAO.getAllProduct();
+		productList = Store.getInstance().getAllProduct();
 		
 		if (productList != null) {
 			if (productList.size() == 0) {
@@ -194,7 +189,7 @@ public class InventoryActivity extends Activity {
 			for (int i = 0; i < productList.size(); i++) {
 				ProductDescription product = productList.get(i);
 				String id = product.getId();
-				int quantity = dbDAO.getQuantity(id);
+				int quantity = Store.getInstance().getQuantity(id);
 
 				InventoryTableRow row = new InventoryTableRow(this,
 						productList.get(i), quantity);
@@ -223,7 +218,7 @@ public class InventoryActivity extends Activity {
 			for (int i = 0; i < productList.size(); i++) {
 				ProductDescription product = productList.get(i);
 				String id = product.getId();
-				int quantity = dbDAO.getQuantity(id);
+				int quantity = Store.getInstance().getQuantity(id);
 
 				InventoryTableRow row = new InventoryTableRow(this,
 						productList.get(i), quantity);

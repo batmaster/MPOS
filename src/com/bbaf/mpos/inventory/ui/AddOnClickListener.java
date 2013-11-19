@@ -3,7 +3,6 @@ package com.bbaf.mpos.inventory.ui;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
-import DAO.InventoryDBHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,11 +11,9 @@ import android.widget.Toast;
 
 public class AddOnClickListener implements OnClickListener {
 
-	private InventoryDBHelper dbDAO;
 	private InventoryActivity activity;
 	
-	public AddOnClickListener(InventoryDBHelper dbDAO,InventoryActivity activity) {
-		this.dbDAO = dbDAO;
+	public AddOnClickListener(InventoryActivity activity) {
 		this.activity = activity;
 	}
 	
@@ -30,7 +27,7 @@ public class AddOnClickListener implements OnClickListener {
 		EditText editTextQuantity = text[4];
 		String id = editTextProductId.getText().toString();
 		if (!id.equals("")) {
-			if (dbDAO.getProduct(id) != null) {
+			if (Store.getInstance().getProduct(id) != null) {
 				Toast.makeText(
 						activity.getApplicationContext(),
 						String.format("Product : %s is already added.",

@@ -68,4 +68,7 @@ public class Inventory implements Serializable {
 		dbDAO.removeProduct(product);
 	}
 	
+	public ArrayList<ProductDescription> getAllProduct() {
+		return dbDAO.getAllProduct();
+	}
 }

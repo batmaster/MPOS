@@ -1,5 +1,7 @@
 package com.bbaf.mpos.FacadeController;
 
+import java.util.ArrayList;
+
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 
@@ -44,6 +46,7 @@ public class Store {
 		inventory.editQuantity(oldProduct, newProduct, quantity);
 	}
 	
-	
-	
+	public ArrayList<ProductDescription> getAllProduct() {
+		return inventory.getAllProduct();
+	}
 }
