@@ -1,5 +1,6 @@
 package com.bbaf.mpos.inventory.ui;
 
+import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 import DAO.InventoryDBHelper;
@@ -50,8 +51,8 @@ public class AddOnClickListener implements OnClickListener {
 				ProductDescription product = new ProductDescription(id,
 						name, price, cost);
 
-				long row = dbDAO.addProduct(product);
-				dbDAO.addQuantity(product, quantity);
+				long row = Store.getInstance().addProduct(product);
+				Store.getInstance().addQuantity(product, quantity);
 
 				Toast.makeText(
 						activity.getApplicationContext(),

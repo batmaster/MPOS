@@ -1,9 +1,8 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.ProductQuantity;
+import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
-import DAO.InventoryDBHelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
@@ -13,13 +12,10 @@ import android.widget.TableLayout;
 public class EditOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
-	private InventoryDBHelper dbDAO;
 	private Activity activity;
 
-	public EditOnClickListener(TableLayout tableLayout,
-			InventoryDBHelper dbDAO, Activity activity) {
+	public EditOnClickListener(TableLayout tableLayout, Activity activity) {
 		this.tableLayout = tableLayout;
-		this.dbDAO = dbDAO;
 		this.activity = activity;
 	}
 
@@ -42,7 +38,7 @@ public class EditOnClickListener implements OnClickListener {
 					
 					ProductDescription product = row.getProduct();
 					editActivity.putExtra("ProductDescription", product);
-					int quantity = dbDAO.getQuantity(product
+					int quantity = Store.getInstance().getQuantity(product
 							.getId());
 					editActivity.putExtra("ProductQuantity", quantity);
 

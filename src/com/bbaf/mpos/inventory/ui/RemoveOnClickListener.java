@@ -1,7 +1,7 @@
 package com.bbaf.mpos.inventory.ui;
 
 
-import DAO.InventoryDBHelper;
+import com.bbaf.mpos.FacadeController.Store;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TableLayout;
@@ -9,13 +9,10 @@ import android.widget.TableLayout;
 public class RemoveOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
-	private InventoryDBHelper dbDAO;
 	private InventoryActivity activity;
 
-	public RemoveOnClickListener(TableLayout tableLayout,
-			InventoryDBHelper dbDAO, InventoryActivity activity) {
+	public RemoveOnClickListener(TableLayout tableLayout, InventoryActivity activity) {
 		this.tableLayout = tableLayout;
-		this.dbDAO = dbDAO;
 		this.activity = activity;
 	}
 
@@ -26,7 +23,7 @@ public class RemoveOnClickListener implements OnClickListener {
 					.getChildAt(i);
 
 			if (row.isChecked()) {
-				dbDAO.removeProduct(row.getProduct());
+				Store.getInstance().removeProduct(row.getProduct());
 			}
 		}
 		activity.refreshTable();

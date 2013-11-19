@@ -1,7 +1,7 @@
 package com.bbaf.mpos.inventory.ui;
 
+import com.bbaf.mpos.FacadeController.Store;
 
-import DAO.InventoryDBHelper;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.TableLayout;
@@ -9,12 +9,10 @@ import android.widget.TableLayout;
 public class DialogOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
-	private InventoryDBHelper dbDAO;
 	private InventoryActivity activity;
 	
-	public DialogOnClickListener(TableLayout tableLayout,InventoryDBHelper dbDAO,InventoryActivity activity) {
+	public DialogOnClickListener(TableLayout tableLayout,InventoryActivity activity) {
 		this.tableLayout = tableLayout;
-		this.dbDAO = dbDAO;
 		this.activity = activity;
 	}
 	
@@ -25,7 +23,7 @@ public class DialogOnClickListener implements OnClickListener {
 				InventoryTableRow row = (InventoryTableRow) tableLayout
 						.getChildAt(i);
 
-				dbDAO.removeProduct(row.getProduct());
+				Store.getInstance().removeProduct(row.getProduct());
 			} catch (ClassCastException e) {
 				// bat: prevent casting TableHead
 			}

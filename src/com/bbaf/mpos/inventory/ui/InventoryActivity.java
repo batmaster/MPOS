@@ -105,18 +105,16 @@ public class InventoryActivity extends Activity {
 		tableLayout.setStretchAllColumns(true);
 
 		buttonEdit = (Button) findViewById(R.id.buttonEdit);
-		OnClickListener editListener = new EditOnClickListener(tableLayout,
-				dbDAO, this);
+		OnClickListener editListener = new EditOnClickListener(tableLayout, this);
 		buttonEdit.setOnClickListener(editListener);
 
 		buttonRemove = (Button) findViewById(R.id.buttonRemove);
-		OnClickListener removeListener = new RemoveOnClickListener(tableLayout,
-				dbDAO, this);
+		OnClickListener removeListener = new RemoveOnClickListener(tableLayout, this);
 		buttonRemove.setOnClickListener(removeListener);
 
 		buttonRemoveAll = (Button) findViewById(R.id.buttonRemoveAll);
 		OnClickListener removeAllListener = new RemoveAllOnClickListener(
-				tableLayout, dbDAO, this);
+				tableLayout, this);
 		buttonRemoveAll.setOnClickListener(removeAllListener);
 		//buttonRemoveAll.setVisibility(View.GONE);
 		

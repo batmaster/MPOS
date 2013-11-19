@@ -1,8 +1,8 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.ProductQuantity;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -30,7 +30,6 @@ public class EditProductActivity extends Activity {
 	private Button buttonCancel;
 
 	//private Inventoryinventory inventory;
-	private Inventory inventory;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 	private static final int EDIT_CANCEL = 0;
 	private static final int EDIT_SUCCESS = 1;
@@ -39,9 +38,6 @@ public class EditProductActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_product);
-
-		//inventory = Inventoryinventory.getInstance(this);
-		inventory = Register.getInstance().getInventory();
 		final ProductDescription oldProduct = (ProductDescription) getIntent()
 				.getSerializableExtra("ProductDescription");
 		final int oldQuantity = getIntent()
@@ -75,7 +71,7 @@ public class EditProductActivity extends Activity {
 			public void onClick(View arg0) {
 				String id = editTextProductId.getText().toString();
 				if (id.equals("")) {
-					if (inventory.getProduct(id) != null) {
+					if (Store.getInstance().getProduct(id) != null) {
 						Toast.makeText(getApplicationContext(),
 								"Product ID must not be empty.", Toast.LENGTH_SHORT)
 								.show();
@@ -83,7 +79,7 @@ public class EditProductActivity extends Activity {
 				}
 				else {
 					if (!id.equals(oldProduct.getId())) {
-						if (inventory.getProduct(id) != null) {
+						if (Store.getInstance().getProduct(id) != null) {
 							Toast.makeText(
 									getApplicationContext(),
 									String.format("Product : %s is already added.",
@@ -98,11 +94,11 @@ public class EditProductActivity extends Activity {
 									.toString());
 							ProductDescription newProduct = new ProductDescription(
 									id, name, price, cost);
-							inventory.editProduct(oldProduct, newProduct);
+							Store.getInstance().editProduct(oldProduct, newProduct);
 
 							int quantity = Integer.parseInt(editTextQuantity
 									.getText().toString());
-							inventory.editQuantity(oldProduct, newProduct, quantity);
+							Store.getInstance().editQuantity(oldProduct, newProduct, quantity);
 
 							setResult(EDIT_SUCCESS);
 							finish();
@@ -117,11 +113,11 @@ public class EditProductActivity extends Activity {
 								.toString());
 						ProductDescription newProduct = new ProductDescription(
 								id, name, price, cost);
-						inventory.editProduct(oldProduct, newProduct);
+						Store.getInstance().editProduct(oldProduct, newProduct);
 
 						int quantity = Integer.parseInt(editTextQuantity
 								.getText().toString());
-						inventory.editQuantity(oldProduct, newProduct, quantity);
+						Store.getInstance().editQuantity(oldProduct, newProduct, quantity);
 
 						setResult(EDIT_SUCCESS);
 						finish();

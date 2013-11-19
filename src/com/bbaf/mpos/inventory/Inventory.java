@@ -18,10 +18,12 @@ public class Inventory implements Serializable {
 		dbDAO = InventoryDBHelper.getInstance();
 	}
 	
-	public void addProduct(ProductDescription product){
-		if(this.product.contains(product))
-			return;
-		this.product.add(product);
+	public long addProduct(ProductDescription product){
+		return dbDAO.addProduct(product);
+	}
+	
+	public void addQuantity(ProductDescription product, int quantity) {
+		dbDAO.addQuantity(product, quantity);
 	}
 	
 	public ArrayList<ProductDescription> getProducts(){
@@ -60,6 +62,10 @@ public class Inventory implements Serializable {
 	
 	public ArrayList<ProductDescription> getProductBySomething(String something) {
 		return dbDAO.getProductBySomething(something);
+	}
+	
+	public void removeProduct(ProductDescription product) {
+		dbDAO.removeProduct(product);
 	}
 	
 }
