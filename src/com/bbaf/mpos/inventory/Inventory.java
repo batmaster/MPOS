@@ -18,6 +18,10 @@ public class Inventory implements Serializable {
 		dbDAO = InventoryDBHelper.getInstance();
 	}
 	
+	public void setDB(InventoryDBHelper db) {
+		dbDAO = db;
+	}
+	
 	public long addProduct(ProductDescription product,int quantity){
 		return dbDAO.addProduct(product,quantity);
 	}

@@ -2,6 +2,9 @@ package com.bbaf.mpos.FacadeController;
 
 import java.util.ArrayList;
 
+import DAO.InventoryDBHelper;
+import android.content.Context;
+
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 
@@ -52,5 +55,9 @@ public class Store {
 
 	public Inventory getInventory() {
 		return inventory;
+	}
+	
+	public void initInventoryDB(Context context) {
+		inventory.setDB(InventoryDBHelper.getInstance(context));
 	}
 }

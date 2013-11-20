@@ -6,6 +6,7 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
+import com.bbaf.mpos.menu.ui.MenuActivity;
 import com.bbaf.mpos.sale.ui.SaleActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -69,14 +70,14 @@ public class InventoryActivity extends Activity {
 		setContentView(R.layout.activity_inventory);
 		register = Register.getInstance(Store.getInstance().getInventory());
 		// bat: initial tab host
-		
+		Store.getInstance().initInventoryDB(getApplicationContext());
 		//TODO test
 		
-		Intent inven2 = new Intent(
+		Intent menu = new Intent(
 				getApplicationContext(),
-				InventoryActivity2.class);
+				MenuActivity.class);
 		
-		this.startActivity(inven2);
+		this.startActivity(menu);
 		
 		
 //		tabHost = (TabHost) findViewById(R.id.tabhost);
