@@ -73,11 +73,11 @@ public class InventoryActivity extends Activity {
 		Store.getInstance().initInventoryDB(getApplicationContext());
 		//TODO test
 		
-		Intent menu = new Intent(
+		Intent menux = new Intent(
 				getApplicationContext(),
 				MenuActivity.class);
 		
-		this.startActivity(menu);
+		this.startActivity(menux);
 		
 		
 //		tabHost = (TabHost) findViewById(R.id.tabhost);
