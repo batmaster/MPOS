@@ -18,8 +18,8 @@ public class Store {
 		return store;
 	}
 	
-	public long addProduct(ProductDescription product){
-		return inventory.addProduct(product);
+	public long addProduct(ProductDescription product,int quantity){
+		return inventory.addProduct(product,quantity);
 	}
 	
 	public void addQuantity(ProductDescription product, int quantity) {
