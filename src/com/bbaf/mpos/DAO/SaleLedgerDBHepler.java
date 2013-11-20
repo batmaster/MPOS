@@ -3,6 +3,7 @@ package com.bbaf.mpos.DAO;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.bbaf.mpos.FacadeController.Register;
@@ -66,8 +67,8 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 		ArrayList<SaleLineItem> lines = sale.getAllList();
 		
 		// date text yyyy-MM-dd HH:mm:ss
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String current = sdf.format(new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
+		String current = sdf.format(sale.getDate());
 		
 		/** add Sale Ledger **/
 		try {
@@ -152,6 +153,74 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			return null;
 		}
 	}
+	
+	public ArrayList<Sale> getSale(String from, String to) {
+		ArrayList<Sale> saleList = new ArrayList<Sale>();
+		try {
+			SQLiteDatabase db = this.getReadableDatabase();
+			
+			/** Get Sale Ledger **/
+			String strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN %s To %s", TABLE_SALE_LEDGER, from, to);
+			Cursor cursorSL = db.rawQuery(strSQL, null);
+			if (cursorSL != null) {
+				if (cursorSL.moveToFirst()) {
+					do {
+						String date = cursorSL.getString(0);
+						Sale sale = new Sale();
+						
+							/** Get SaleLineItem for that Sale Ledger **/
+						strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN %s To %s", TABLE_PRODUCT_LEDGER, from, to);
+						Cursor cursorPL = db.rawQuery(strSQL, null);
+	
+							if (cursorPL != null) {
+								if (cursorPL.moveToFirst()) {
+									/**
+									 * 0 = _key 1 = Date 2 = ProductId 3 = ProductName 4 = UnitPrice
+									 * 5 = Price 6 = Quantity
+									 */
+									sale.AddSaleLineItem(Register.getInstance().getInventory().getProduct(cursorPL.getString(2)), cursorPL.getInt(6));
+								}
+							}
+							cursorPL.close();
+						saleList.add(sale);
+					} while (cursorSL.moveToNext());
+				}
+			}
+			cursorSL.close();
+			db.close();
+		return saleList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	
+	public long removeSale(Calendar calendar) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
+		String current = sdf.format(calendar);
+		try {
+
+			SQLiteDatabase db = this.getWritableDatabase();
+
+			long rows = db.delete(TABLE_SALE_LEDGER, "Date=?",
+					new String[] {current});
+			db.delete(TABLE_PRODUCT_LEDGER, "Date=?",
+					new String[] { current});
+
+			db.close();
+			return rows; // return rows delete.
+
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	
+	public ArrayList<Sale> saleList(SimpleDateFormat sdf, String to) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
 	
 	//

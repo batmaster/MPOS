@@ -1,7 +1,6 @@
 package com.bbaf.mpos.sale;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
