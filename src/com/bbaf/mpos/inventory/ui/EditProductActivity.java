@@ -71,40 +71,17 @@ public class EditProductActivity extends Activity {
 			public void onClick(View arg0) {
 				String id = editTextProductId.getText().toString();
 				if (id.equals("")) {
-					if (Store.getInstance().getProduct(id) != null) {
-						Toast.makeText(getApplicationContext(),
-								"Product ID must not be empty.", Toast.LENGTH_SHORT)
-								.show();
-					}
+					Toast.makeText(getApplicationContext(),
+							"Product ID must not be empty.", Toast.LENGTH_SHORT)
+							.show();
 				}
 				else {
-					if (!id.equals(oldProduct.getId())) {
-						if (Store.getInstance().getProduct(id) != null) {
-							Toast.makeText(
-									getApplicationContext(),
-									String.format("Product : %s is already added.",
-											id), Toast.LENGTH_SHORT).show();
-						}
-						// duplicated
-						else {
-							String name = editTextProductName.getText().toString();
-							double price = Double.parseDouble(editTextPrice
-									.getText().toString());
-							double cost = Double.parseDouble(editTextCost.getText()
-									.toString());
-							ProductDescription newProduct = new ProductDescription(
-									id, name, price, cost);
-							Store.getInstance().editProduct(oldProduct, newProduct);
-
-							int quantity = Integer.parseInt(editTextQuantity
-									.getText().toString());
-							Store.getInstance().editQuantity(oldProduct, newProduct, quantity);
-
-							setResult(EDIT_SUCCESS);
-							finish();
-						}
+					if (Store.getInstance().getProduct(id) != null) {
+						Toast.makeText(
+								getApplicationContext(),
+								String.format("Product : %s is already added.",
+										id), Toast.LENGTH_SHORT).show();
 					}
-					// duplicated
 					else {
 						String name = editTextProductName.getText().toString();
 						double price = Double.parseDouble(editTextPrice
@@ -114,15 +91,12 @@ public class EditProductActivity extends Activity {
 						ProductDescription newProduct = new ProductDescription(
 								id, name, price, cost);
 						Store.getInstance().editProduct(oldProduct, newProduct);
-
 						int quantity = Integer.parseInt(editTextQuantity
 								.getText().toString());
 						Store.getInstance().editQuantity(oldProduct, newProduct, quantity);
-
 						setResult(EDIT_SUCCESS);
 						finish();
 					}
-					
 				}
 			}
 		});
