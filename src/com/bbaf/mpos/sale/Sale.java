@@ -5,10 +5,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import DAO.InventoryDBHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 

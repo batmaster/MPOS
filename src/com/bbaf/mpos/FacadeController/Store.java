@@ -2,9 +2,9 @@ package com.bbaf.mpos.FacadeController;
 
 import java.util.ArrayList;
 
-import DAO.InventoryDBHelper;
 import android.content.Context;
 
+import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 

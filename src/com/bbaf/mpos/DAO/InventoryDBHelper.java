@@ -1,4 +1,4 @@
-package DAO;
+package com.bbaf.mpos.DAO;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

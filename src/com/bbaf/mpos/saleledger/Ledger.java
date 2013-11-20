@@ -3,9 +3,9 @@ package com.bbaf.mpos.saleledger;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import DAO.InventoryDBHelper;
-import DAO.SaleLedgerDBHepler;
 
+import com.bbaf.mpos.DAO.InventoryDBHelper;
+import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
 import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {

@@ -3,6 +3,8 @@ package com.bbaf.mpos.sale.ui;
 import java.util.ArrayList;
 
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.DAO.InventoryDBHelper;
+import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.array;
@@ -17,8 +19,6 @@ import com.bbaf.mpos.inventory.ui.InventoryTableRow;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.Ledger;
 
-import DAO.InventoryDBHelper;
-import DAO.SaleLedgerDBHepler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;

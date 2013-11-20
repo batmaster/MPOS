@@ -3,10 +3,10 @@ package com.bbaf.mpos.inventory;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import DAO.InventoryDBHelper;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public class Inventory implements Serializable {
