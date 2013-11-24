@@ -9,6 +9,8 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.sale.SaleLineItem;
+import com.bbaf.mpos.sale.ui.SaleTableHead;
+import com.bbaf.mpos.sale.ui.SaleTableRow;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -37,6 +39,7 @@ public class InventoryActivity2 extends Activity {
 	private TextView textViewTotalPriceText;
 	private Button buttonAddItem;
 	private Button buttonScan;
+	private TableLayout tableLayoutSale;
 	private EditText editTextInputID;
 	private EditText editTextQuantity;
 	private Button buttonSubmit;
@@ -101,7 +104,7 @@ public class InventoryActivity2 extends Activity {
 							if (Register.getInstance().addItem(product, quantity)) {
 								// not sure it should be here
 								Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
-								refreshTable();
+								refreshSaleTable();
 								
 								String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
 								textViewStatus.setText(status);
@@ -115,6 +118,10 @@ public class InventoryActivity2 extends Activity {
 				}
 			}
 		});
+		
+		tableLayoutSale = (TableLayout)findViewById(R.id.tableLayoutSale);
+		SaleTableHead tableHead = new SaleTableHead(this);
+		tableLayoutSale.addView(tableHead);
 		
 		buttonScan = (Button)findViewById(R.id.buttonScan3);
 		buttonScan.setOnClickListener(new OnClickListener() {
@@ -148,6 +155,9 @@ public class InventoryActivity2 extends Activity {
 				}
 
 				Register.getInstance().endSale();
+				Register.getInstance().startSale();
+				
+				clearSaleTab();
 			}
 		});
 		
@@ -157,7 +167,7 @@ public class InventoryActivity2 extends Activity {
 			@Override
 			public void onClick(View v) {
 				Register.getInstance().removeAllItem();
-				refreshTable();
+				refreshIntenvoryTable();
 				textViewStatus.setText("Welcome");
 				textViewTotalPriceText.setText("0.0");
 				editTextInputID.setText("");
@@ -194,10 +204,10 @@ public class InventoryActivity2 extends Activity {
 		
 		
 		Register.getInstance().startSale();
-		refreshTable();
+		refreshIntenvoryTable();
 	}
 	
-	public void refreshTable() {
+	public void refreshIntenvoryTable() {
 		tableLayoutInventory.removeAllViews();
 		tableLayoutInventory.addView(new InventoryTableHead(this));
 
@@ -226,6 +236,46 @@ public class InventoryActivity2 extends Activity {
 		}
 	}
 	
+	public void refreshSaleTable() {
+		tableLayoutSale.removeAllViews();
+		tableLayoutSale.addView(new SaleTableHead(this));
+
+		ArrayList<SaleLineItem> saleLineItem = Register.getInstance().getAllSaleLineItemList();
+
+		if (saleLineItem != null) {
+			if (saleLineItem.size() == 0) {
+				TableRow free = new TableRow(this);
+				TextView c = new TextView(this);
+				free.addView(c);
+				TextView v = new TextView(this);
+				v.setText("Empty");
+				free.addView(v);
+				tableLayoutSale.addView(free);
+				return;
+			}
+			for (int i = 0; i < saleLineItem.size(); i++) {
+				ProductDescription product = saleLineItem.get(i).getProductDescription();
+				double unitPrice = product.getPrice();
+				int quantity = saleLineItem.get(i).getQuantity();
+				String id = product.getId();
+
+				SaleTableRow row = new SaleTableRow(this,
+						product, unitPrice, quantity);
+				tableLayoutSale.addView(row);
+			}
+			
+			textViewTotalPriceText.setText(String.valueOf(Register.getInstance().getTotal()));
+		}
+	}
+	
+	public void clearSaleTab() {
+		refreshSaleTable();
+		editTextInputID.setText("");
+		editTextQuantity.setText("");
+		textViewStatus.setText("welcome");
+		textViewTotalPriceText.setText("0.0");
+	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -240,7 +290,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshTable();
+				refreshIntenvoryTable();
 			}
 		}
 		else if (requestCode == EDIT_ACTIVITY_REQUESTCODE) {
@@ -250,7 +300,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshTable();
+				refreshIntenvoryTable();
 			}
 		}
 	}

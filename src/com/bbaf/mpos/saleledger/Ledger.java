@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+
 import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
 import com.bbaf.mpos.sale.Sale;
@@ -16,6 +21,11 @@ public class Ledger {
 	
 	public Ledger() {
 		dbDAO = SaleLedgerDBHepler.getInstance();
+		date = Calendar.getInstance();
+	}
+	
+	public Ledger(Context context) {
+		dbDAO = SaleLedgerDBHepler.getInstance(context);
 		date = Calendar.getInstance();
 	}
 	

@@ -66,9 +66,10 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 		
 		ArrayList<SaleLineItem> lines = sale.getAllList();
 		
-		// date text yyyy-MM-dd HH:mm:ss
+		// date text yyyy MM dd HH mm ss
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
-		String current = sdf.format(sale.getDate());
+		Date a = sale.getDate();
+		String current = sdf.format(a);
 		
 		/** add Sale Ledger **/
 		try {

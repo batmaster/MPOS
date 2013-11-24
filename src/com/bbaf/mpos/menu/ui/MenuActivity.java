@@ -9,8 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.inventory.ui.InventoryActivity2;
+import com.bbaf.mpos.saleledger.Ledger;
 import com.bbaf.mpos.saleledger.ui.LedgerUIActivity;
 
 public class MenuActivity extends Activity {
@@ -25,6 +27,11 @@ public class MenuActivity extends Activity {
 		Store.getInstance().initInventoryDB(getApplicationContext());
 		buttonToInvenSale = (Button)findViewById(R.id.buttonToInvenSale);
 		buttonToLedger = (Button)findViewById(R.id.buttonToLedger);
+		
+		//// bat try to do this, otherwise cannot submit sale
+		Register.getInstance().setLedger(new Ledger(this));
+		
+		////
 		
 		buttonToInvenSale.setOnClickListener(new OnClickListener() {
 			

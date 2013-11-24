@@ -26,7 +26,7 @@ public class RemoveOnClickListener implements OnClickListener {
 				Store.getInstance().removeProduct(row.getProduct());
 			}
 		}
-		activity.refreshTable();
+		activity.refreshIntenvoryTable();
 	}
 
 }
