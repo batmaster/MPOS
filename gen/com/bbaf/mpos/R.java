@@ -24,11 +24,14 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int light_green_btn=0x7f020001;
-        public static final int testbackground=0x7f020002;
-        public static final int testbg=0x7f020003;
-        public static final int testtab=0x7f020004;
+        public static final int homebg=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int light_blue_btn=0x7f020002;
+        public static final int light_green_btn=0x7f020003;
+        public static final int light_yellow_btn=0x7f020004;
+        public static final int testbackground=0x7f020005;
+        public static final int testbg=0x7f020006;
+        public static final int testtab=0x7f020007;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
