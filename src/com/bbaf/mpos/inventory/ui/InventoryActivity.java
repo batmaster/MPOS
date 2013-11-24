@@ -105,8 +105,8 @@ public class InventoryActivity extends Activity {
 		buttonEdit.setOnClickListener(editListener);
 
 		buttonRemove = (Button) findViewById(R.id.buttonRemove);
-		OnClickListener removeListener = new RemoveOnClickListener(tableLayout, this);
-		buttonRemove.setOnClickListener(removeListener);
+		//OnClickListener removeListener = new RemoveOnClickListener(tableLayout, this);
+		//buttonRemove.setOnClickListener(removeListener);
 
 		buttonRemoveAll = (Button) findViewById(R.id.buttonRemoveAll);
 		OnClickListener removeAllListener = new RemoveAllOnClickListener(
@@ -148,23 +148,23 @@ public class InventoryActivity extends Activity {
 		});
 		////
 
-		editTextProductId = (EditText) findViewById(R.id.editTextProductId);
+		editTextProductId = (EditText) findViewById(R.id.editTextProductId2);
 		editTextProductName = (EditText) findViewById(R.id.editTextProductName);
 		editTextPrice = (EditText) findViewById(R.id.editTextPrice);
 		editTextCost = (EditText) findViewById(R.id.editTextCost);
-		editTextQuantity = (EditText) findViewById(R.id.editTextQuantity2);
+		editTextQuantity = (EditText) findViewById(R.id.editTextQuantity3);
 
 		buttonScan = (Button) findViewById(R.id.buttonScan);
 		OnClickListener scanListener = new ScanOnClickListener(this);
 		buttonScan.setOnClickListener(scanListener);
 
 		buttonAdd = (Button) findViewById(R.id.buttonAddSale2);
-		OnClickListener addListener = new AddOnClickListener(this);
-		buttonAdd.setOnClickListener(addListener);
+		//OnClickListener addListener = new AddOnClickListener(this);
+		//buttonAdd.setOnClickListener(addListener);
 
 		buttonClear = (Button) findViewById(R.id.buttonClear);
-		OnClickListener clearListener = new ClearOnClickListener(this);
-		buttonClear.setOnClickListener(clearListener);
+		//OnClickListener clearListener = new ClearOnClickListener(this);
+		//buttonClear.setOnClickListener(clearListener);
 
 		refreshTable();
 	}

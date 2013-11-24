@@ -15,5 +15,6 @@
     <string name="title_activity_inventory_activity2">InventoryActivity2</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_ledger_ui">LedgerUIActivity</string>
+    <string name="title_activity_add_product">AddProductActivity</string>
 
 </resources>

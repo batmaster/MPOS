@@ -122,7 +122,7 @@
             android:text="Quantity" />
 
         <EditText
-            android:id="@+id/editTextQuantity2"
+            android:id="@+id/editTextQuantity3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

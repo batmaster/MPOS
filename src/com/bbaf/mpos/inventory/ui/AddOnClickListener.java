@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 public class AddOnClickListener implements OnClickListener {
 
-	private InventoryActivity activity;
+	private AddProductActivity activity;
 	
-	public AddOnClickListener(InventoryActivity activity) {
+	private static final int ADD_SUCCESS = 1;
+	
+	public AddOnClickListener(AddProductActivity activity) {
 		this.activity = activity;
 	}
 	
@@ -47,6 +49,7 @@ public class AddOnClickListener implements OnClickListener {
 					String.format(
 							"Product add to row %d successfully.",
 							row), Toast.LENGTH_SHORT).show();
+			activity.setResult(ADD_SUCCESS);
 
 			// bat: moved from clear() in InventoryActivity
 			editTextProductId.setText("");
@@ -56,8 +59,6 @@ public class AddOnClickListener implements OnClickListener {
 			editTextQuantity.setText("");
 			editTextProductId.requestFocus();
 			//
-				
-			activity.refreshTable();
 		} else {
 			Toast.makeText(activity.getApplicationContext(),
 					"Product ID must not be empty.", Toast.LENGTH_SHORT)

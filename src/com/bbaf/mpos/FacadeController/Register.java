@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
@@ -131,8 +132,7 @@ public class Register implements Serializable {
 	 * @return true if sale not null otherwise false.
 	 */
 	public boolean isSale() {
-		if(sale==null) return false;
-		return true;
+		return !(sale==null);
 	}
 
 	public Inventory getInventory() {

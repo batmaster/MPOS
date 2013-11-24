@@ -61,7 +61,8 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 	public long addProduct(ProductDescription product,int quantity) {
 		try {
 			long rows = 0;
-			SQLiteDatabase db = this.getWritableDatabase();
+			
+			
 			if(getProduct(product.getId())==null) {
 				ContentValues value = new ContentValues();
 				value.put("ProductId", product.getId());
@@ -72,17 +73,21 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String current = sdf.format(new Date());
 				value.put("DateModified", current);
-
+				
+				SQLiteDatabase db = this.getWritableDatabase();
+				
 				rows = db.insert(TABLE_INVENTORY, null, value);
 				addQuantity(product,quantity);
+
+				db.close();
 			}
 			else {
 				rows = addQuantity(product, quantity);
 			}
-			db.close();
 			return rows; // return rows inserted.
 
 		} catch (Exception e) {
+			Log.d("add product", e.toString());
 			return -1;
 		}
 	}

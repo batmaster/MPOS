@@ -6,9 +6,9 @@ import android.widget.EditText;
 
 public class ClearOnClickListener implements OnClickListener {
 
-	private InventoryActivity activity;
+	private AddProductActivity activity;
 	
-	public ClearOnClickListener(InventoryActivity activity) {
+	public ClearOnClickListener(AddProductActivity activity) {
 		this.activity = activity;
 	}
 	

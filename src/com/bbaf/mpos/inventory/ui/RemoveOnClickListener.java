@@ -9,9 +9,9 @@ import android.widget.TableLayout;
 public class RemoveOnClickListener implements OnClickListener {
 
 	private TableLayout tableLayout;
-	private InventoryActivity activity;
+	private InventoryActivity2 activity;
 
-	public RemoveOnClickListener(TableLayout tableLayout, InventoryActivity activity) {
+	public RemoveOnClickListener(TableLayout tableLayout, InventoryActivity2 activity) {
 		this.tableLayout = tableLayout;
 		this.activity = activity;
 	}

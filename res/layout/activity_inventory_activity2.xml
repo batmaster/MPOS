@@ -45,7 +45,8 @@
                 <LinearLayout
                     android:id="@+id/tabSale"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -54,7 +55,8 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp" >
 
                             <TextView
                                 android:id="@+id/textViewStatus"
@@ -103,13 +105,15 @@
                             android:id="@+id/LinearLayout1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal"
+                            android:weightSum="10" >
 
                             <Button
-                                android:id="@+id/buttonAdd2"
+                                android:id="@+id/buttonAddItem"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
+                                android:layout_weight="8"
                                 android:background="@drawable/light_green_btn"
                                 android:gravity="center"
                                 android:minHeight="15dp"
@@ -125,9 +129,10 @@
                                 android:textStyle="bold" />
 
                             <Button
-                                android:id="@+id/buttonScan2"
+                                android:id="@+id/buttonScan3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="2"
                                 android:background="@drawable/light_green_btn"
                                 android:gravity="center"
                                 android:minHeight="15dp"
@@ -144,8 +149,9 @@
                         </LinearLayout>
 
                         <TableLayout
+                            android:id="@+id/tableLayoutSale"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="300dp" >
                         </TableLayout>
 
                         <LinearLayout
@@ -155,7 +161,8 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" >
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp" >
 
                                 <TextView
                                     android:id="@+id/textViewID"
@@ -209,13 +216,15 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" >
+                                android:layout_height="wrap_content"
+                                android:weightSum="10" >
 
                                 <Button
                                     android:id="@+id/buttonSubmit2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="10dp"
+                                    android:layout_weight="8"
                                     android:background="@drawable/light_green_btn"
                                     android:gravity="center"
                                     android:minHeight="15dp"
@@ -235,6 +244,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="10dp"
+                                    android:layout_weight="2"
                                     android:background="@drawable/light_green_btn"
                                     android:gravity="center"
                                     android:minHeight="15dp"
@@ -256,44 +266,44 @@
                 <LinearLayout
                     android:id="@+id/tabInventory2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TableLayout
+                        android:id="@+id/tableLayoutInventory"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp" >
+
+                    </TableLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" >
+                        android:id="@+id/LinearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="9" >
 
-                        <ListView
-                            android:id="@+id/listViewItem"
+                        <Button
+                            android:id="@+id/buttonAddProduct"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
-                        </ListView>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Add" />
 
-                        <LinearLayout
+                        <Button
+                            android:id="@+id/buttonEditProduct"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Edit" />
 
-                            <Button
-                                android:id="@+id/buttonAddItem"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:text="Add Item" />
-
-                            <Button
-                                android:id="@+id/buttonEditItem"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:text="Edit" />
-
-                            <Button
-                                android:id="@+id/buttonRemoveItem"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:text="Remove" />
-                        </LinearLayout>
+                        <Button
+                            android:id="@+id/buttonRemoveProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Remove" />
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>

@@ -101,7 +101,7 @@ public class SaleActivity extends Activity {
 		
 		editTextId = (EditText)findViewById(R.id.editTextId2);
 		
-		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity2);
+		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity3);
 		
 		buttonAddSale = (Button)findViewById(R.id.buttonAddSale2);
 		buttonAddSale.setOnClickListener(new OnClickListener() {
