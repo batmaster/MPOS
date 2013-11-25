@@ -23,6 +23,7 @@ public class AddProductActivity extends Activity {
 	private Button buttonClearX;
 	private Button buttonCancelX;
 	
+	
 	private static final int ADD_CANCEL = 0;
 
 	@Override
