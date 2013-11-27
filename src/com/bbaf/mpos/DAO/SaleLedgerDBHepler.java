@@ -127,6 +127,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 					do {
 						String date = cursorSL.getString(0);
 						Sale sale = new Sale();
+						sale.setDate(cursorSL.getString(1));
 						
 							/** Get all SaleLineItem for that Sale Ledger **/
 							Cursor cursorPL = db.query(TABLE_PRODUCT_LEDGER, new String[] { "*" },
@@ -161,16 +162,18 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			SQLiteDatabase db = this.getReadableDatabase();
 			
 			/** Get Sale Ledger **/
-			String strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN %s To %s", TABLE_SALE_LEDGER, from, to);
+			String strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN '%s' AND '%s'", TABLE_SALE_LEDGER, from, to);
+			Log.d("getSale", strSQL);
 			Cursor cursorSL = db.rawQuery(strSQL, null);
 			if (cursorSL != null) {
 				if (cursorSL.moveToFirst()) {
 					do {
 						String date = cursorSL.getString(0);
 						Sale sale = new Sale();
+						sale.setDate(cursorSL.getString(1));
 						
 							/** Get SaleLineItem for that Sale Ledger **/
-						strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN %s To %s", TABLE_PRODUCT_LEDGER, from, to);
+						strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN '%s' AND '%s'", TABLE_PRODUCT_LEDGER, from, to);
 						Cursor cursorPL = db.rawQuery(strSQL, null);
 	
 							if (cursorPL != null) {
@@ -191,6 +194,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			db.close();
 		return saleList;
 		} catch (Exception e) {
+			Log.d("here", e.toString());
 			return null;
 		}
 	}
@@ -214,11 +218,6 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 		} catch (Exception e) {
 			return -1;
 		}
-	}
-	
-	public ArrayList<Sale> saleList(SimpleDateFormat sdf, String to) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	

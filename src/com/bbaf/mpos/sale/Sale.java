@@ -143,4 +143,14 @@ public class Sale implements Serializable {
 	public Date getDate(){
 		return date;
 	}
+	
+	public void setDate(String s){
+		String[] temp = s.split(" ");
+		date.setYear(Integer.parseInt(temp[0]));
+		date.setMonth(Integer.parseInt(temp[1]));
+		date.setDate(Integer.parseInt(temp[2]));
+		date.setHours(Integer.parseInt(temp[3]));
+		date.setMinutes(Integer.parseInt(temp[4]));
+		date.setSeconds(Integer.parseInt(temp[5]));
+	}
 }

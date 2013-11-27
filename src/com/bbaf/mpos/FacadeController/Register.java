@@ -40,6 +40,7 @@ public class Register implements Serializable {
 	}
 	
 	public static Register getInstance() {
+		if(register==null) register = new Register(new Inventory());
 		return register;
 	}
 	
@@ -153,5 +154,9 @@ public class Register implements Serializable {
 	
 	public Ledger getLedger() {
 		return ledger;
+	}
+	
+	public double change(double input){
+		return input - getTotal();
 	}
 }

@@ -38,40 +38,37 @@ public class Ledger {
 	}
 	
 	public ArrayList<Sale> getDaily() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
-		String current = sdf.format(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
+		String current = sdf.format(date.getTime());
 		Calendar from = (Calendar) date.clone();
-		from.set(Calendar.HOUR_OF_DAY, 0);
-		from.set(Calendar.MINUTE, 0);
-		from.set(Calendar.SECOND, 0);
-		String to = sdf.format(from);
-		return dbDAO.saleList(sdf,to);
+		from.add(Calendar.DATE,1);
+		String to = sdf.format(from.getTime());
+		return dbDAO.getSale(current,to);
+		
 	}
 	
 	public ArrayList<Sale> getWeek(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
-		String current = sdf.format(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) date.clone();
-		from.set(Calendar.HOUR_OF_DAY, 0);
-		from.set(Calendar.MINUTE, 0);
-		from.set(Calendar.SECOND, 0);
-		if(date.get(Calendar.DAY_OF_WEEK) != 0){
-			date.add(Calendar.DATE, -7);
-		}
-		String to = sdf.format(from);
-		return dbDAO.saleList(sdf,to);
+		Calendar temp = (Calendar) date.clone();
+		temp.set(Calendar.DAY_OF_WEEK, 0);
+		if(temp.get(Calendar.DATE) > from.get(Calendar.DATE))
+			temp.add(Calendar.DATE, -7);
+		String current = sdf.format(temp.getTime());
+		from.add(Calendar.DATE,1);
+		String to = sdf.format(from.getTime());
+		return dbDAO.getSale(current,to);
 	}
 	
 	public ArrayList<Sale> getMonth(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
-		String current = sdf.format(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) date.clone();
-		from.set(Calendar.HOUR_OF_DAY, 0);
-		from.set(Calendar.MINUTE, 0);
-		from.set(Calendar.SECOND, 0);
-		from.set(Calendar.DATE,1);
-		String to = sdf.format(from);
-		return dbDAO.saleList(sdf,to);
+		Calendar temp = (Calendar) date.clone();
+		temp.set(Calendar.DATE, 1);
+		String current = sdf.format(temp.getTime());
+		from.add(Calendar.DATE,1);
+		String to = sdf.format(from.getTime());
+		return dbDAO.getSale(current,to);
 	}
 	
 	public void removeSale(Calendar calendar){
