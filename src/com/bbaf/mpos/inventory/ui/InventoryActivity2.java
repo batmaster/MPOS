@@ -35,20 +35,20 @@ public class InventoryActivity2 extends Activity {
 	private TabHost tabHost;
 
 	private TabSpec tabSale;
-	private TextView textViewStatus;
+	//private TextView textViewStatus; Removed
 	private TextView textViewTotalPriceText;
 	private Button buttonAddItem;
 	private Button buttonScan;
 	private TableLayout tableLayoutSale;
 	private EditText editTextInputID;
 	private EditText editTextQuantity;
-	private Button buttonSubmit;
-	private Button buttonRemoveSale;
+	private Button buttonPayment; // name changed from buttonSubmit
+	private Button buttonCancelSale; // name changed from buttonRemoveSale
 	
 	private TabSpec tabInventory;
 	private TableLayout tableLayoutInventory;
 	private Button buttonAddProduct;
-	private Button buttonEditProduct;
+	private Button buttonATS; // name changed from buttonEdit
 	private Button buttonRemoveProduct;
 	
 
@@ -72,7 +72,7 @@ public class InventoryActivity2 extends Activity {
 		tabSale.setIndicator("Sale");
 		tabHost.addTab(tabSale);
 		
-		textViewStatus = (TextView)findViewById(R.id.textViewStatus);
+		//textViewStatus = (TextView)findViewById(R.id.textViewStatus);
 		textViewTotalPriceText = (TextView)findViewById(R.id.textViewTotalPriceText);
 		
 		buttonAddItem = (Button)findViewById(R.id.buttonAddItem);
@@ -107,7 +107,7 @@ public class InventoryActivity2 extends Activity {
 								refreshSaleTable();
 								
 								String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
-								textViewStatus.setText(status);
+								//textViewStatus.setText(status);
 								
 							}
 							else {
@@ -136,8 +136,8 @@ public class InventoryActivity2 extends Activity {
 		editTextInputID = (EditText)findViewById(R.id.editTextInputID);
 		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity);
 		
-		buttonSubmit = (Button)findViewById(R.id.buttonSubmit2);
-		buttonSubmit.setOnClickListener(new OnClickListener() {
+		buttonPayment = (Button)findViewById(R.id.buttonPayment);
+		buttonPayment.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -161,14 +161,14 @@ public class InventoryActivity2 extends Activity {
 			}
 		});
 		
-		buttonRemoveSale = (Button)findViewById(R.id.buttonRemoveSale2);
-		buttonRemoveSale.setOnClickListener(new OnClickListener() {
+		buttonCancelSale = (Button)findViewById(R.id.buttonCancelSale);
+		buttonCancelSale.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Register.getInstance().removeAllItem();
 				refreshIntenvoryTable();
-				textViewStatus.setText("Welcome");
+				//textViewStatus.setText("Welcome");
 				textViewTotalPriceText.setText("0.0");
 				editTextInputID.setText("");
 				editTextQuantity.setText("");
@@ -195,8 +195,10 @@ public class InventoryActivity2 extends Activity {
 			}
 		});
 		
-		buttonEditProduct = (Button)findViewById(R.id.buttonEditProduct);
-		buttonEditProduct.setOnClickListener(new EditOnClickListener(tableLayoutInventory, this));
+		buttonATS = (Button)findViewById(R.id.buttonAddToSale);
+		
+		//TODO change activity to add to sale...
+		//buttonATS.setOnClickListener(new EditOnClickListener(tableLayoutInventory, this));
 		
 		buttonRemoveProduct = (Button)findViewById(R.id.buttonRemoveProduct);
 		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(tableLayoutInventory, this));
@@ -272,7 +274,7 @@ public class InventoryActivity2 extends Activity {
 		refreshSaleTable();
 		editTextInputID.setText("");
 		editTextQuantity.setText("");
-		textViewStatus.setText("welcome");
+		//textViewStatus.setText("welcome");
 		textViewTotalPriceText.setText("0.0");
 	}
 	

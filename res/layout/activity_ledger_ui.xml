@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/testbackground"
     tools:context=".LedgerUIActivity" >
 
     <TextView
@@ -57,7 +58,6 @@
                             android:id="@+id/tableLayoutDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" >
-
                         </TableLayout>
 
                         <TextView
@@ -68,15 +68,29 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="wrap_content"
+                            android:weightSum="2" >
 
                             <Button
                                 android:id="@+id/buttonDatePrevious"
                                 style="?android:attr/buttonStyleSmall"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="10dip"
                                 android:layout_weight="1"
-                                android:text="Previous" />
+                                android:background="@drawable/light_green_btn"
+                                android:gravity="center"
+                                android:minHeight="15dp"
+                                android:minWidth="80dp"
+                                android:padding="10dip"
+                                android:shadowColor="#014927"
+                                android:shadowDx="0.0"
+                                android:shadowDy="0.0"
+                                android:shadowRadius="2.5"
+                                android:text="Previous"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <Button
                                 android:id="@+id/buttonDateNext"
@@ -84,10 +98,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Next" />
+                                android:background="@drawable/light_green_btn"
+                                android:gravity="center"
+                                android:minHeight="15dp"
+                                android:minWidth="80dp"
+                                android:padding="10dip"
+                                android:shadowColor="#014927"
+                                android:shadowDx="0.0"
+                                android:shadowDy="0.0"
+                                android:shadowRadius="2.5"
+                                android:text="Next"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
                         </LinearLayout>
                     </LinearLayout>
-
                 </TabWidget>
 
                 <TabWidget
@@ -110,7 +136,6 @@
                             android:id="@+id/tableLayoutWeek"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" >
-
                         </TableLayout>
 
                         <TextView
@@ -138,10 +163,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Next" />
-
                         </LinearLayout>
                     </LinearLayout>
-
                 </TabWidget>
 
                 <TabWidget
@@ -164,7 +187,6 @@
                             android:id="@+id/tableLayoutMonth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" >
-
                         </TableLayout>
 
                         <TextView
@@ -194,9 +216,7 @@
                                 android:text="Next" />
                         </LinearLayout>
                     </LinearLayout>
-
                 </TabWidget>
-
             </FrameLayout>
         </LinearLayout>
     </TabHost>
