@@ -196,6 +196,7 @@ public class InventoryActivity2 extends Activity {
 		});
 		
 		buttonATS = (Button)findViewById(R.id.buttonAddToSale);
+		buttonATS.setOnClickListener(new ATSOnClickListener(tableLayoutInventory, this));
 		
 		//TODO change activity to add to sale...
 		//buttonATS.setOnClickListener(new EditOnClickListener(tableLayoutInventory, this));
