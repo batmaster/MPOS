@@ -26,6 +26,7 @@
         <activity
             android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
             android:label="@string/title_activity_edit_product"
+            android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -46,7 +47,8 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.AddProductActivity"
-            android:label="@string/title_activity_add_product" >
+            android:label="@string/title_activity_add_product"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
     <!-- asd -->
