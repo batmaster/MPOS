@@ -26,8 +26,8 @@
         <activity
             android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
             android:label="@string/title_activity_edit_product"
-            android:theme="@android:style/Theme.Dialog"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.ui.SaleActivity"
@@ -49,6 +49,14 @@
             android:name="com.bbaf.mpos.inventory.ui.AddProductActivity"
             android:label="@string/title_activity_add_product"
             android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.bbaf.mpos.sale.payment.ui.PaymentActivity"
+            android:label="@string/title_activity_payment" >
+        </activity>
+        <activity
+            android:name="com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity"
+            android:label="@string/title_activity_success_payment" >
         </activity>
     </application>
     <!-- asd -->

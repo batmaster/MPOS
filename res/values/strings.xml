@@ -16,5 +16,7 @@
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_ledger_ui">LedgerUIActivity</string>
     <string name="title_activity_add_product">AddProductActivity</string>
+    <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_success_payment">SuccessPaymentActivity</string>
 
 </resources>
