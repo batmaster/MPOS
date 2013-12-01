@@ -47,6 +47,7 @@ public class ATSOnClickListener implements OnClickListener {
 		TabHost tabHost = (TabHost)activity.findViewById(R.id.tabhost2);
 		tabHost.setCurrentTab(0);
 		activity.refreshSaleTable();
+		activity.refreshIntenvoryTable();
 		Toast.makeText(activity, count + " items are added.", Toast.LENGTH_SHORT).show();
 	}
 

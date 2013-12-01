@@ -9,6 +9,7 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.sale.SaleLineItem;
+import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
 import com.bbaf.mpos.sale.ui.SaleTableHead;
 import com.bbaf.mpos.sale.ui.SaleTableRow;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -55,6 +56,7 @@ public class InventoryActivity2 extends Activity {
 	// bat: maybe collect at same location later
 	private static final int ADD_ACTIVITY_REQUESTCODE = 0;
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
+	private static final int PAYMENT_ACTIVITY_REQUESTCODE = 2;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 
 	
@@ -102,7 +104,8 @@ public class InventoryActivity2 extends Activity {
 //						}
 //						else {
 							if (Register.getInstance().addItem(product, quantity)) {
-								// not sure it should be here
+								editTextInputID.setText("");
+								editTextQuantity.setText("");
 								Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
 								refreshSaleTable();
 								
@@ -141,23 +144,8 @@ public class InventoryActivity2 extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				ArrayList<SaleLineItem> sli = Register.getInstance().getAllSaleLineItemList();
-				for(int i = 0 ;i < sli.size();i++){
-					Register.getInstance().decrease(sli.get(i).getProductDescription().getId(), sli.get(i).getQuantity());
-				}
-				
-				if (sli.size() != 0) {
-					Register.getInstance().getLedger().record(Register.getInstance().getSale());
-					Toast.makeText(getApplicationContext(), "Sale ended with " + sli.size() + " line item(s).", Toast.LENGTH_SHORT).show();
-				}
-				else {
-					Toast.makeText(getApplicationContext(), "Sale cancelled ", Toast.LENGTH_SHORT).show();
-				}
-
-				Register.getInstance().endSale();
-				Register.getInstance().startSale();
-				
-				clearSaleTab();
+				Intent paymentActivity = new Intent(getApplicationContext(), PaymentActivity.class);
+				startActivityForResult(paymentActivity, PAYMENT_ACTIVITY_REQUESTCODE);
 			}
 		});
 		
@@ -208,6 +196,7 @@ public class InventoryActivity2 extends Activity {
 		
 		Register.getInstance().startSale();
 		refreshIntenvoryTable();
+		refreshSaleTable();
 	}
 	
 	public void refreshIntenvoryTable() {
@@ -304,6 +293,16 @@ public class InventoryActivity2 extends Activity {
 				// no need to refresh
 			} else if (resultCode == 1) {
 				refreshIntenvoryTable();
+			}
+		}
+		else if (requestCode == PAYMENT_ACTIVITY_REQUESTCODE) {
+			/**
+			 * 0 = PAYMENT_CANCEL 1 = PAYMENT_SUCCESS
+			 */
+			if (resultCode == 0) {
+				// no need to refresh
+			} else if (resultCode == 1) {
+				refreshSaleTable();
 			}
 		}
 	}

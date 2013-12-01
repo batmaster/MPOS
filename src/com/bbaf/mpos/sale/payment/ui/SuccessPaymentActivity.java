@@ -7,13 +7,35 @@ import com.bbaf.mpos.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class SuccessPaymentActivity extends Activity {
+	
+	private TextView textViewChange;
+	private Button buttonChangeConfirm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_success_payment);
+		
+		textViewChange = (TextView)findViewById(R.id.textViewChange);
+		double cash = getIntent().getDoubleExtra("Cash", 0);
+		textViewChange.setText(String.valueOf(cash));
+		
+		buttonChangeConfirm = (Button)findViewById(R.id.buttonChangeComfirm);
+		buttonChangeConfirm.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				finish();
+				
+			}
+		});
+		
 	}
 
 	@Override

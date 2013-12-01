@@ -52,13 +52,14 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.PaymentActivity"
-            android:label="@string/title_activity_payment" >
+            android:label="@string/title_activity_payment"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity"
-            android:label="@string/title_activity_success_payment" >
+            android:label="@string/title_activity_success_payment"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
-    <!-- asd -->
 
 </manifest>
