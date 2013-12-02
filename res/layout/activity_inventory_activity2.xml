@@ -160,11 +160,11 @@
                                 android:textStyle="bold" />
                         </LinearLayout>
 
-                        <TableLayout
-                            android:id="@+id/tableLayoutSale"
+                        <ListView
+                            android:id="@+id/listViewSale"
                             android:layout_width="match_parent"
-                            android:layout_height="225dp" >
-                        </TableLayout>
+                            android:layout_height="201dp" >
+                        </ListView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -258,14 +258,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
-
-                    <!-- <TableLayout
-                        android:id="@+id/tableLayoutInventory"
-                        android:layout_width="match_parent"
-                        android:layout_height="350dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp" >
-                    </TableLayout> -->
 
                     <ListView
                         android:id="@+id/listViewInventory"

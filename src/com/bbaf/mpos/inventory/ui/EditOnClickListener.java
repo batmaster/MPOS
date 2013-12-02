@@ -24,7 +24,7 @@ public class EditOnClickListener implements OnClickListener {
 		// bat: now, must edit every item that is checked
 		for (int i = 1; i < tableLayout.getChildCount(); i++) {
 			try {
-				InventoryTableRow row = (InventoryTableRow) tableLayout
+				InventoryListRow row = (InventoryListRow) tableLayout
 						.getChildAt(i);
 				// bat: can you break until first finish??, i try to use
 				// startActivityForResult() instead startActivity() but it still don't break

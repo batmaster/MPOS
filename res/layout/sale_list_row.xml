@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayoutInventoryListRow"
+    android:id="@+id/relativeLayoutSaleListRow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="2dp"
@@ -8,38 +8,47 @@
     android:padding="5dp" >
 
     <CheckBox
-        android:id="@+id/checkBoxRowInventory"
+        android:id="@+id/checkBoxRowSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
     <TextView
-        android:id="@+id/textViewRowIdInventory"
+        android:id="@+id/textViewRowIdSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/checkBoxRowInventory"
-        android:layout_toRightOf="@+id/checkBoxRowInventory"
+        android:layout_alignTop="@+id/checkBoxRowSale"
+        android:layout_toRightOf="@+id/checkBoxRowSale"
         android:text="TextView" />
-
+    
     <TextView
-        android:id="@+id/textViewRowQuantityInventory"
+        android:id="@+id/textViewRowUnitPriceSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/imageViewEditRowSale"
+        android:layout_below="@+id/textViewRowQuantitySale"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/imageViewEditRowInventory"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewRowNameInventory"
+        android:id="@+id/textViewRowQuantitySale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewRowIdInventory"
-        android:layout_below="@+id/textViewRowIdInventory"
+        android:layout_toLeftOf="@+id/imageViewEditRowSale"
+        android:layout_marginRight="5dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewRowNameSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewRowIdSale"
+        android:layout_below="@+id/textViewRowIdSale"
         android:text="TextView" />
 
     <ImageView
-        android:id="@+id/imageViewEditRowInventory"
+        android:id="@+id/imageViewEditRowSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

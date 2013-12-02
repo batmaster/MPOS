@@ -37,8 +37,7 @@ public final class R {
         public static final int LinearLayout1=0x7f090000;
         public static final int LinearLayout2=0x7f09002b;
         public static final int LinearLayoutInven2_1=0x7f090059;
-        public static final int RelativeLayout1=0x7f090067;
-        public static final int action_settings=0x7f09006c;
+        public static final int action_settings=0x7f090074;
         public static final int buttonAddItem=0x7f090032;
         public static final int buttonAddProduct=0x7f090039;
         public static final int buttonAddSale2=0x7f090029;
@@ -73,7 +72,8 @@ public final class R {
         public static final int buttonToLedger=0x7f090052;
         public static final int buttonWeekNext=0x7f090049;
         public static final int buttonWeekPrevious=0x7f090048;
-        public static final int checkBoxRow=0x7f090068;
+        public static final int checkBoxRowInventory=0x7f090068;
+        public static final int checkBoxRowSale=0x7f09006e;
         public static final int content_frame=0x7f090057;
         public static final int drawer_layout=0x7f090056;
         public static final int editTextCost=0x7f090028;
@@ -94,8 +94,13 @@ public final class R {
         public static final int edit_editTextProductId=0x7f09000f;
         public static final int edit_editTextProductName=0x7f090011;
         public static final int edit_editTextQuantity=0x7f090017;
+        public static final int imageViewEditRowInventory=0x7f09006b;
+        public static final int imageViewEditRowSale=0x7f090071;
         public static final int left_drawer=0x7f090058;
         public static final int listViewInventory=0x7f090038;
+        public static final int listViewSale=0x7f090034;
+        public static final int relativeLayoutInventoryListRow=0x7f090067;
+        public static final int relativeLayoutSaleListRow=0x7f09006d;
         public static final int scrollView1=0x7f09001d;
         public static final int scrollView2Sale2=0x7f09005c;
         public static final int tabAdd=0x7f090025;
@@ -109,7 +114,6 @@ public final class R {
         public static final int tableLayout=0x7f09001e;
         public static final int tableLayoutDate=0x7f090040;
         public static final int tableLayoutMonth=0x7f09004c;
-        public static final int tableLayoutSale=0x7f090034;
         public static final int tableLayoutSale2=0x7f09005d;
         public static final int tableLayoutWeek=0x7f090046;
         public static final int tabmonth=0x7f09004a;
@@ -128,9 +132,13 @@ public final class R {
         public static final int textViewPaymentTotal=0x7f090003;
         public static final int textViewQuantity=0x7f090030;
         public static final int textViewQuatity2=0x7f090060;
-        public static final int textViewRowId=0x7f090069;
-        public static final int textViewRowName=0x7f09006b;
-        public static final int textViewRowQuantity=0x7f09006a;
+        public static final int textViewRowIdInventory=0x7f090069;
+        public static final int textViewRowIdSale=0x7f09006f;
+        public static final int textViewRowNameInventory=0x7f09006c;
+        public static final int textViewRowNameSale=0x7f090073;
+        public static final int textViewRowQuantityInventory=0x7f09006a;
+        public static final int textViewRowQuantitySale=0x7f090072;
+        public static final int textViewRowUnitPriceSale=0x7f090070;
         public static final int textViewSaleLedger=0x7f09003c;
         public static final int textViewStatus2=0x7f09000e;
         public static final int textViewSubtotal=0x7f090010;
@@ -156,6 +164,7 @@ public final class R {
         public static final int activity_success_payment=0x7f030008;
         public static final int drawer_list_item=0x7f030009;
         public static final int inventory_list_row=0x7f03000a;
+        public static final int sale_list_row=0x7f03000b;
     }
     public static final class menu {
         public static final int add_product=0x7f080000;

@@ -14,8 +14,6 @@ import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.inventory.Inventory;
 import com.bbaf.mpos.inventory.ui.ClearOnClickListener;
 import com.bbaf.mpos.inventory.ui.InventoryActivity;
-import com.bbaf.mpos.inventory.ui.InventoryTableHead;
-import com.bbaf.mpos.inventory.ui.InventoryTableRow;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.Ledger;
 

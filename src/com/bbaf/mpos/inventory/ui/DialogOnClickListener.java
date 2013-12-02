@@ -20,7 +20,7 @@ public class DialogOnClickListener implements OnClickListener {
 	public void onClick(DialogInterface dialog, int which) {
 		for (int i = 1; i < tableLayout.getChildCount(); i++) {
 			try {
-				InventoryTableRow row = (InventoryTableRow) tableLayout
+				InventoryListRow row = (InventoryListRow) tableLayout
 						.getChildAt(i);
 
 				Store.getInstance().removeProduct(row.getProduct());

@@ -43,17 +43,16 @@ public class InventoryActivity2 extends Activity {
 	private TextView textViewTotalPriceText;
 	private Button buttonAddItem;
 	private Button buttonScan;
-	private TableLayout tableLayoutSale;
+	private ListView listViewSale;
+	private SaleListViewAdapter saleListViewAdapter;
 	private EditText editTextInputID;
 	private EditText editTextQuantity;
 	private Button buttonPayment; // name changed from buttonSubmit
 	private Button buttonCancelSale; // name changed from buttonRemoveSale
 	
 	private TabSpec tabInventory;
-//	private TableLayout tableLayoutInventory;
 	private ListView listViewInventory;
 	private InventoryListViewAdapter inventoryListViewAdapter;
-	
 	private Button buttonAddProduct;
 	private Button buttonATS; // name changed from buttonEdit
 	private Button buttonRemoveProduct;
@@ -70,6 +69,8 @@ public class InventoryActivity2 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inventory_activity2);
+		
+		Register.getInstance().startSale();
 		
 		tabHost = (TabHost) findViewById(R.id.tabhost2);
 		tabHost.setup();
@@ -122,9 +123,10 @@ public class InventoryActivity2 extends Activity {
 			}
 		});
 		
-		tableLayoutSale = (TableLayout)findViewById(R.id.tableLayoutSale);
-		SaleTableHead tableHead = new SaleTableHead(this);
-		tableLayoutSale.addView(tableHead);
+
+		listViewSale = (ListView)findViewById(R.id.listViewSale);
+		saleListViewAdapter = new SaleListViewAdapter(this);
+		listViewSale.setAdapter(saleListViewAdapter);
 		
 		buttonScan = (Button)findViewById(R.id.buttonScan3);
 		buttonScan.setOnClickListener(new OnClickListener() {
@@ -155,7 +157,7 @@ public class InventoryActivity2 extends Activity {
 			@Override
 			public void onClick(View v) {
 				Register.getInstance().removeAllItem();
-//				refreshIntenvoryTable();
+				refreshIntenvoryTable();
 				//textViewStatus.setText("Welcome");
 				textViewTotalPriceText.setText("0.0");
 				editTextInputID.setText("");
@@ -169,8 +171,10 @@ public class InventoryActivity2 extends Activity {
 		tabInventory.setContent(R.id.tabInventory2);
 		tabInventory.setIndicator("Inventory");
 		tabHost.addTab(tabInventory);
-		
-//		tableLayoutInventory = (TableLayout)findViewById(R.id.tableLayoutInventory);
+
+		listViewInventory = (ListView)findViewById(R.id.listViewInventory);
+		inventoryListViewAdapter = new InventoryListViewAdapter(this);
+		listViewInventory.setAdapter(inventoryListViewAdapter);
 		
 		buttonAddProduct = (Button)findViewById(R.id.buttonAddProduct);
 		buttonAddProduct.setOnClickListener(new OnClickListener() {
@@ -184,95 +188,22 @@ public class InventoryActivity2 extends Activity {
 		});
 		
 		buttonATS = (Button)findViewById(R.id.buttonAddToSale);
-//		buttonATS.setOnClickListener(new ATSOnClickListener(tableLayoutInventory, this));
-		
-		//TODO change activity to add to sale...
-		//buttonATS.setOnClickListener(new EditOnClickListener(tableLayoutInventory, this));
+		buttonATS.setOnClickListener(new ATSOnClickListener(listViewInventory, this));
 		
 		buttonRemoveProduct = (Button)findViewById(R.id.buttonRemoveProduct);
-//		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(tableLayoutInventory, this));
+		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(listViewInventory, this));
 		
-		
-		
-		Register.getInstance().startSale();
-//		refreshIntenvoryTable();
+		refreshIntenvoryTable();
 		refreshSaleTable();
-		
-		
-		
-		////////////////// listview
-		listViewInventory = (ListView)findViewById(R.id.listViewInventory);
-		inventoryListViewAdapter = new InventoryListViewAdapter(this, Register.getInstance().getInventory().getAllProduct());
-		listViewInventory.setAdapter(inventoryListViewAdapter);
-//		
-//		listViewInventory.setOnItemClickListener(new OnItemClickListener() {
-//
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//				}
-//		});
 	}
 	
-//	public void refreshIntenvoryTable() {
-//		tableLayoutInventory.removeAllViews();
-//		tableLayoutInventory.addView(new InventoryTableHead(this));
-//
-//		ArrayList<ProductDescription> productList = Register.getInstance().getInventory().getAllProduct();
-//		
-//		if (productList != null) {
-//			if (productList.size() == 0) {
-//				TableRow free = new TableRow(this);
-//				TextView c = new TextView(this);
-//				free.addView(c);
-//				TextView v = new TextView(this);
-//				v.setText("Empty");
-//				free.addView(v);
-//				tableLayoutInventory.addView(free);
-//				return;
-//			}
-//			for (int i = 0; i < productList.size(); i++) {
-//				ProductDescription product = productList.get(i);
-//				String id = product.getId();
-//				int quantity = Store.getInstance().getQuantity(id);
-//
-//				InventoryTableRow row = new InventoryTableRow(this,
-//						productList.get(i), quantity);
-//				tableLayoutInventory.addView(row);
-//			}
-//		}
-//	}
+	public void refreshIntenvoryTable() {
+		inventoryListViewAdapter.notifyDataSetChanged();
+	}
 	
 	public void refreshSaleTable() {
-		tableLayoutSale.removeAllViews();
-		tableLayoutSale.addView(new SaleTableHead(this));
-
-		ArrayList<SaleLineItem> saleLineItem = Register.getInstance().getAllSaleLineItemList();
-
-		if (saleLineItem != null) {
-			if (saleLineItem.size() == 0) {
-				TableRow free = new TableRow(this);
-				TextView c = new TextView(this);
-				free.addView(c);
-				TextView v = new TextView(this);
-				v.setText("Empty");
-				free.addView(v);
-				tableLayoutSale.addView(free);
-				return;
-			}
-			for (int i = 0; i < saleLineItem.size(); i++) {
-				ProductDescription product = saleLineItem.get(i).getProductDescription();
-				double unitPrice = product.getPrice();
-				int quantity = saleLineItem.get(i).getQuantity();
-				String id = product.getId();
-
-				SaleTableRow row = new SaleTableRow(this,
-						product, unitPrice, quantity);
-				tableLayoutSale.addView(row);
-			}
-			
-			textViewTotalPriceText.setText(String.valueOf(Register.getInstance().getTotal()));
-		}
+		saleListViewAdapter.notifyDataSetChanged();
+		textViewTotalPriceText.setText(String.valueOf(Register.getInstance().getTotal()));
 	}
 	
 	public void clearSaleTab() {
@@ -297,7 +228,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-//				refreshIntenvoryTable();
+				refreshIntenvoryTable();
 			}
 		}
 		else if (requestCode == EDIT_ACTIVITY_REQUESTCODE) {
@@ -307,7 +238,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-//				refreshIntenvoryTable();
+				refreshIntenvoryTable();
 			}
 		}
 		else if (requestCode == PAYMENT_ACTIVITY_REQUESTCODE) {

@@ -95,8 +95,8 @@ public class InventoryActivity extends Activity {
 		//
 
 		tableLayout = (TableLayout) findViewById(R.id.tableLayout);
-		InventoryTableHead tableHead = new InventoryTableHead(this);
-		tableLayout.addView(tableHead);
+//		InventoryTableHead tableHead = new InventoryTableHead(this);
+//		tableLayout.addView(tableHead);
 		tableLayout.setShrinkAllColumns(false);
 		tableLayout.setStretchAllColumns(true);
 
@@ -172,7 +172,7 @@ public class InventoryActivity extends Activity {
 	// arm: change to public because i can't use it when use in different class.
 	public void refreshTable() {
 		tableLayout.removeAllViews();
-		tableLayout.addView(new InventoryTableHead(this));
+//		tableLayout.addView(new InventoryTableHead(this));
 
 		productList = Store.getInstance().getAllProduct();
 		
@@ -192,16 +192,16 @@ public class InventoryActivity extends Activity {
 				String id = product.getId();
 				int quantity = Store.getInstance().getQuantity(id);
 
-				InventoryTableRow row = new InventoryTableRow(this,
-						productList.get(i), quantity);
-				tableLayout.addView(row);
+//				InventoryTableRow row = new InventoryTableRow(this,
+//						productList.get(i), quantity);
+//				tableLayout.addView(row);
 			}
 		}
 	}
 	
 	public void refreshTableFilter(ArrayList<ProductDescription> productList) {
 		tableLayout.removeAllViews();
-		tableLayout.addView(new InventoryTableHead(this));
+//		tableLayout.addView(new InventoryTableHead(this));
 		
 		Toast.makeText(getApplicationContext(), productList.toString(),
 				Toast.LENGTH_SHORT);
@@ -221,9 +221,9 @@ public class InventoryActivity extends Activity {
 				String id = product.getId();
 				int quantity = Store.getInstance().getQuantity(id);
 
-				InventoryTableRow row = new InventoryTableRow(this,
-						productList.get(i), quantity);
-				tableLayout.addView(row);
+//				InventoryTableRow row = new InventoryTableRow(this,
+//						productList.get(i), quantity);
+//				tableLayout.addView(row);
 			}
 		}
 	}

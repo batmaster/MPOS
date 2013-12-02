@@ -76,7 +76,7 @@ public class EditProductActivity extends Activity {
 							.show();
 				}
 				else {
-					if (Store.getInstance().getProduct(id) != null) {
+					if (Store.getInstance().getProduct(id) != null && !id.equals(oldProduct.getId())) {
 						Toast.makeText(
 								getApplicationContext(),
 								String.format("Product : %s is already added.",
