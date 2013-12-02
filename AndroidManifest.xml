@@ -60,6 +60,10 @@
             android:label="@string/title_activity_success_payment"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
+        <activity
+            android:name="com.bbaf.mpos.SaleEditActivity"
+            android:label="@string/title_activity_sale_edit" >
+        </activity>
     </application>
 
 </manifest>
