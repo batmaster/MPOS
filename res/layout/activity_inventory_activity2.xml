@@ -259,13 +259,19 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
 
-                    <TableLayout
+                    <!-- <TableLayout
                         android:id="@+id/tableLayoutInventory"
                         android:layout_width="match_parent"
                         android:layout_height="350dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp" >
-                    </TableLayout>
+                    </TableLayout> -->
+
+                    <ListView
+                        android:id="@+id/listViewInventory"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp" >
+                    </ListView>
 
                     <LinearLayout
                         android:id="@+id/LinearLayout1"

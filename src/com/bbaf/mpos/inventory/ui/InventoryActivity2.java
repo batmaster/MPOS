@@ -22,8 +22,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -47,7 +50,10 @@ public class InventoryActivity2 extends Activity {
 	private Button buttonCancelSale; // name changed from buttonRemoveSale
 	
 	private TabSpec tabInventory;
-	private TableLayout tableLayoutInventory;
+//	private TableLayout tableLayoutInventory;
+	private ListView listViewInventory;
+	private InventoryListViewAdapter inventoryListViewAdapter;
+	
 	private Button buttonAddProduct;
 	private Button buttonATS; // name changed from buttonEdit
 	private Button buttonRemoveProduct;
@@ -97,26 +103,20 @@ public class InventoryActivity2 extends Activity {
 						int tmp = 0;
 						if (Register.getInstance().getSaleLineItemList(product) != null)
 							tmp = Register.getInstance().getSaleLineItemList(product).getQuantity();
-						//int stock = inventory.getQuantity(id) - tmp;
-						
-//						if (stock < quantity) {
-//							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " has only " + stock + ".", Toast.LENGTH_SHORT).show();
-//						}
-//						else {
-							if (Register.getInstance().addItem(product, quantity)) {
-								editTextInputID.setText("");
-								editTextQuantity.setText("");
-								Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
-								refreshSaleTable();
-								
-								String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
-								//textViewStatus.setText(status);
-								
-							}
-							else {
-								Toast.makeText(getApplicationContext(), "Adding not successful.", Toast.LENGTH_SHORT).show();
-							}
-//						}
+
+						if (Register.getInstance().addItem(product, quantity)) {
+							editTextInputID.setText("");
+							editTextQuantity.setText("");
+							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
+							refreshSaleTable();
+							
+							String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
+							//textViewStatus.setText(status);
+							
+						}
+						else {
+							Toast.makeText(getApplicationContext(), "Adding not successful.", Toast.LENGTH_SHORT).show();
+						}
 					}
 				}
 			}
@@ -155,7 +155,7 @@ public class InventoryActivity2 extends Activity {
 			@Override
 			public void onClick(View v) {
 				Register.getInstance().removeAllItem();
-				refreshIntenvoryTable();
+//				refreshIntenvoryTable();
 				//textViewStatus.setText("Welcome");
 				textViewTotalPriceText.setText("0.0");
 				editTextInputID.setText("");
@@ -170,7 +170,7 @@ public class InventoryActivity2 extends Activity {
 		tabInventory.setIndicator("Inventory");
 		tabHost.addTab(tabInventory);
 		
-		tableLayoutInventory = (TableLayout)findViewById(R.id.tableLayoutInventory);
+//		tableLayoutInventory = (TableLayout)findViewById(R.id.tableLayoutInventory);
 		
 		buttonAddProduct = (Button)findViewById(R.id.buttonAddProduct);
 		buttonAddProduct.setOnClickListener(new OnClickListener() {
@@ -184,49 +184,64 @@ public class InventoryActivity2 extends Activity {
 		});
 		
 		buttonATS = (Button)findViewById(R.id.buttonAddToSale);
-		buttonATS.setOnClickListener(new ATSOnClickListener(tableLayoutInventory, this));
+//		buttonATS.setOnClickListener(new ATSOnClickListener(tableLayoutInventory, this));
 		
 		//TODO change activity to add to sale...
 		//buttonATS.setOnClickListener(new EditOnClickListener(tableLayoutInventory, this));
 		
 		buttonRemoveProduct = (Button)findViewById(R.id.buttonRemoveProduct);
-		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(tableLayoutInventory, this));
+//		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(tableLayoutInventory, this));
 		
 		
 		
 		Register.getInstance().startSale();
-		refreshIntenvoryTable();
+//		refreshIntenvoryTable();
 		refreshSaleTable();
+		
+		
+		
+		////////////////// listview
+		listViewInventory = (ListView)findViewById(R.id.listViewInventory);
+		inventoryListViewAdapter = new InventoryListViewAdapter(this, Register.getInstance().getInventory().getAllProduct());
+		listViewInventory.setAdapter(inventoryListViewAdapter);
+//		
+//		listViewInventory.setOnItemClickListener(new OnItemClickListener() {
+//
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//				}
+//		});
 	}
 	
-	public void refreshIntenvoryTable() {
-		tableLayoutInventory.removeAllViews();
-		tableLayoutInventory.addView(new InventoryTableHead(this));
-
-		ArrayList<ProductDescription> productList = Register.getInstance().getInventory().getAllProduct();
-		
-		if (productList != null) {
-			if (productList.size() == 0) {
-				TableRow free = new TableRow(this);
-				TextView c = new TextView(this);
-				free.addView(c);
-				TextView v = new TextView(this);
-				v.setText("Empty");
-				free.addView(v);
-				tableLayoutInventory.addView(free);
-				return;
-			}
-			for (int i = 0; i < productList.size(); i++) {
-				ProductDescription product = productList.get(i);
-				String id = product.getId();
-				int quantity = Store.getInstance().getQuantity(id);
-
-				InventoryTableRow row = new InventoryTableRow(this,
-						productList.get(i), quantity);
-				tableLayoutInventory.addView(row);
-			}
-		}
-	}
+//	public void refreshIntenvoryTable() {
+//		tableLayoutInventory.removeAllViews();
+//		tableLayoutInventory.addView(new InventoryTableHead(this));
+//
+//		ArrayList<ProductDescription> productList = Register.getInstance().getInventory().getAllProduct();
+//		
+//		if (productList != null) {
+//			if (productList.size() == 0) {
+//				TableRow free = new TableRow(this);
+//				TextView c = new TextView(this);
+//				free.addView(c);
+//				TextView v = new TextView(this);
+//				v.setText("Empty");
+//				free.addView(v);
+//				tableLayoutInventory.addView(free);
+//				return;
+//			}
+//			for (int i = 0; i < productList.size(); i++) {
+//				ProductDescription product = productList.get(i);
+//				String id = product.getId();
+//				int quantity = Store.getInstance().getQuantity(id);
+//
+//				InventoryTableRow row = new InventoryTableRow(this,
+//						productList.get(i), quantity);
+//				tableLayoutInventory.addView(row);
+//			}
+//		}
+//	}
 	
 	public void refreshSaleTable() {
 		tableLayoutSale.removeAllViews();
@@ -282,7 +297,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshIntenvoryTable();
+//				refreshIntenvoryTable();
 			}
 		}
 		else if (requestCode == EDIT_ACTIVITY_REQUESTCODE) {
@@ -292,7 +307,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshIntenvoryTable();
+//				refreshIntenvoryTable();
 			}
 		}
 		else if (requestCode == PAYMENT_ACTIVITY_REQUESTCODE) {
