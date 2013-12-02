@@ -18,5 +18,6 @@
     <string name="title_activity_add_product">AddProductActivity</string>
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="title_activity_success_payment">SuccessPaymentActivity</string>
+    <string name="title_activity_description">DescriptionActivity</string>
 
 </resources>

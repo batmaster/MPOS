@@ -1,0 +1,160 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DescriptionActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionIDText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID : " 
+                android:layout_marginRight="40dp"/>
+
+            <TextView
+                android:id="@+id/textViewDescriptionID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDnumber" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name : "
+                android:layout_marginRight="17dp" />
+
+            <TextView
+                android:id="@+id/textViewDescriptionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price : "
+                android:layout_marginRight="23dp" />
+
+            <TextView
+                android:id="@+id/textViewDescriptionPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productPrice" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionCostText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost : "
+                android:layout_marginRight="26dp" />
+
+            <TextView
+                android:id="@+id/textViewDescriptionCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productCost" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionQuantityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity : " 
+                android:layout_marginRight="1dp"/>
+
+            <TextView
+                android:id="@+id/textViewDescriptionQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="productQuantity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewDescriptionMoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More :" />
+
+            <TextView
+                android:id="@+id/textViewDescriptionMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="aboutProduct" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="6" >
+
+            <Button
+                android:id="@+id/buttonDescriptionBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Back" />
+
+            <Button
+                android:id="@+id/buttonDescriptionEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Edit" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
