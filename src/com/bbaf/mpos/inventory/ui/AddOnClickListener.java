@@ -1,5 +1,6 @@
 package com.bbaf.mpos.inventory.ui;
 
+import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
@@ -29,36 +30,41 @@ public class AddOnClickListener implements OnClickListener {
 		EditText editTextQuantity = text[4];
 		String id = editTextProductId.getText().toString();
 		if (!id.equals("")) {
-			String name = editTextProductName.getText().toString();
-			String priceText = editTextPrice.getText().toString();
-			String costText = editTextCost.getText().toString();
-			String quantityText = editTextQuantity.getText()
-					.toString();
-
-			double price = Double.parseDouble(priceText.equals("") ? "0"
-					: priceText);
-			double cost = Double.parseDouble(costText.equals("") ? "0"
-					: costText);
-			int quantity = Integer.parseInt(quantityText.equals("") ? "1"
-					: quantityText);
-			ProductDescription product = new ProductDescription(id,
-					name, price, cost);
-			long row = Store.getInstance().addProduct(product,quantity);
-			Toast.makeText(
-					activity.getApplicationContext(),
-					String.format(
-							"Product add to row %d successfully.",
-							row), Toast.LENGTH_SHORT).show();
-			activity.setResult(ADD_SUCCESS);
-
-			// bat: moved from clear() in InventoryActivity
-			editTextProductId.setText("");
-			editTextProductName.setText("");
-			editTextPrice.setText("");
-			editTextCost.setText("");
-			editTextQuantity.setText("");
-			editTextProductId.requestFocus();
-			//
+			if (Register.getInstance().getInventory().getProduct(id) == null) {
+				String name = editTextProductName.getText().toString();
+				String priceText = editTextPrice.getText().toString();
+				String costText = editTextCost.getText().toString();
+				String quantityText = editTextQuantity.getText()
+						.toString();
+	
+				double price = Double.parseDouble(priceText.equals("") ? "0"
+						: priceText);
+				double cost = Double.parseDouble(costText.equals("") ? "0"
+						: costText);
+				int quantity = Integer.parseInt(quantityText.equals("") ? "1"
+						: quantityText);
+				ProductDescription product = new ProductDescription(id,
+						name, price, cost);
+				long row = Register.getInstance().getInventory().addProduct(product,quantity);
+				Toast.makeText(
+						activity.getApplicationContext(),
+						String.format(
+								"Product add to row %d successfully.",
+								row), Toast.LENGTH_SHORT).show();
+				activity.setResult(ADD_SUCCESS);
+	
+				// bat: moved from clear() in InventoryActivity
+				editTextProductId.setText("");
+				editTextProductName.setText("");
+				editTextPrice.setText("");
+				editTextCost.setText("");
+				editTextQuantity.setText("");
+				editTextProductId.requestFocus();
+				//
+			}
+			else {
+				Toast.makeText(activity.getApplicationContext(), String.format("Product ID %s is already added", id), Toast.LENGTH_SHORT).show();
+			}
 		} else {
 			Toast.makeText(activity.getApplicationContext(),
 					"Product ID must not be empty.", Toast.LENGTH_SHORT)

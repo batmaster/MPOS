@@ -29,7 +29,7 @@ public class PaymentActivity extends Activity {
 		setContentView(R.layout.activity_payment);
 		
 		textViewPaymentTotal = (TextView)findViewById(R.id.textViewPaymentTotal);
-		textViewPaymentTotal.setText(String.valueOf(Register.getInstance().getTotal()));
+		textViewPaymentTotal.setText(String.format("%.2f", Register.getInstance().getTotal()));
 		
 		editTextPay = (EditText)findViewById(R.id.editTextPay);
 		

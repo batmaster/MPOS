@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+	package com.bbaf.mpos.inventory.ui;
 
 import java.util.ArrayList;
 
@@ -15,15 +15,18 @@ import com.google.zxing.integration.android.IntentResult;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -50,6 +53,7 @@ public class InventoryActivity2 extends Activity {
 	private EditText editTextInputID;
 	private EditText editTextQuantity;
 	private Button buttonPayment; // name changed from buttonSubmit
+	private Button buttonRemoveEach;
 	private Button buttonCancelSale; // name changed from buttonRemoveSale
 	
 	private TabSpec tabInventory;
@@ -65,6 +69,7 @@ public class InventoryActivity2 extends Activity {
 	private static final int ADD_ACTIVITY_REQUESTCODE = 0;
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	private static final int PAYMENT_ACTIVITY_REQUESTCODE = 2;
+	private static final int EDIT_UNITPRICE_ACTIVITY_REQUESTCODE = 3;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 
 	
@@ -142,24 +147,21 @@ public class InventoryActivity2 extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent paymentActivity = new Intent(getApplicationContext(), PaymentActivity.class);
-				startActivityForResult(paymentActivity, PAYMENT_ACTIVITY_REQUESTCODE);
+				if (Register.getInstance().getSale().getAllList().size() == 0) {
+					Toast.makeText(getApplicationContext(), "Add item first.", Toast.LENGTH_SHORT).show();
+				}
+				else {
+					Intent paymentActivity = new Intent(getApplicationContext(), PaymentActivity.class);
+					startActivityForResult(paymentActivity, PAYMENT_ACTIVITY_REQUESTCODE);
+				}
 			}
 		});
 		
+		buttonRemoveEach = (Button)findViewById(R.id.buttonRemoveEach);
+		buttonRemoveEach.setOnClickListener(new RemoveOnClickListener(listViewSale, this));
+		
 		buttonCancelSale = (Button)findViewById(R.id.buttonCancelSale);
-		buttonCancelSale.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Register.getInstance().removeAllItem();
-				refreshIntenvoryListView();
-				//textViewStatus.setText("Welcome");
-				textViewTotalPriceText.setText("0.0");
-				editTextInputID.setText("");
-				editTextQuantity.setText("");
-			}
-		});
+		buttonCancelSale.setOnClickListener(new CancelSaleOnClickListener(this));
 		
 		
 		// Tab Inventory
@@ -174,6 +176,13 @@ public class InventoryActivity2 extends Activity {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				String t = editTextSearchInventory.getText().toString();
+				if (t.equals("")) {
+					editTextSearchInventory.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_search, 0);
+				}
+				else {
+					editTextSearchInventory.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_cancel, 0);
+				}
+				
 				refreshIntenvoryListView(Register.getInstance().getInventory().getProductBySomething(t));
 			}
 			
@@ -188,6 +197,18 @@ public class InventoryActivity2 extends Activity {
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
 				
+			}
+		});
+		editTextSearchInventory.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getX() >= (v.getWidth() - v.getPaddingRight())) {
+                    	editTextSearchInventory.setText("");
+                    }
+                }
+				return false;
 			}
 		});
 		
@@ -226,7 +247,7 @@ public class InventoryActivity2 extends Activity {
 	
 	public void refreshSaleListView() {
 		saleListViewAdapter.notifyDataSetChanged();
-		textViewTotalPriceText.setText(String.valueOf(Register.getInstance().getTotal()));
+		textViewTotalPriceText.setText(String.format("%.2f", Register.getInstance().getTotal()));
 	}
 	
 	public void clearSaleTab() {
@@ -235,6 +256,11 @@ public class InventoryActivity2 extends Activity {
 		editTextQuantity.setText("");
 		//textViewStatus.setText("welcome");
 		textViewTotalPriceText.setText("0.0");
+	}
+	
+	public void clearInventoryTab() {
+		refreshIntenvoryListView();
+		editTextSearchInventory.setText("");
 	}
 	
 	@Override
@@ -262,6 +288,7 @@ public class InventoryActivity2 extends Activity {
 				// no need to refresh
 			} else if (resultCode == 1) {
 				refreshIntenvoryListView();
+				refreshSaleListView();
 			}
 		}
 		else if (requestCode == PAYMENT_ACTIVITY_REQUESTCODE) {
@@ -274,16 +301,30 @@ public class InventoryActivity2 extends Activity {
 				refreshSaleListView();
 			}
 		}
-		else if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
+		else if (requestCode == EDIT_UNITPRICE_ACTIVITY_REQUESTCODE) {
 			/**
-			 * 0 = PAYMENT_CANCEL 1 = PAYMENT_SUCCESS
+			 * 0 = EDIT_CANCEL 1 = EDIT_SUCCESS
 			 */
-			Log.d("scan", SCANNER_ACTIVITY_REQUESTCODE + " " + resultCode);
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				
+				refreshSaleListView();
 			}
+		}
+		else if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
+			IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        	if (scanningResult != null) {
+        		if (Register.getInstance().getInventory().getProduct(scanningResult.getContents()) == null) {
+        			Toast.makeText(getApplicationContext(),"ID has not registered.", Toast.LENGTH_SHORT).show();
+        		}
+        		else {
+	        		editTextInputID.setText(scanningResult.getContents());
+	        		editTextQuantity.requestFocus();
+        		}
+        	}
+        	else {
+        	    Toast.makeText(getApplicationContext(),"No scanned data received!", Toast.LENGTH_SHORT).show();
+        	}
 		}
 		
 	}

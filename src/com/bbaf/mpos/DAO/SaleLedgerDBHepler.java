@@ -10,6 +10,8 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.sale.Sale;
 import com.bbaf.mpos.sale.SaleLineItem;
+import com.bbaf.mpos.saleledger.ProductLedger;
+import com.bbaf.mpos.saleledger.SaleLedger;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -97,7 +99,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 				value.put("Date", current);
 				value.put("ProductId",line.getProductDescription().getId());
 				value.put("ProductName", line.getProductDescription().getName());
-				value.put("UnitPrice", line.getProductDescription().getPrice());
+				value.put("UnitPrice", line.getUnitPrice());
 				value.put("Price", line.getTotal());
 				value.put("Quantity", line.getQuantity());
 				long row = db.insert(TABLE_PRODUCT_LEDGER, null, value);
@@ -114,8 +116,8 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 		return 0;
 	}
 	
-	public ArrayList<Sale> getAllSale() {
-		ArrayList<Sale> saleList = new ArrayList<Sale>();
+	public ArrayList<SaleLedger> getAllSale() {
+		ArrayList<SaleLedger> saleList = new ArrayList<SaleLedger>();
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			
@@ -125,8 +127,11 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			if (cursorSL != null) {
 				if (cursorSL.moveToFirst()) {
 					do {
+						/**
+						 * 0 = _key 1 = Date 2 = Total
+						 */
+						SaleLedger sl = new SaleLedger(cursorSL.getString(1), cursorSL.getDouble(2));
 						String date = cursorSL.getString(0);
-						Sale sale = new Sale(cursorSL.getString(1));
 						
 							/** Get all SaleLineItem for that Sale Ledger **/
 							Cursor cursorPL = db.query(TABLE_PRODUCT_LEDGER, new String[] { "*" },
@@ -135,15 +140,17 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 	
 							if (cursorPL != null) {
 								if (cursorPL.moveToFirst()) {
-									/**
-									 * 0 = _key 1 = Date 2 = ProductId 3 = ProductName 4 = UnitPrice
-									 * 5 = Price 6 = Quantity
-									 */
-									sale.AddSaleLineItem(Register.getInstance().getInventory().getProduct(cursorPL.getString(2)), cursorPL.getInt(6));
+									do {
+										/**
+										 * 0 = _key 1 = Date 2 = ProductId 3 = ProductName 4 = UnitPrice
+										 * 5 = Price 6 = Quantity
+										 */
+										sl.addProductLedger(new ProductLedger(cursorPL.getString(2), cursorPL.getString(3), cursorPL.getDouble(4), cursorPL.getInt(6)));
+										} while(cursorPL.moveToNext());
 								}
 							}
 							cursorPL.close();
-						saleList.add(sale);
+						saleList.add(sl);
 					} while (cursorSL.moveToNext());
 				}
 			}
@@ -151,12 +158,12 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			db.close();
 		return saleList;
 		} catch (Exception e) {
-			return null;
+			return saleList;
 		}
 	}
 	
-	public ArrayList<Sale> getSale(String from, String to) {
-		ArrayList<Sale> saleList = new ArrayList<Sale>();
+	public ArrayList<SaleLedger> getSale(String from, String to) {
+		ArrayList<SaleLedger> saleList = new ArrayList<SaleLedger>();
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
 			
@@ -167,24 +174,29 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			if (cursorSL != null) {
 				if (cursorSL.moveToFirst()) {
 					do {
-						String date = cursorSL.getString(0);
-						Sale sale = new Sale(cursorSL.getString(1));
+						/**
+						 * 0 = _key 1 = Date 2 = Total
+						 */
+						SaleLedger sl = new SaleLedger(cursorSL.getString(1), cursorSL.getDouble(2));
+						String date = cursorSL.getString(1);
 						
 							/** Get SaleLineItem for that Sale Ledger **/
-						strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN '%s' AND '%s'", TABLE_PRODUCT_LEDGER, from, to);
+						strSQL = String.format("SELECT * FROM %s WHERE Date = '%s'", TABLE_PRODUCT_LEDGER, date);
 						Cursor cursorPL = db.rawQuery(strSQL, null);
 	
 							if (cursorPL != null) {
 								if (cursorPL.moveToFirst()) {
-									/**
-									 * 0 = _key 1 = Date 2 = ProductId 3 = ProductName 4 = UnitPrice
-									 * 5 = Price 6 = Quantity
-									 */
-									sale.AddSaleLineItem(Register.getInstance().getInventory().getProduct(cursorPL.getString(2)), cursorPL.getInt(6));
+									do {
+										/**
+										 * 0 = _key 1 = Date 2 = ProductId 3 = ProductName 4 = UnitPrice
+										 * 5 = Price 6 = Quantity
+										 */
+										sl.addProductLedger(new ProductLedger(cursorPL.getString(2), cursorPL.getString(3), cursorPL.getDouble(4), cursorPL.getInt(6)));
+									} while (cursorPL.moveToNext());
 								}
 							}
 							cursorPL.close();
-						saleList.add(sale);
+						saleList.add(sl);
 					} while (cursorSL.moveToNext());
 				}
 			}
@@ -192,8 +204,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 			db.close();
 		return saleList;
 		} catch (Exception e) {
-			Log.d("here", e.toString());
-			return null;
+			return saleList;
 		}
 	}
 

@@ -2,6 +2,8 @@ package com.bbaf.mpos.ProductDescription;
 
 import java.io.Serializable;
 
+import com.bbaf.mpos.sale.SaleLineItem;
+
 import android.util.Log;
 
 public class ProductDescription implements Serializable {
@@ -18,13 +20,16 @@ public class ProductDescription implements Serializable {
 	public boolean equals(Object obj) {
 		if (obj == null)
 			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
-		ProductDescription other = (ProductDescription)obj;
+		if (this.getClass() == obj.getClass()) {
+			ProductDescription product = (ProductDescription)obj;
+			return id.equals(product.getId());
+		}
+		else if (SaleLineItem.class == obj.getClass()) {
+			SaleLineItem line = (SaleLineItem)obj;
+			return id.equals(line.getProductDescription().getId());
+		}
 		
-		if (!this.getId().equals(other.getId()))
-			return false;
-		return true;
+		return false;
 	}
 
 	private int key;

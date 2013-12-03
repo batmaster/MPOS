@@ -49,7 +49,7 @@ public class PaymentConfirmOnClickListener implements OnClickListener {
 			activity.finish();
 		}
 		else {
-			Toast.makeText(activity.getApplicationContext(), "Need more " + (Register.getInstance().getTotal() - activity.getCash()), Toast.LENGTH_SHORT).show();
+			Toast.makeText(activity.getApplicationContext(), String.format("Need more %.2f", Register.getInstance().getTotal() - activity.getCash()), Toast.LENGTH_SHORT).show();
 		}
 	}
 }

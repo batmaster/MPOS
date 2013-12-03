@@ -51,7 +51,7 @@
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -127,6 +127,7 @@
                                 android:layout_marginRight="10dp"
                                 android:layout_weight="5"
                                 android:background="@drawable/light_green_btn"
+                                android:drawableLeft="@drawable/ic_action_download"
                                 android:gravity="center"
                                 android:minHeight="15dp"
                                 android:minWidth="80dp"
@@ -146,6 +147,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
                                 android:background="@drawable/light_green_btn"
+                                android:drawableLeft="@drawable/ic_action_camera"
                                 android:gravity="center"
                                 android:minHeight="15dp"
                                 android:minWidth="80dp"
@@ -158,12 +160,14 @@
                                 android:textColor="#FFFFFF"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
+
                         </LinearLayout>
 
                         <ListView
                             android:id="@+id/listViewSale"
-                            android:layout_width="match_parent"
-                            android:layout_height="201dp" >
+                            android:layout_width="fill_parent"
+                            android:layout_height="300dp"
+                            android:scrollbars="vertical" >
                         </ListView>
 
                         <LinearLayout
@@ -202,13 +206,15 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="fill_parent"
                             android:orientation="vertical" >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:weightSum="15" >
+                                android:layout_height="match_parent"
+                                android:weightSum="15"
+                                android:gravity="bottom"
+                                 >
 
                                 <Button
                                     android:id="@+id/buttonPayment"
@@ -217,6 +223,7 @@
                                     android:layout_marginRight="2.5dp"
                                     android:layout_weight="5"
                                     android:background="@drawable/light_green_btn"
+                                    android:drawableLeft="@drawable/ic_action_accept"
                                     android:gravity="center"
                                     android:minHeight="15dp"
                                     android:minWidth="80dp"
@@ -234,10 +241,11 @@
                                     android:id="@+id/buttonRemoveEach"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="2.5dp"
                                     android:layout_marginLeft="2.5dp"
+                                    android:layout_marginRight="2.5dp"
                                     android:layout_weight="5"
                                     android:background="@drawable/light_red_btn"
+                                    android:drawableLeft="@drawable/ic_action_discard"
                                     android:gravity="center"
                                     android:minHeight="15dp"
                                     android:minWidth="80dp"
@@ -255,9 +263,10 @@
                                     android:id="@+id/buttonCancelSale"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="5"
                                     android:layout_marginLeft="2.5dp"
+                                    android:layout_weight="5"
                                     android:background="@drawable/light_red_btn"
+                                    android:drawableLeft="@drawable/ic_action_cancel"
                                     android:gravity="center"
                                     android:minHeight="15dp"
                                     android:minWidth="80dp"
@@ -270,6 +279,7 @@
                                     android:textColor="#FFFFFF"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
+
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -287,19 +297,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:layout_marginTop="2dp"
+                        android:drawableRight="@drawable/ic_action_search"
                         android:hint="Enter product name or ID" />
 
                     <ListView
                         android:id="@+id/listViewInventory"
-                        android:layout_width="match_parent"
-                        android:layout_height="350dp" >
+						android:layout_width="fill_parent"
+						android:layout_height="350dp"
+						android:layout_marginBottom="5dp"
+						android:scrollbars="vertical" >
                     </ListView>
 
                     <LinearLayout
                         android:id="@+id/LinearLayout1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="9" >
+                        android:weightSum="9"
+                        android:gravity="bottom" >
 
                         <Button
                             android:id="@+id/buttonAddProduct"
@@ -308,6 +322,7 @@
                             android:layout_marginRight="3dip"
                             android:layout_weight="3"
                             android:background="@drawable/light_green_btn"
+                            android:drawableLeft="@drawable/ic_action_new_label"
                             android:gravity="center"
                             android:padding="7dip"
                             android:shadowColor="#014927"
@@ -326,13 +341,14 @@
                             android:layout_marginRight="3dip"
                             android:layout_weight="3"
                             android:background="@drawable/light_green_btn"
+                            android:drawableLeft="@drawable/ic_action_download"
                             android:gravity="center"
                             android:padding="7dip"
                             android:shadowColor="#014927"
                             android:shadowDx="0.0"
                             android:shadowDy="0.0"
                             android:shadowRadius="2.5"
-                            android:text="AddToSale"
+                            android:text="ToSale"
                             android:textColor="#FFFFFF"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -343,6 +359,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:background="@drawable/light_green_btn"
+                            android:drawableLeft="@drawable/ic_action_discard"
                             android:gravity="center"
                             android:padding="7dip"
                             android:shadowColor="#014927"
@@ -353,6 +370,7 @@
                             android:textColor="#FFFFFF"
                             android:textSize="15sp"
                             android:textStyle="bold" />
+
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>

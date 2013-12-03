@@ -11,12 +11,28 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
  */
 public class SaleLineItem implements Serializable {
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (this.getClass() == obj.getClass()) {
+			SaleLineItem line = (SaleLineItem)obj;
+			return productDesc.getId().equals(line.getProductDescription().getId());
+		}
+		else if (ProductDescription.class == obj.getClass()) {
+			ProductDescription product = (ProductDescription)obj;
+			return productDesc.getId().equals(product.getId());
+		}
+		
+		return false;
+	}
+
 	/** ProductDescription of this line item. */
 	private ProductDescription productDesc;
 	/** Quantity of product in this line item. */
 	private int quantity;
 	
-	private double price;
+	private double unitPrice;
 	/**
 	 * initialize SaleLineItem with ProductDescription.
 	 * it will invoke other constructor with quantity of 1 instead.
@@ -34,7 +50,7 @@ public class SaleLineItem implements Serializable {
 	 */
 	public SaleLineItem(ProductDescription product,int q) {
 		productDesc = product;
-		price = product.getPrice();
+		unitPrice = product.getPrice();
 		if(q>0) quantity = q;
 		else quantity = 1;
 	}
@@ -72,10 +88,14 @@ public class SaleLineItem implements Serializable {
 	 * @return total item price
 	 */
 	public double getTotal(){
-		return quantity*price;
+		return quantity * unitPrice;
 	}
 	
-	public void editPrice(double price){
-		this.price = price;
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+	
+	public void setUnitPrice(double price){
+		this.unitPrice = price;
 	}
 }

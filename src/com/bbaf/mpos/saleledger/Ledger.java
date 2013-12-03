@@ -33,11 +33,11 @@ public class Ledger {
 		dbDAO.addSale(sale);
 	}
 	
-	public ArrayList<Sale> getAllSaleLedger() {
+	public ArrayList<SaleLedger> getAllSaleLedger() {
 		return dbDAO.getAllSale();
 	}
 	
-	public ArrayList<Sale> getDaily() {
+	public ArrayList<SaleLedger> getDaily() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		String current = sdf.format(date.getTime());
 		Calendar from = (Calendar) date.clone();
@@ -47,7 +47,7 @@ public class Ledger {
 		
 	}
 	
-	public ArrayList<Sale> getWeek(){
+	public ArrayList<SaleLedger> getWeek(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) date.clone();
 		Calendar temp = (Calendar) date.clone();
@@ -60,7 +60,7 @@ public class Ledger {
 		return dbDAO.getSale(current,to);
 	}
 	
-	public ArrayList<Sale> getMonth(){
+	public ArrayList<SaleLedger> getMonth(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) date.clone();
 		Calendar temp = (Calendar) date.clone();

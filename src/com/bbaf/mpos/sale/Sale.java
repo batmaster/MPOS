@@ -64,12 +64,13 @@ public class Sale implements Serializable {
 	
 	public boolean RemoveSaleLineItem(ProductDescription productDesc) {
 		try {
-			lineOfItem.remove(productDesc);
+			boolean canRemove = lineOfItem.remove(productDesc);
+			Log.d("remove", canRemove + "");
+			return canRemove;
 		}
 		catch (Exception ex) {
 			return false;
 		}
-		return true;
 	}
 	
 	public boolean RemoveAllSaleLineItem() {

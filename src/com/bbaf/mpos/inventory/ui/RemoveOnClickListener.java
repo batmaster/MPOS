@@ -11,11 +11,11 @@ import android.widget.TableLayout;
 
 public class RemoveOnClickListener implements OnClickListener {
 
-	private ListView listViewInventory;
+	private ListView listView;
 	private InventoryActivity2 activity;
 
-	public RemoveOnClickListener(ListView listViewInventory, InventoryActivity2 activity) {
-		this.listViewInventory = listViewInventory;
+	public RemoveOnClickListener(ListView listView, InventoryActivity2 activity) {
+		this.listView = listView;
 		this.activity = activity;
 	}
 
@@ -24,9 +24,9 @@ public class RemoveOnClickListener implements OnClickListener {
 		final AlertDialog.Builder adb = new AlertDialog.Builder(
 				activity);
 		adb.setTitle("Confirm?");
-		adb.setMessage("Plese Confirm");
+		adb.setMessage("Remove item(s)?");
 		adb.setNegativeButton("Cancel", null);
-		adb.setPositiveButton("Ok", new DialogOnClickListener(listViewInventory, activity));
+		adb.setPositiveButton("Ok", new DialogOnClickListener(listView, activity));
 		adb.show();
 	}
 }

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ID : " 
-                android:layout_marginRight="40dp"/>
+                android:layout_marginRight="41dp"/>
 
             <TextView
                 android:id="@+id/textViewDescriptionID"

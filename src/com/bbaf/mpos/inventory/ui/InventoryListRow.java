@@ -16,7 +16,7 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
-class InventoryListRow extends RelativeLayout {
+class InventoryListRow extends RemovableListRow {
 	
 	private ProductDescription product;
 	
@@ -25,6 +25,8 @@ class InventoryListRow extends RelativeLayout {
 	private TextView textViewRowNameInventory;
 	private TextView textViewRowQuantityInventory;
 	private ImageView imageViewEditRowInventory;
+	
+	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	
 	public InventoryListRow(final Activity activity, ProductDescription product) {
 		super(activity.getApplicationContext());
@@ -59,17 +61,23 @@ class InventoryListRow extends RelativeLayout {
 				int quantity = Register.getInstance().getInventory().getQuantity(getProduct().getId());
 				editActivity.putExtra("ProductQuantity", quantity);
 
-				// EDIT_ACTIVITY_REQUESTCODE = 1
-				activity.startActivityForResult(editActivity, 1);
+				activity.startActivityForResult(editActivity, EDIT_ACTIVITY_REQUESTCODE);
 			}
 		});
 	}
 	
+	@Override
 	public boolean isChecked() {
 		return checkBoxRowInventory.isChecked();
 	}
 	
+	@Override
 	public ProductDescription getProduct() {
 		return product;
+	}
+
+	@Override
+	public void remove() {
+		Register.getInstance().getInventory().removeProduct(product);
 	}
 }

@@ -24,7 +24,7 @@ public class SuccessPaymentActivity extends Activity {
 		
 		textViewChange = (TextView)findViewById(R.id.textViewChange);
 		double cash = getIntent().getDoubleExtra("Cash", 0);
-		textViewChange.setText(String.valueOf(cash));
+		textViewChange.setText(String.format("%.2f", cash));
 		
 		buttonChangeConfirm = (Button)findViewById(R.id.buttonChangeComfirm);
 		buttonChangeConfirm.setOnClickListener(new OnClickListener() {

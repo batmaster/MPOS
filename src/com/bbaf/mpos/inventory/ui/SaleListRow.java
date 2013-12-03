@@ -15,8 +15,9 @@ import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.sale.SaleLineItem;
+import com.bbaf.mpos.sale.payment.ui.SaleEditActivity;
 
-class SaleListRow extends RelativeLayout {
+class SaleListRow extends RemovableListRow {
 	
 	private SaleLineItem line;
 	
@@ -26,6 +27,10 @@ class SaleListRow extends RelativeLayout {
 	private TextView textViewRowUnitPriceSale;
 	private TextView textViewRowQuantitySale;
 	private ImageView imageViewEditRowSale;
+	
+	private boolean unitPriceChanged = false;
+	
+	private static final int EDIT_UNITPRICE_ACTIVITY_REQUESTCODE = 3;
 	
 	public SaleListRow(final Activity activity, SaleLineItem line) {
 		super(activity.getApplicationContext());
@@ -45,8 +50,8 @@ class SaleListRow extends RelativeLayout {
 		textViewRowNameSale.setTextColor(Color.BLACK);
 		
 		textViewRowUnitPriceSale = (TextView)findViewById(R.id.textViewRowUnitPriceSale);
-		textViewRowUnitPriceSale.setText(String.valueOf(line.getProductDescription().getPrice()));
-		textViewRowUnitPriceSale.setTextColor(Color.GRAY);
+		textViewRowUnitPriceSale.setText(String.format("%.2f", line.getUnitPrice()));
+		textViewRowUnitPriceSale.setTextColor(line.getUnitPrice() == Register.getInstance().getInventory().getProduct(line.getProductDescription().getId()).getPrice() ? Color.GRAY : Color.BLUE);
 		
 		textViewRowQuantitySale = (TextView)findViewById(R.id.textViewRowDateSaleLedger);
 		textViewRowQuantitySale.setText(String.valueOf(line.getQuantity()));
@@ -57,19 +62,27 @@ class SaleListRow extends RelativeLayout {
 			
 			@Override
 			public void onClick(View v) {
-				// edit prod in sale //
-				/*Intent editActivity = new Intent(getContext(), EditProductActivity.class);
-				getContext().startActivity(editActivity);*/
+				Intent editActivity = new Intent(activity.getApplicationContext(), SaleEditActivity.class);
 				
+				editActivity.putExtra("ProductDescription", getProduct());
+
+				activity.startActivityForResult(editActivity, EDIT_UNITPRICE_ACTIVITY_REQUESTCODE);
 			}
 		});
 	}
 	
+	@Override
 	public boolean isChecked() {
 		return checkBoxRowSale.isChecked();
 	}
 	
+	@Override
 	public ProductDescription getProduct() {
 		return line.getProductDescription();
+	}
+
+	@Override
+	public void remove() {
+		Register.getInstance().getSale().RemoveSaleLineItem(line.getProductDescription());
 	}
 }

@@ -8,7 +8,6 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.inventory.ui.SaleLedgerListViewAdapter;
 import com.bbaf.mpos.sale.Sale;
 import com.bbaf.mpos.saleledger.Ledger;
 
@@ -29,12 +28,17 @@ public class LedgerUIActivity extends Activity {
 	private TabSpec tabByDate;
 	private ListView listViewSaleLedgerDate;
 	private SaleLedgerListViewAdapter saleLedgerListViewAdapterDate;
+	private TextView textViewTotalByDate;
+	
 	private TabSpec tabByWeek;
 	private ListView listViewSaleLedgerWeek;
 	private SaleLedgerListViewAdapter saleLedgerListViewAdapterWeek;
+	private TextView textViewTotalByWeek;
+	
 	private TabSpec tabByMonth;
 	private ListView listViewSaleLedgerMonth;
 	private SaleLedgerListViewAdapter saleLedgerListViewAdapterMonth;
+	private TextView textViewTotalByMonth;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class LedgerUIActivity extends Activity {
 		listViewSaleLedgerDate = (ListView)findViewById(R.id.listViewSaleLedgerDate);
 		saleLedgerListViewAdapterDate = new SaleLedgerListViewAdapter(this, Register.getInstance().getLedger().getDaily());
 		listViewSaleLedgerDate.setAdapter(saleLedgerListViewAdapterDate);
+		textViewTotalByDate = (TextView)findViewById(R.id.textViewTotalByDate);
+		textViewTotalByDate.setText(String.format("Total : %.2f", saleLedgerListViewAdapterDate.getTotal()));
 
 		tabByWeek = tabLedger.newTabSpec("tabweek");
 		tabByWeek.setContent(R.id.tabweek);
@@ -59,6 +65,8 @@ public class LedgerUIActivity extends Activity {
 		listViewSaleLedgerWeek = (ListView)findViewById(R.id.listViewSaleLedgerWeek);
 		saleLedgerListViewAdapterWeek = new SaleLedgerListViewAdapter(this, Register.getInstance().getLedger().getWeek());
 		listViewSaleLedgerWeek.setAdapter(saleLedgerListViewAdapterWeek);
+		textViewTotalByWeek = (TextView)findViewById(R.id.textViewTotalByWeek);
+		textViewTotalByWeek.setText(String.format("Total : %.2f", saleLedgerListViewAdapterWeek.getTotal()));
 		
 		tabByMonth = tabLedger.newTabSpec("tabmonth");
 		tabByMonth.setContent(R.id.tabmonth);
@@ -67,6 +75,8 @@ public class LedgerUIActivity extends Activity {
 		listViewSaleLedgerMonth = (ListView)findViewById(R.id.listViewSaleLedgerMonth);
 		saleLedgerListViewAdapterMonth = new SaleLedgerListViewAdapter(this, Register.getInstance().getLedger().getMonth());
 		listViewSaleLedgerMonth.setAdapter(saleLedgerListViewAdapterMonth);
+		textViewTotalByMonth = (TextView)findViewById(R.id.textViewTotalByMonth);
+		textViewTotalByMonth.setText(String.format("Total : %.2f", saleLedgerListViewAdapterMonth.getTotal()));
 	}
 	
 	public void refreshDateListView() {

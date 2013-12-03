@@ -61,8 +61,12 @@
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="com.bbaf.mpos.SaleEditActivity"
+            android:name="com.bbaf.mpos.sale.payment.ui.SaleEditActivity"
             android:label="@string/title_activity_sale_edit" >
+        </activity>
+        <activity
+            android:name="com.bbaf.mpos.saleledger.ui.SaleLedgerProductListActivity"
+            android:label="@string/title_activity_sale_ledger_list" >
         </activity>
     </application>
 

@@ -48,9 +48,9 @@ public class EditProductActivity extends Activity {
 		editTextProductName = (EditText) findViewById(R.id.edit_editTextProductName);
 		editTextProductName.setText(String.valueOf(oldProduct.getName()));
 		editTextPrice = (EditText) findViewById(R.id.edit_editTextPrice);
-		editTextPrice.setText(String.valueOf(oldProduct.getPrice()));
+		editTextPrice.setText(String.format("%.2f", oldProduct.getPrice()));
 		editTextCost = (EditText) findViewById(R.id.edit_editTextCost);
-		editTextCost.setText(String.valueOf(oldProduct.getCost()));
+		editTextCost.setText(String.format("%.2f", oldProduct.getCost()));
 		editTextQuantity = (EditText) findViewById(R.id.edit_editTextQuantity);
 		editTextQuantity.setText(String.valueOf(oldQuantity));
 		buttonScan = (Button) findViewById(R.id.buttonScan);
@@ -131,7 +131,7 @@ public class EditProductActivity extends Activity {
         		editTextProductName.requestFocus();
         	}
         	else {
-        	    Toast.makeText(getApplicationContext(),"No scan data received!", Toast.LENGTH_SHORT).show();
+        	    Toast.makeText(getApplicationContext(),"No scanned data received!", Toast.LENGTH_SHORT).show();
         	}
 		}
 	}
