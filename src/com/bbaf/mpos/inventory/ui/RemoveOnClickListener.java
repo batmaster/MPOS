@@ -21,12 +21,24 @@ public class RemoveOnClickListener implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		final AlertDialog.Builder adb = new AlertDialog.Builder(
-				activity);
-		adb.setTitle("Confirm?");
-		adb.setMessage("Remove item(s)?");
-		adb.setNegativeButton("Cancel", null);
-		adb.setPositiveButton("Ok", new DialogOnClickListener(listView, activity));
-		adb.show();
+		boolean hasChecked = false;
+		for (int i = 0; i < listView.getChildCount(); i++) {
+			RemovableListRow row = (RemovableListRow)listView.getChildAt(i);
+
+			if (row.isChecked()) {
+				hasChecked = true;
+				break;
+			}
+		}
+		
+		if (hasChecked) {
+			final AlertDialog.Builder adb = new AlertDialog.Builder(
+					activity);
+			adb.setTitle("Confirm?");
+			adb.setMessage("Remove item(s)?");
+			adb.setNegativeButton("Cancel", null);
+			adb.setPositiveButton("Ok", new DialogOnClickListener(listView, activity));
+			adb.show();
+		}
 	}
 }
