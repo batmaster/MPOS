@@ -3,6 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9900FF9E"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -19,21 +20,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Change" />
+            android:text="Change"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
+             android:layout_marginTop="5dip"
             android:id="@+id/textViewChange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Money" />
+            android:text="Money"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <Button
+            android:layout_marginTop="10dip"
             android:id="@+id/buttonChangeComfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Comfirm" />
+            android:background="@drawable/light_green_btn"
+            android:gravity="center"
+            android:maxHeight="45dip"
+            android:minHeight="45dip"
+            android:maxWidth="100dip"
+            android:minWidth="100dip"
+            android:shadowColor="#014927"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="2.5"
+            android:text="Comfirm"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

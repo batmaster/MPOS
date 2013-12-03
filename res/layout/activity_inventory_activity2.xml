@@ -115,6 +115,7 @@
                                 android:background="#0D000000"
                                 android:hint=" 0"
                                 android:inputType="numberSigned"
+
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"

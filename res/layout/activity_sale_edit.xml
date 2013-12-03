@@ -3,6 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9900FF9E"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -22,15 +23,18 @@
                 android:id="@+id/textViewEditUnitPriceIdText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Product ID" />
+                android:layout_marginRight="50dip"
+                android:text="Product ID"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewEditUnitPriceId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ID" />
+                android:text="ID"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,15 +45,18 @@
                 android:id="@+id/textViewEditUnitPriceNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Product Name" />
+                android:layout_marginRight="16dip"
+                android:text="Product Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewEditUnitPriceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -60,16 +67,18 @@
                 android:id="@+id/textViewEditUnitPriceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="54dip"
                 android:text="Unit Price"
-                android:layout_weight="1" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editTextUnitPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Price Per Unit"
-                android:inputType="number" >
+                android:hint=" Price Per Unit"
+                android:inputType="number"
+                android:ems="7" >
 
                 <requestFocus />
             </EditText>
@@ -77,21 +86,46 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dip" >
 
             <Button
                 android:id="@+id/buttonEditSalePriceConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dip"
                 android:layout_weight="3"
-                android:text="Confirm" />
+                android:background="@drawable/light_green_btn"
+                android:gravity="center"
+                android:maxHeight="45dip"
+                android:minHeight="45dip"
+                android:shadowColor="#014927"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.5"
+                android:text="Confirm"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/buttonEditSalePriceCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dip"
                 android:layout_weight="3"
-                android:text="Cancel" />
+                android:background="@drawable/light_red_btn"
+                android:gravity="center"
+                android:maxHeight="45dip"
+                android:minHeight="45dip"
+                android:shadowColor="#014927"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.5"
+                android:text="Cancel"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

@@ -62,8 +62,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="fill_parent"
-                            android:orientation="vertical"
-                            android:gravity="bottom" >
+                            android:gravity="bottom"
+                            android:orientation="vertical" >
 
                             <TextView
                                 android:id="@+id/textViewTotalByDate"
@@ -83,13 +83,11 @@
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
                                     android:layout_marginRight="10dip"
                                     android:layout_weight="1"
                                     android:background="@drawable/light_green_btn"
                                     android:gravity="center"
-                                    android:minHeight="15dp"
-                                    android:minWidth="80dp"
-                                    android:padding="10dip"
                                     android:shadowColor="#014927"
                                     android:shadowDx="0.0"
                                     android:shadowDy="0.0"
@@ -104,12 +102,10 @@
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
                                     android:layout_weight="1"
                                     android:background="@drawable/light_green_btn"
                                     android:gravity="center"
-                                    android:minHeight="15dp"
-                                    android:minWidth="80dp"
-                                    android:padding="10dip"
                                     android:shadowColor="#014927"
                                     android:shadowDx="0.0"
                                     android:shadowDy="0.0"
@@ -119,7 +115,6 @@
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
-
                         </LinearLayout>
                     </LinearLayout>
                 </TabWidget>
@@ -153,8 +148,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="fill_parent"
-                            android:orientation="vertical"
-                            android:gravity="bottom" >
+                            android:gravity="bottom"
+                            android:orientation="vertical" >
 
                             <TextView
                                 android:id="@+id/textViewTotalByWeek"
@@ -173,18 +168,38 @@
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
+                                    android:layout_marginRight="10dip"
                                     android:layout_weight="1"
-                                    android:text="Previous" />
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Previous"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/buttonWeekNext"
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
                                     android:layout_weight="1"
-                                    android:text="Next" />
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Next"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
-
                         </LinearLayout>
                     </LinearLayout>
                 </TabWidget>
@@ -218,8 +233,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="fill_parent"
-                            android:orientation="vertical"
-                            android:gravity="bottom" >
+                            android:gravity="bottom"
+                            android:orientation="vertical" >
 
                             <TextView
                                 android:id="@+id/textViewTotalByMonth"
@@ -238,18 +253,38 @@
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
+                                    android:layout_marginRight="10dip"
                                     android:layout_weight="1"
-                                    android:text="Previous" />
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Previous"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/buttonMonthNext"
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dip"
                                     android:layout_weight="1"
-                                    android:text="Next" />
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Next"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
-
                         </LinearLayout>
                     </LinearLayout>
                 </TabWidget>

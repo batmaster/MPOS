@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SaleLedgerProductListActivity" >
+    tools:context=".SaleLedgerProductListActivity" 
+    android:background="@drawable/testbackground">
+    
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,37 +25,55 @@
                 android:id="@+id/textViewLedgerProductList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date" />
+                android:text="Date"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewLedgerProductListTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="Total" />
+                android:text="Total"
+                android:textSize="20sp" />
         </RelativeLayout>
 
-        <ListView
-            android:id="@+id/listViewLedgerProductList"
-            android:layout_width="fill_parent"
-            android:layout_height="350dp"
-            android:scrollbars="vertical" >
-        </ListView>
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ListView
+                android:id="@+id/listViewLedgerProductList"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scrollbars="vertical" >
+            </ListView>
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:gravity="bottom" >
+            android:gravity="bottom"
+            android:orientation="vertical" >
 
             <Button
                 android:id="@+id/buttonLedgerProductBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back" />
-
+                android:background="@drawable/light_yellow_btn"
+                android:gravity="center"
+                android:maxHeight="45dip"
+                android:minHeight="45dip"
+                android:shadowColor="#014927"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.5"
+                android:text="Back"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
