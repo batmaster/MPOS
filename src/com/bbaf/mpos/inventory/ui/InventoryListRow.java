@@ -24,6 +24,7 @@ class InventoryListRow extends RemovableListRow {
 	private TextView textViewRowIdInventory;
 	private TextView textViewRowNameInventory;
 	private TextView textViewRowQuantityInventory;
+	private TextView textViewRowPriceInventory;
 	private ImageView imageViewEditRowInventory;
 	
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
@@ -49,6 +50,10 @@ class InventoryListRow extends RemovableListRow {
 		int quantity = Register.getInstance().getInventory().getQuantity(product.getId());
 		textViewRowQuantityInventory.setText(String.valueOf(quantity));
 		textViewRowQuantityInventory.setTextColor(quantity < 0 ? Color.RED : Color.BLACK);
+		
+		textViewRowPriceInventory = (TextView)findViewById(R.id.textViewRowPriceInventory);
+		textViewRowPriceInventory.setText(String.format("%.2f", product.getPrice()));
+		textViewRowPriceInventory.setTextColor(Color.BLACK);
 		
 		imageViewEditRowInventory = (ImageView)findViewById(R.id.imageViewEditRowInventory);
 		imageViewEditRowInventory.setOnClickListener(new OnClickListener() {

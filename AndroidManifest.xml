@@ -67,7 +67,8 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SaleEditActivity"
-            android:label="@string/title_activity_sale_edit" >
+            android:label="@string/title_activity_sale_edit"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.SaleLedgerProductListActivity"

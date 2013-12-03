@@ -51,7 +51,8 @@
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_marginTop="8dip"
+                        android:orientation="vertical" >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -62,26 +63,32 @@
                                 android:id="@+id/textViewID"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="2"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
                                 android:shadowRadius="2.5"
-                                android:text="ID :"
+                                android:text="ID : "
                                 android:textColor="#000000"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/editTextInputID"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:minWidth="160dp"
+                                android:layout_marginRight="4dip"
+                                android:layout_weight="3"
+                                android:background="#0D000000"
+                                android:hint=" IDNumber"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
                                 android:shadowRadius="2.5"
                                 android:textColor="#000000"
-                                android:textSize="15sp" >
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:ems="5" >
 
                                 <requestFocus />
                             </EditText>
@@ -90,27 +97,32 @@
                                 android:id="@+id/textViewQuantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="2"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
                                 android:shadowRadius="2.5"
-                                android:text="Quantity :"
+                                android:text=" Quantity : "
                                 android:textColor="#000000"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/editTextQuantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="3"
+                                android:background="#0D000000"
+                                android:hint=" 0"
                                 android:inputType="numberSigned"
-                                android:minWidth="60dp"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
                                 android:shadowRadius="2.5"
                                 android:textColor="#000000"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                 android:ems="5" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -129,9 +141,7 @@
                                 android:background="@drawable/light_green_btn"
                                 android:drawableLeft="@drawable/ic_action_download"
                                 android:gravity="center"
-                                android:minHeight="15dp"
-                                android:minWidth="80dp"
-                                android:padding="10dip"
+                                android:padding="8dip"
                                 android:shadowColor="#014927"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
@@ -149,9 +159,7 @@
                                 android:background="@drawable/light_green_btn"
                                 android:drawableLeft="@drawable/ic_action_camera"
                                 android:gravity="center"
-                                android:minHeight="15dp"
-                                android:minWidth="80dp"
-                                android:padding="10dip"
+                                android:padding="8dip"
                                 android:shadowColor="#014927"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
@@ -160,74 +168,72 @@
                                 android:textColor="#FFFFFF"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
-
                         </LinearLayout>
 
                         <ListView
                             android:id="@+id/listViewSale"
                             android:layout_width="fill_parent"
-                            android:layout_height="300dp"
+                            android:layout_height="wrap_content"
                             android:scrollbars="vertical" >
                         </ListView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp" >
-
-                            <TextView
-                                android:id="@+id/textViewTotalText"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.15"
-                                android:gravity="right"
-                                android:shadowColor="#FFFFFF"
-                                android:shadowDx="0.0"
-                                android:shadowDy="0.0"
-                                android:shadowRadius="2.0"
-                                android:text="Total :"
-                                android:textColor="#000000"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/textViewTotalPriceText"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"
-                                android:gravity="center"
-                                android:shadowColor="#FFFFFF"
-                                android:shadowDx="0.0"
-                                android:shadowDy="0.0"
-                                android:shadowRadius="2.0"
-                                android:text="0.0"
-                                android:textColor="#000000"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="bottom"
                             android:orientation="vertical" >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:weightSum="15"
-                                android:gravity="bottom"
-                                 >
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="10dp" >
+
+                                <TextView
+                                    android:id="@+id/textViewTotalText"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.15"
+                                    android:gravity="right"
+                                    android:shadowColor="#FFFFFF"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.0"
+                                    android:text="Total :"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewTotalPriceText"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.2"
+                                    android:gravity="center"
+                                    android:shadowColor="#FFFFFF"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.0"
+                                    android:text="0.0"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
 
                                 <Button
                                     android:id="@+id/buttonPayment"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="2.5dp"
-                                    android:layout_weight="5"
+                                    android:layout_marginRight="2dip"
+                                    android:layout_weight="3"
                                     android:background="@drawable/light_green_btn"
                                     android:drawableLeft="@drawable/ic_action_accept"
                                     android:gravity="center"
-                                    android:minHeight="15dp"
-                                    android:minWidth="80dp"
-                                    android:padding="10dip"
+                                    android:padding="8dip"
                                     android:shadowColor="#014927"
                                     android:shadowDx="0.0"
                                     android:shadowDy="0.0"
@@ -241,15 +247,13 @@
                                     android:id="@+id/buttonRemoveEach"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="2.5dp"
-                                    android:layout_marginRight="2.5dp"
-                                    android:layout_weight="5"
+                                    android:layout_marginLeft="2dip"
+                                    android:layout_marginRight="2dip"
+                                    android:layout_weight="3"
                                     android:background="@drawable/light_red_btn"
                                     android:drawableLeft="@drawable/ic_action_discard"
                                     android:gravity="center"
-                                    android:minHeight="15dp"
-                                    android:minWidth="80dp"
-                                    android:padding="10dip"
+                                    android:padding="8dip"
                                     android:shadowColor="#014927"
                                     android:shadowDx="0.0"
                                     android:shadowDy="0.0"
@@ -263,14 +267,12 @@
                                     android:id="@+id/buttonCancelSale"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="2.5dp"
-                                    android:layout_weight="5"
+                                    android:layout_marginLeft="2dip"
+                                    android:layout_weight="3"
                                     android:background="@drawable/light_red_btn"
                                     android:drawableLeft="@drawable/ic_action_cancel"
                                     android:gravity="center"
-                                    android:minHeight="15dp"
-                                    android:minWidth="80dp"
-                                    android:padding="10dip"
+                                    android:padding="8dip"
                                     android:shadowColor="#014927"
                                     android:shadowDx="0.0"
                                     android:shadowDy="0.0"
@@ -279,7 +281,6 @@
                                     android:textColor="#FFFFFF"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
-
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -289,7 +290,8 @@
                     android:id="@+id/tabInventory2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dip" >
 
                     <EditText
                         android:id="@+id/editTextSearchInventory"
@@ -297,80 +299,88 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:layout_marginTop="2dp"
+                        android:background="#0D000000"
                         android:drawableRight="@drawable/ic_action_search"
-                        android:hint="Enter product name or ID" />
+                        android:hint=" Enter product name or ID"
+                        android:textColor="#000000"
+                        android:textSize="22sp" />
 
                     <ListView
                         android:id="@+id/listViewInventory"
-						android:layout_width="fill_parent"
-						android:layout_height="350dp"
-						android:layout_marginBottom="5dp"
-						android:scrollbars="vertical" >
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:scrollbars="vertical" >
                     </ListView>
 
                     <LinearLayout
-                        android:id="@+id/LinearLayout1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="9"
-                        android:gravity="bottom" >
+                        android:layout_height="fill_parent"
+                        android:gravity="bottom"
+                        android:orientation="vertical" >
 
-                        <Button
-                            android:id="@+id/buttonAddProduct"
+                        <LinearLayout
+                            android:id="@+id/LinearLayout1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="3dip"
-                            android:layout_weight="3"
-                            android:background="@drawable/light_green_btn"
-                            android:drawableLeft="@drawable/ic_action_new_label"
-                            android:gravity="center"
-                            android:padding="7dip"
-                            android:shadowColor="#014927"
-                            android:shadowDx="0.0"
-                            android:shadowDy="0.0"
-                            android:shadowRadius="2.5"
-                            android:text="Add"
-                            android:textColor="#FFFFFF"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:weightSum="9" >
 
-                        <Button
-                            android:id="@+id/buttonAddToSale"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="3dip"
-                            android:layout_weight="3"
-                            android:background="@drawable/light_green_btn"
-                            android:drawableLeft="@drawable/ic_action_download"
-                            android:gravity="center"
-                            android:padding="7dip"
-                            android:shadowColor="#014927"
-                            android:shadowDx="0.0"
-                            android:shadowDy="0.0"
-                            android:shadowRadius="2.5"
-                            android:text="ToSale"
-                            android:textColor="#FFFFFF"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            <Button
+                                android:id="@+id/buttonAddProduct"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dip"
+                                android:layout_weight="3"
+                                android:background="@drawable/light_green_btn"
+                                android:drawableLeft="@drawable/ic_action_new_label"
+                                android:gravity="center"
+                                android:padding="7dip"
+                                android:shadowColor="#014927"
+                                android:shadowDx="0.0"
+                                android:shadowDy="0.0"
+                                android:shadowRadius="2.5"
+                                android:text="Add"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/buttonRemoveProduct"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:background="@drawable/light_green_btn"
-                            android:drawableLeft="@drawable/ic_action_discard"
-                            android:gravity="center"
-                            android:padding="7dip"
-                            android:shadowColor="#014927"
-                            android:shadowDx="0.0"
-                            android:shadowDy="0.0"
-                            android:shadowRadius="2.5"
-                            android:text="Remove"
-                            android:textColor="#FFFFFF"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            <Button
+                                android:id="@+id/buttonAddToSale"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dip"
+                                android:layout_weight="3"
+                                android:background="@drawable/light_green_btn"
+                                android:drawableLeft="@drawable/ic_action_download"
+                                android:gravity="center"
+                                android:padding="7dip"
+                                android:shadowColor="#014927"
+                                android:shadowDx="0.0"
+                                android:shadowDy="0.0"
+                                android:shadowRadius="2.5"
+                                android:text="ToSale"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
+                            <Button
+                                android:id="@+id/buttonRemoveProduct"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:background="@drawable/light_red_btn"
+                                android:drawableLeft="@drawable/ic_action_discard"
+                                android:gravity="center"
+                                android:padding="7dip"
+                                android:shadowColor="#014927"
+                                android:shadowDx="0.0"
+                                android:shadowDy="0.0"
+                                android:shadowRadius="2.5"
+                                android:text="Remove"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>

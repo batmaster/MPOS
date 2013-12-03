@@ -3,6 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9900FF9E"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -18,18 +19,21 @@
             android:id="@+id/textViewPaymentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product ID" />
+            android:layout_marginRight="40dip"
+            android:text="Product ID"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextProductId2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10" >
+            android:ems="10"
+            android:textSize="20sp" >
 
             <requestFocus />
         </EditText>
-
     </LinearLayout>
 
     <LinearLayout
@@ -40,15 +44,18 @@
             android:id="@+id/textViewPaymentTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Name" />
+            android:layout_marginRight="5dip"
+            android:text="Product Name"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextProductName2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10" />
-
+            android:ems="10"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +66,10 @@
             android:id="@+id/textViewDescriptionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price" />
+            android:layout_marginRight="88dip"
+            android:text="Price"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextPrice2"
@@ -67,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +89,10 @@
             android:id="@+id/textViewPaymentCash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cost" />
+            android:layout_marginRight="92dip"
+            android:text="Cost"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextCost2"
@@ -86,19 +100,23 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
-
+            android:inputType="number"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip" >
 
         <TextView
             android:id="@+id/textViewDescriptionPriceText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantity" />
+            android:layout_marginRight="57dip"
+            android:text="Quantity"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextQuantity3"
@@ -106,9 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
-            android:hint="1" />
-
+            android:hint="1"
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -120,23 +137,59 @@
             android:id="@+id/buttonAddX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="4dip"
             android:layout_weight="3"
-            android:text="Add" />
+            android:background="@drawable/light_green_btn"
+            android:gravity="center"
+            android:maxHeight="45dip"
+            android:minHeight="45dip"
+            android:shadowColor="#014927"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="2.5"
+            android:text="Add"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonClearX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dip"
+            android:layout_marginRight="3dip"
             android:layout_weight="3"
-            android:text="Clear" />
+            android:background="@drawable/light_yellow_btn"
+            android:gravity="center"
+            android:maxHeight="45dip"
+            android:minHeight="45dip"
+            android:shadowColor="#014927"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="2.5"
+            android:text="Clear"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonCancelX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
             android:layout_weight="3"
-            android:text="Cancel" />
-
+            android:background="@drawable/light_red_btn"
+            android:gravity="center"
+            android:maxHeight="45dip"
+            android:minHeight="45dip"
+            android:shadowColor="#014927"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="2.5"
+            android:text="Cancel"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

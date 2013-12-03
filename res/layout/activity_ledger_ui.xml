@@ -24,7 +24,8 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:background="@drawable/testtab" >
             </TabWidget>
 
             <FrameLayout
@@ -40,74 +41,84 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="8dip"
                         android:orientation="vertical" >
 
                         <TextView
                             android:id="@+id/textViewDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Date :" />
+                            android:text="Date :"
+                            android:textSize="20sp" />
 
                         <ListView
                             android:id="@+id/listViewSaleLedgerDate"
                             android:layout_width="fill_parent"
-                            android:layout_height="350dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:scrollbars="vertical" >
                         </ListView>
 
-                        <TextView
-                            android:id="@+id/textViewTotalByDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:text="Total :" />
-
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:weightSum="2" >
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical"
+                            android:gravity="bottom" >
 
-                            <Button
-                                android:id="@+id/buttonDatePrevious"
-                                style="?android:attr/buttonStyleSmall"
+                            <TextView
+                                android:id="@+id/textViewTotalByDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Total :"
+                                android:textSize="20sp" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="10dip"
-                                android:layout_weight="1"
-                                android:background="@drawable/light_green_btn"
-                                android:gravity="center"
-                                android:minHeight="15dp"
-                                android:minWidth="80dp"
-                                android:padding="10dip"
-                                android:shadowColor="#014927"
-                                android:shadowDx="0.0"
-                                android:shadowDy="0.0"
-                                android:shadowRadius="2.5"
-                                android:text="Previous"
-                                android:textColor="#FFFFFF"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:weightSum="2" >
 
-                            <Button
-                                android:id="@+id/buttonDateNext"
-                                style="?android:attr/buttonStyleSmall"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/light_green_btn"
-                                android:gravity="center"
-                                android:minHeight="15dp"
-                                android:minWidth="80dp"
-                                android:padding="10dip"
-                                android:shadowColor="#014927"
-                                android:shadowDx="0.0"
-                                android:shadowDy="0.0"
-                                android:shadowRadius="2.5"
-                                android:text="Next"
-                                android:textColor="#FFFFFF"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                <Button
+                                    android:id="@+id/buttonDatePrevious"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:minHeight="15dp"
+                                    android:minWidth="80dp"
+                                    android:padding="10dip"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Previous"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/buttonDateNext"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/light_green_btn"
+                                    android:gravity="center"
+                                    android:minHeight="15dp"
+                                    android:minWidth="80dp"
+                                    android:padding="10dip"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Next"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -121,48 +132,59 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="8dip"
                         android:orientation="vertical" >
 
                         <TextView
                             android:id="@+id/textViewWeek"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Week :" />
+                            android:text="Week :"
+                            android:textSize="20sp" />
 
                         <ListView
                             android:id="@+id/listViewSaleLedgerWeek"
                             android:layout_width="fill_parent"
-                            android:layout_height="350dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:scrollbars="vertical" >
                         </ListView>
 
-                        <TextView
-                            android:id="@+id/textViewTotalByWeek"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:text="Total :" />
-
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical"
+                            android:gravity="bottom" >
 
-                            <Button
-                                android:id="@+id/buttonWeekPrevious"
-                                style="?android:attr/buttonStyleSmall"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/textViewTotalByWeek"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Previous" />
+                                android:layout_marginBottom="5dp"
+                                android:text="Total :"
+                                android:textSize="20sp" />
 
-                            <Button
-                                android:id="@+id/buttonWeekNext"
-                                style="?android:attr/buttonStyleSmall"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Next" />
+                                android:layout_height="wrap_content" >
+
+                                <Button
+                                    android:id="@+id/buttonWeekPrevious"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Previous" />
+
+                                <Button
+                                    android:id="@+id/buttonWeekNext"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Next" />
+                            </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </TabWidget>
@@ -175,48 +197,59 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="8dip"
                         android:orientation="vertical" >
 
                         <TextView
                             android:id="@+id/textViewMonth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Month :" />
+                            android:text="Month :"
+                            android:textSize="20sp" />
 
                         <ListView
                             android:id="@+id/listViewSaleLedgerMonth"
                             android:layout_width="fill_parent"
-                            android:layout_height="350dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:scrollbars="vertical" >
                         </ListView>
 
-                        <TextView
-                            android:id="@+id/textViewTotalByMonth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:text="Total :" />
-
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical"
+                            android:gravity="bottom" >
 
-                            <Button
-                                android:id="@+id/buttonMonthPrevious"
-                                style="?android:attr/buttonStyleSmall"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/textViewTotalByMonth"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Previous" />
+                                android:layout_marginBottom="5dp"
+                                android:text="Total :"
+                                android:textSize="20sp" />
 
-                            <Button
-                                android:id="@+id/buttonMonthNext"
-                                style="?android:attr/buttonStyleSmall"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Next" />
+                                android:layout_height="wrap_content" >
+
+                                <Button
+                                    android:id="@+id/buttonMonthPrevious"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Previous" />
+
+                                <Button
+                                    android:id="@+id/buttonMonthNext"
+                                    style="?android:attr/buttonStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Next" />
+                            </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </TabWidget>

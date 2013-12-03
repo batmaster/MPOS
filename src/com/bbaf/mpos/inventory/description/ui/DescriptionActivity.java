@@ -7,7 +7,9 @@ import com.bbaf.mpos.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-
+/**
+ * @author Sarathit Sangtaweep 5510546182
+ */
 public class DescriptionActivity extends Activity {
 
 	@Override

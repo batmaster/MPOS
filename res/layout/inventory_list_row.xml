@@ -37,6 +37,15 @@
         android:layout_alignLeft="@+id/textViewRowIdInventory"
         android:layout_below="@+id/textViewRowIdInventory"
         android:text="TextView" />
+    
+    <TextView
+        android:id="@+id/textViewRowPriceInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/textViewRowQuantityInventory"
+        android:layout_toLeftOf="@+id/imageViewEditRowInventory"
+        android:text="TextView" />
 
     <ImageView
         android:id="@+id/imageViewEditRowInventory"
