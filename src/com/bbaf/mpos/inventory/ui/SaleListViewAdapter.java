@@ -53,7 +53,6 @@ public class SaleListViewAdapter extends BaseAdapter {
 		return new SaleListRow(activity, lineList.get(position));
 	}
 
-	@Override
 	public void notifyDataSetChanged() {
 		lineList = Register.getInstance().getSale().getAllList();
 		super.notifyDataSetChanged();

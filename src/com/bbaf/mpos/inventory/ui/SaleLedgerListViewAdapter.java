@@ -6,6 +6,8 @@ import java.util.zip.Inflater;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.sale.Sale;
+import com.bbaf.mpos.sale.SaleLineItem;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,24 +24,24 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class InventoryListViewAdapter extends BaseAdapter {
+public class SaleLedgerListViewAdapter extends BaseAdapter {
 	
 	private Activity activity;
-	private ArrayList<ProductDescription> productList;
+	private ArrayList<Sale> saleList;
 
-	public InventoryListViewAdapter(Activity activity) {
+	public SaleLedgerListViewAdapter(Activity activity, ArrayList<Sale> saleList) {
 		this.activity = activity;
-		this.productList = Register.getInstance().getInventory().getAllProduct();
+		this.saleList = saleList;
 	}
 
 	@Override
 	public int getCount() {
-		return productList.size();
+		return saleList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return productList.get(position);
+		return saleList.get(position);
 	}
 
 	@Override
@@ -49,16 +51,11 @@ public class InventoryListViewAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		return new InventoryListRow(activity, productList.get(position));
+		return new SaleLedgerListRow(activity, saleList.get(position));
 	}
 
-	public void notifyDataSetChanged() {
-		productList = Register.getInstance().getInventory().getAllProduct();
-		super.notifyDataSetChanged();
-	}
-	
-	public void notifyDataSetChanged(ArrayList<ProductDescription> productList) {
-		this.productList = productList;
+	public void notifyDataSetChanged(ArrayList<Sale> saleList) {
+		this.saleList = saleList;
 		super.notifyDataSetChanged();
 	}
 	

@@ -2,6 +2,8 @@ package com.bbaf.mpos.inventory.ui;
 
 
 import com.bbaf.mpos.FacadeController.Store;
+
+import android.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
@@ -19,14 +21,12 @@ public class RemoveOnClickListener implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		for (int i = 0; i < listViewInventory.getChildCount(); i++) {
-			InventoryListRow row = (InventoryListRow)listViewInventory.getChildAt(i);
-
-			if (row.isChecked()) {
-				Store.getInstance().removeProduct(row.getProduct());
-			}
-		}
-		activity.refreshIntenvoryTable();
+		final AlertDialog.Builder adb = new AlertDialog.Builder(
+				activity);
+		adb.setTitle("Confirm?");
+		adb.setMessage("Plese Confirm");
+		adb.setNegativeButton("Cancel", null);
+		adb.setPositiveButton("Ok", new DialogOnClickListener(listViewInventory, activity));
+		adb.show();
 	}
-
 }

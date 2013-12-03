@@ -7,9 +7,9 @@ import android.view.View.OnClickListener;
 
 public class ScanOnClickListener implements OnClickListener {
 
-	private InventoryActivity activity;
+	private InventoryActivity2 activity;
 
-	public ScanOnClickListener(InventoryActivity activity) {
+	public ScanOnClickListener(InventoryActivity2 activity) {
 		this.activity = activity;
 	}
 

@@ -24,12 +24,18 @@ public class Sale implements Serializable {
 	
 	private Inventory inventory;
 	
-	private static Date date;
+	private Date date;
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */
 	public Sale() {
 		date = Calendar.getInstance().getTime();
+		lineOfItem = new ArrayList<SaleLineItem>();
+	}
+	
+	public Sale(String sdate) {
+		date = Calendar.getInstance().getTime();
+		setDate(sdate);
 		lineOfItem = new ArrayList<SaleLineItem>();
 	}
 	
@@ -144,7 +150,7 @@ public class Sale implements Serializable {
 		return date;
 	}
 	
-	public void setDate(String s){
+	private void setDate(String s){
 		String[] temp = s.split(" ");
 		date.setYear(Integer.parseInt(temp[0]));
 		date.setMonth(Integer.parseInt(temp[1]));

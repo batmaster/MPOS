@@ -10,18 +10,20 @@ import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
-import com.bbaf.mpos.sale.ui.SaleTableHead;
-import com.bbaf.mpos.sale.ui.SaleTableRow;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -51,6 +53,7 @@ public class InventoryActivity2 extends Activity {
 	private Button buttonCancelSale; // name changed from buttonRemoveSale
 	
 	private TabSpec tabInventory;
+	private EditText editTextSearchInventory;
 	private ListView listViewInventory;
 	private InventoryListViewAdapter inventoryListViewAdapter;
 	private Button buttonAddProduct;
@@ -109,7 +112,7 @@ public class InventoryActivity2 extends Activity {
 							editTextInputID.setText("");
 							editTextQuantity.setText("");
 							Toast.makeText(getApplicationContext(), "ProductId: " + product.getId() + " is added successfully.", Toast.LENGTH_SHORT).show();
-							refreshSaleTable();
+							refreshSaleListView();
 							
 							String status = product.getName() + " : " + quantity + " = " + quantity*product.getPrice() + " Bht.";
 							//textViewStatus.setText(status);
@@ -129,14 +132,7 @@ public class InventoryActivity2 extends Activity {
 		listViewSale.setAdapter(saleListViewAdapter);
 		
 		buttonScan = (Button)findViewById(R.id.buttonScan3);
-		buttonScan.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		buttonScan.setOnClickListener(new ScanOnClickListener(this));
 		
 		editTextInputID = (EditText)findViewById(R.id.editTextInputID);
 		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity);
@@ -157,7 +153,7 @@ public class InventoryActivity2 extends Activity {
 			@Override
 			public void onClick(View v) {
 				Register.getInstance().removeAllItem();
-				refreshIntenvoryTable();
+				refreshIntenvoryListView();
 				//textViewStatus.setText("Welcome");
 				textViewTotalPriceText.setText("0.0");
 				editTextInputID.setText("");
@@ -172,6 +168,29 @@ public class InventoryActivity2 extends Activity {
 		tabInventory.setIndicator("Inventory");
 		tabHost.addTab(tabInventory);
 
+		editTextSearchInventory = (EditText)findViewById(R.id.editTextSearchInventory);
+		editTextSearchInventory.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				String t = editTextSearchInventory.getText().toString();
+				refreshIntenvoryListView(Register.getInstance().getInventory().getProductBySomething(t));
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		listViewInventory = (ListView)findViewById(R.id.listViewInventory);
 		inventoryListViewAdapter = new InventoryListViewAdapter(this);
 		listViewInventory.setAdapter(inventoryListViewAdapter);
@@ -193,21 +212,25 @@ public class InventoryActivity2 extends Activity {
 		buttonRemoveProduct = (Button)findViewById(R.id.buttonRemoveProduct);
 		buttonRemoveProduct.setOnClickListener(new RemoveOnClickListener(listViewInventory, this));
 		
-		refreshIntenvoryTable();
-		refreshSaleTable();
+		refreshIntenvoryListView();
+		refreshSaleListView();
 	}
 	
-	public void refreshIntenvoryTable() {
+	public void refreshIntenvoryListView() {
 		inventoryListViewAdapter.notifyDataSetChanged();
 	}
 	
-	public void refreshSaleTable() {
+	public void refreshIntenvoryListView(ArrayList<ProductDescription> productList) {
+		inventoryListViewAdapter.notifyDataSetChanged(productList);
+	}
+	
+	public void refreshSaleListView() {
 		saleListViewAdapter.notifyDataSetChanged();
 		textViewTotalPriceText.setText(String.valueOf(Register.getInstance().getTotal()));
 	}
 	
 	public void clearSaleTab() {
-		refreshSaleTable();
+		refreshSaleListView();
 		editTextInputID.setText("");
 		editTextQuantity.setText("");
 		//textViewStatus.setText("welcome");
@@ -228,7 +251,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshIntenvoryTable();
+				refreshIntenvoryListView();
 			}
 		}
 		else if (requestCode == EDIT_ACTIVITY_REQUESTCODE) {
@@ -238,7 +261,7 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshIntenvoryTable();
+				refreshIntenvoryListView();
 			}
 		}
 		else if (requestCode == PAYMENT_ACTIVITY_REQUESTCODE) {
@@ -248,9 +271,21 @@ public class InventoryActivity2 extends Activity {
 			if (resultCode == 0) {
 				// no need to refresh
 			} else if (resultCode == 1) {
-				refreshSaleTable();
+				refreshSaleListView();
 			}
 		}
+		else if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
+			/**
+			 * 0 = PAYMENT_CANCEL 1 = PAYMENT_SUCCESS
+			 */
+			Log.d("scan", SCANNER_ACTIVITY_REQUESTCODE + " " + resultCode);
+			if (resultCode == 0) {
+				// no need to refresh
+			} else if (resultCode == 1) {
+				
+			}
+		}
+		
 	}
 
 	@Override

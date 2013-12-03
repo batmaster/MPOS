@@ -19,5 +19,6 @@
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="title_activity_success_payment">SuccessPaymentActivity</string>
     <string name="title_activity_description">DescriptionActivity</string>
+    <string name="title_activity_sale_edit">SaleEditActivity</string>
 
 </resources>

@@ -4,31 +4,29 @@ import com.bbaf.mpos.FacadeController.Store;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.widget.ListView;
 import android.widget.TableLayout;
 
 public class DialogOnClickListener implements OnClickListener {
 
-	private TableLayout tableLayout;
-	private InventoryActivity activity;
+	private ListView listViewInventory;
+	private InventoryActivity2 activity;
 	
-	public DialogOnClickListener(TableLayout tableLayout,InventoryActivity activity) {
-		this.tableLayout = tableLayout;
+	public DialogOnClickListener(ListView listViewInventory, InventoryActivity2 activity) {
+		this.listViewInventory = listViewInventory;
 		this.activity = activity;
 	}
 	
 	@Override
 	public void onClick(DialogInterface dialog, int which) {
-		for (int i = 1; i < tableLayout.getChildCount(); i++) {
-			try {
-				InventoryListRow row = (InventoryListRow) tableLayout
-						.getChildAt(i);
+		for (int i = 0; i < listViewInventory.getChildCount(); i++) {
+			InventoryListRow row = (InventoryListRow)listViewInventory.getChildAt(i);
 
+			if (row.isChecked()) {
 				Store.getInstance().removeProduct(row.getProduct());
-			} catch (ClassCastException e) {
-				// bat: prevent casting TableHead
 			}
 		}
-		activity.refreshTable();
+		activity.refreshIntenvoryListView();
 	}
 
 }

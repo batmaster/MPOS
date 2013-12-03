@@ -40,7 +40,7 @@ class SaleListRow extends RelativeLayout {
 		textViewRowIdSale.setText(line.getProductDescription().getId());
 		textViewRowIdSale.setTextColor(Color.GRAY);
 		
-		textViewRowNameSale = (TextView)findViewById(R.id.textViewRowNameSale);
+		textViewRowNameSale = (TextView)findViewById(R.id.textViewRowTotalSaleLedger);
 		textViewRowNameSale.setText(line.getProductDescription().getName());
 		textViewRowNameSale.setTextColor(Color.BLACK);
 		
@@ -48,7 +48,7 @@ class SaleListRow extends RelativeLayout {
 		textViewRowUnitPriceSale.setText(String.valueOf(line.getProductDescription().getPrice()));
 		textViewRowUnitPriceSale.setTextColor(Color.GRAY);
 		
-		textViewRowQuantitySale = (TextView)findViewById(R.id.textViewRowQuantitySale);
+		textViewRowQuantitySale = (TextView)findViewById(R.id.textViewRowDateSaleLedger);
 		textViewRowQuantitySale.setText(String.valueOf(line.getQuantity()));
 		textViewRowQuantitySale.setTextColor(Color.BLACK);
 		

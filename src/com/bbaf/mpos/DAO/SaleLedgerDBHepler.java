@@ -126,8 +126,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 				if (cursorSL.moveToFirst()) {
 					do {
 						String date = cursorSL.getString(0);
-						Sale sale = new Sale();
-						sale.setDate(cursorSL.getString(1));
+						Sale sale = new Sale(cursorSL.getString(1));
 						
 							/** Get all SaleLineItem for that Sale Ledger **/
 							Cursor cursorPL = db.query(TABLE_PRODUCT_LEDGER, new String[] { "*" },
@@ -169,8 +168,7 @@ public class SaleLedgerDBHepler extends SQLiteOpenHelper {
 				if (cursorSL.moveToFirst()) {
 					do {
 						String date = cursorSL.getString(0);
-						Sale sale = new Sale();
-						sale.setDate(cursorSL.getString(1));
+						Sale sale = new Sale(cursorSL.getString(1));
 						
 							/** Get SaleLineItem for that Sale Ledger **/
 						strSQL = String.format("SELECT * FROM %s WHERE Date BETWEEN '%s' AND '%s'", TABLE_PRODUCT_LEDGER, from, to);

@@ -27,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/imageViewEditRowSale"
-        android:layout_below="@+id/textViewRowQuantitySale"
+        android:layout_below="@+id/textViewRowDateSaleLedger"
         android:layout_marginRight="5dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewRowQuantitySale"
+        android:id="@+id/textViewRowDateSaleLedger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/imageViewEditRowSale"
@@ -40,7 +40,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewRowNameSale"
+        android:id="@+id/textViewRowTotalSaleLedger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewRowIdSale"

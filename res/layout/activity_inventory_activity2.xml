@@ -208,13 +208,13 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="10" >
+                                android:weightSum="15" >
 
                                 <Button
                                     android:id="@+id/buttonPayment"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="10dp"
+                                    android:layout_marginRight="2.5dp"
                                     android:layout_weight="5"
                                     android:background="@drawable/light_green_btn"
                                     android:gravity="center"
@@ -231,11 +231,33 @@
                                     android:textStyle="bold" />
 
                                 <Button
+                                    android:id="@+id/buttonRemoveEach"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="2.5dp"
+                                    android:layout_marginLeft="2.5dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/light_red_btn"
+                                    android:gravity="center"
+                                    android:minHeight="15dp"
+                                    android:minWidth="80dp"
+                                    android:padding="10dip"
+                                    android:shadowColor="#014927"
+                                    android:shadowDx="0.0"
+                                    android:shadowDy="0.0"
+                                    android:shadowRadius="2.5"
+                                    android:text="Remove"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <Button
                                     android:id="@+id/buttonCancelSale"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="5"
-                                    android:background="@drawable/light_green_btn"
+                                    android:layout_marginLeft="2.5dp"
+                                    android:background="@drawable/light_red_btn"
                                     android:gravity="center"
                                     android:minHeight="15dp"
                                     android:minWidth="80dp"
@@ -258,6 +280,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/editTextSearchInventory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="2dp"
+                        android:hint="Enter product name or ID" />
 
                     <ListView
                         android:id="@+id/listViewInventory"

@@ -15,13 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_inventory_activity2"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
@@ -39,7 +34,12 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.menu.ui.MenuActivity"
-            android:label="@string/title_activity_menu" >
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.LedgerUIActivity"
@@ -59,6 +59,10 @@
             android:name="com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity"
             android:label="@string/title_activity_success_payment"
             android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.bbaf.mpos.SaleEditActivity"
+            android:label="@string/title_activity_sale_edit" >
         </activity>
     </application>
 
