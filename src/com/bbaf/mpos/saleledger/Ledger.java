@@ -54,7 +54,6 @@ public class Ledger {
 		Calendar from = (Calendar) dateDaily.clone();
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
-		dateDaily.add(Calendar.DATE, -1);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -68,7 +67,6 @@ public class Ledger {
 		String current = sdf.format(temp.getTime());
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
-		dateMonth.add(Calendar.WEEK_OF_YEAR, -1);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -80,8 +78,31 @@ public class Ledger {
 		String current = sdf.format(temp.getTime());
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
-		dateMonth.add(Calendar.MONTH, -1);
 		return dbDAO.getSale(current,to);
+	}
+	
+	public void prevDaily(){
+		dateDaily.add(Calendar.DATE, -1);
+	}
+	
+	public void nextDaily(){
+		dateDaily.add(Calendar.DATE, 1);
+	}
+	
+	public void prevWeek(){
+		dateMonth.add(Calendar.WEEK_OF_YEAR, -1);
+	}
+	
+	public void nextWeek(){
+		dateMonth.add(Calendar.WEEK_OF_YEAR, 1);
+	}
+	
+	public void prevMonth(){
+		dateMonth.add(Calendar.MONTH, -1);
+	}
+	
+	public void nextMonth(){
+		dateMonth.add(Calendar.MONTH, 1);
 	}
 	
 	public void removeSale(Calendar calendar){
