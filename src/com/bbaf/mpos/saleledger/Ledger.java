@@ -15,10 +15,16 @@ import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
 import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {
+	private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy MM dd");
+	
 	private Calendar dateDaily;
 	private Calendar dateWeek;
 	private Calendar dateMonth;
 	private SaleLedgerDBHepler dbDAO;
+	
+	private String date;
+	private String week;
+	private String month;
 	
 	public Ledger() {
 		dbDAO = SaleLedgerDBHepler.getInstance();
@@ -49,35 +55,35 @@ public class Ledger {
 	}
 	
 	public ArrayList<SaleLedger> getDaily() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
-		String current = sdf.format(dateDaily.getTime());
+		String current = SDF.format(dateDaily.getTime());
 		Calendar from = (Calendar) dateDaily.clone();
 		from.add(Calendar.DATE,1);
-		String to = sdf.format(from.getTime());
+		String to = SDF.format(from.getTime());
+		date = current;
 		return dbDAO.getSale(current,to);
 	}
 	
 	public ArrayList<SaleLedger> getWeek(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) dateMonth.clone();
 		Calendar temp = (Calendar) dateMonth.clone();
 		temp.set(Calendar.DAY_OF_WEEK, 0);
 		if(temp.get(Calendar.DATE) > from.get(Calendar.DATE))
 			temp.add(Calendar.DATE, -7);
-		String current = sdf.format(temp.getTime());
+		String current = SDF.format(temp.getTime());
 		from.add(Calendar.DATE,1);
-		String to = sdf.format(from.getTime());
+		String to = SDF.format(from.getTime());
+		week = String.format("%s to %s", current, to);
 		return dbDAO.getSale(current,to);
 	}
 	
 	public ArrayList<SaleLedger> getMonth(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
 		Calendar from = (Calendar) dateMonth.clone();
 		Calendar temp = (Calendar) dateMonth.clone();
 		temp.set(Calendar.DATE, 1);
-		String current = sdf.format(temp.getTime());
+		String current = SDF.format(temp.getTime());
 		from.add(Calendar.DATE,1);
-		String to = sdf.format(from.getTime());
+		String to = SDF.format(from.getTime());
+		month = String.format("%s %s", current.split(" ")[1], current.split(" ")[0]);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -90,11 +96,11 @@ public class Ledger {
 	}
 	
 	public void prevWeek(){
-		dateMonth.add(Calendar.WEEK_OF_YEAR, -1);
+		dateWeek.add(Calendar.WEEK_OF_YEAR, -1);
 	}
 	
 	public void nextWeek(){
-		dateMonth.add(Calendar.WEEK_OF_YEAR, 1);
+		dateWeek.add(Calendar.WEEK_OF_YEAR, 1);
 	}
 	
 	public void prevMonth(){
@@ -105,7 +111,15 @@ public class Ledger {
 		dateMonth.add(Calendar.MONTH, 1);
 	}
 	
-	public void removeSale(Calendar calendar){
-		dbDAO.removeSale(calendar);
+	public String getDateS() {
+		return date;
+	}
+	
+	public String getWeekS() {
+		return week;
+	}
+	
+	public String getMonthS() {
+		return month;
 	}
 }
