@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="productName"
-               android:textColor="#FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="41dp"
                 android:text="Price : "
-               android:textColor="#FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="productPrice"
-               android:textColor="#FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -156,6 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
+            <!--
             <Button
                 android:id="@+id/buttonDescriptionBack"
                 android:layout_width="wrap_content"
@@ -174,12 +175,14 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:ems="6" />
+            -->
 
             <Button
                 android:id="@+id/buttonDescriptionEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/light_blue_btn"
+                android:background="@drawable/light_green_btn"
+                android:ems="6"
                 android:gravity="center"
                 android:maxHeight="45dip"
                 android:minHeight="45dip"
@@ -190,8 +193,8 @@
                 android:text="Edit"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:ems="6" />
+                android:textStyle="bold" />
+ -->
         </LinearLayout>
     </LinearLayout>
 

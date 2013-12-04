@@ -48,14 +48,14 @@ public class SaleLedgerProductListActivity extends Activity {
 		productLedgerListViewAdapter = new ProductLedgerListViewAdapter(this, productList);
 		listViewLedgerProductList.setAdapter(productLedgerListViewAdapter);
 		
-		buttonLedgerProductBack = (Button)findViewById(R.id.buttonLedgerProductBack);
-		buttonLedgerProductBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				finish();
-			}
-		});
+//		buttonLedgerProductBack = (Button)findViewById(R.id.buttonLedgerProductBack);
+//		buttonLedgerProductBack.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				finish();
+//			}
+//		});
 		
 	}
 

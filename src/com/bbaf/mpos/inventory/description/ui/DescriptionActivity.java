@@ -74,15 +74,15 @@ public class DescriptionActivity extends Activity {
 			}
 		});
 		
-		buttonDescriptionBack = (Button)findViewById(R.id.buttonDescriptionBack);
-		buttonDescriptionBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				setResult(0);
-				finish();
-			}
-		});
+//		buttonDescriptionBack = (Button)findViewById(R.id.buttonDescriptionBack);
+//		buttonDescriptionBack.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				setResult(0);
+//				finish();
+//			}
+//		});
 	}
 
 	@Override
