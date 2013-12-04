@@ -33,7 +33,7 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="2.5"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:textStyle="bold" >
             </TabWidget>
 
@@ -157,7 +157,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
-                                android:background="@drawable/light_green_btn"
+                                android:background="@drawable/light_blue_btn"
                                 android:drawableLeft="@drawable/ic_action_camera"
                                 android:gravity="center"
                                 android:padding="8dip"

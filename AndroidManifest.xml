@@ -10,36 +10,35 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/logo"
+        android:label="BBAF-POS"
         android:theme="@style/AppTheme" >
-        
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIz-FrnMNfwhsnjVbsLtJmWSwjqCnAvEmZQ3Donw" />
-        
+
         <activity
             android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
-            android:label="@string/title_activity_inventory_activity2"
+            android:label="Old1"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
-            android:label="@string/title_activity_edit_product"
+            android:label="Edit Description"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.ui.SaleActivity"
-            android:label="@string/title_activity_sale" >
+            android:label="Old2" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.InventoryActivity2"
-            android:label="@string/title_activity_inventory_activity2" >
+            android:label="Sale and Inventory" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.menu.ui.MenuActivity"
-            android:label="@string/app_name" >
+            android:label="BBAF-POS" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,35 +47,36 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.LedgerUIActivity"
-            android:label="@string/title_activity_ledger_ui" >
+            android:label="SaleLedger" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.AddProductActivity"
-            android:label="@string/title_activity_add_product"
+            android:label="Add Product"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.PaymentActivity"
-            android:label="@string/title_activity_payment"
+            android:label="Payment"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity"
-            android:label="@string/title_activity_success_payment"
+            android:label="Payment Success"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SaleEditActivity"
-            android:label="@string/title_activity_sale_edit"
+            android:label="Special Edit"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.SaleLedgerProductListActivity"
-            android:label="@string/title_activity_sale_ledger_list" >
+            android:label="Sale List" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.description.ui.DescriptionActivity"
-            android:label="@string/title_activity_description" >
+            android:label="Product Description"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
 

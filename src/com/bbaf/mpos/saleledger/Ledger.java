@@ -59,7 +59,7 @@ public class Ledger {
 		Calendar from = (Calendar) dateDaily.clone();
 		from.add(Calendar.DATE,1);
 		String to = SDF.format(from.getTime());
-		date = String.format("%s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0]);
+		date = String.format("Date : %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0]);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -72,7 +72,7 @@ public class Ledger {
 		temp.add(Calendar.DATE,1);
 		String current = SDF.format(temp.getTime());
 		String to = SDF.format(from.getTime());
-		week = String.format("%s/%s/%s ~ %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0], to.split(" ")[2], to.split(" ")[1], to.split(" ")[0]);
+		week = String.format("Week : %s/%s/%s ~ %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0], to.split(" ")[2], to.split(" ")[1], to.split(" ")[0]);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -84,7 +84,7 @@ public class Ledger {
 		temp.set(Calendar.MONTH, mtemp);
 		String current = SDF.format(temp.getTime());
 		String to = SDF.format(from.getTime());
-		month = String.format("%s/%s", current.split(" ")[1], current.split(" ")[0]);
+		month = String.format("Month : %s/%s", current.split(" ")[1], current.split(" ")[0]);
 		return dbDAO.getSale(current,to);
 	}
 	

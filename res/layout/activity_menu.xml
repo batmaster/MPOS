@@ -17,10 +17,14 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Menu"
-        android:textColor="#32EFAA"
+        android:textColor="#16EDD0"
         android:textSize="40sp"
-        android:textStyle="bold" 
-        android:layout_marginBottom="20dp"/>
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="2.5"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/buttonToInvenSale"
