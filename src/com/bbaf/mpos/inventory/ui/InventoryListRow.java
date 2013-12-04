@@ -15,6 +15,7 @@ import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.FacadeController.Store;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.inventory.description.ui.DescriptionActivity;
 
 class InventoryListRow extends RemovableListRow {
 	
@@ -25,8 +26,8 @@ class InventoryListRow extends RemovableListRow {
 	private TextView textViewRowNameInventory;
 	private TextView textViewRowQuantityInventory;
 	private TextView textViewRowPriceInventory;
-	private ImageView imageViewEditRowInventory;
-	
+	private ImageView imageViewDetailRowInventory;
+
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	
 	public InventoryListRow(final Activity activity, ProductDescription product) {
@@ -55,18 +56,18 @@ class InventoryListRow extends RemovableListRow {
 		textViewRowPriceInventory.setText(String.format("%.2f", product.getPrice()));
 		textViewRowPriceInventory.setTextColor(Color.BLACK);
 		
-		imageViewEditRowInventory = (ImageView)findViewById(R.id.imageViewEditRowInventory);
-		imageViewEditRowInventory.setOnClickListener(new OnClickListener() {
+		imageViewDetailRowInventory = (ImageView)findViewById(R.id.imageViewDetailRowInventory);
+		imageViewDetailRowInventory.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent editActivity = new Intent(activity.getApplicationContext(), EditProductActivity.class);
+				Intent descActivity = new Intent(activity.getApplicationContext(), DescriptionActivity.class);
 				
-				editActivity.putExtra("ProductDescription", getProduct());
+				descActivity.putExtra("ProductDescription", getProduct());
 				int quantity = Register.getInstance().getInventory().getQuantity(getProduct().getId());
-				editActivity.putExtra("ProductQuantity", quantity);
+				descActivity.putExtra("ProductQuantity", quantity);
 
-				activity.startActivityForResult(editActivity, EDIT_ACTIVITY_REQUESTCODE);
+				activity.startActivityForResult(descActivity, EDIT_ACTIVITY_REQUESTCODE);
 			}
 		});
 	}

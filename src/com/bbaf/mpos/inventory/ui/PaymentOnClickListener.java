@@ -13,29 +13,24 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
-public class CancelSaleOnClickListener implements OnClickListener {
+public class PaymentOnClickListener implements OnClickListener {
 
-	private ListView listView;
 	private InventoryActivity2 activity;
+	
+	private static final int PAYMENT_ACTIVITY_REQUESTCODE = 2;
 
-	public CancelSaleOnClickListener(InventoryActivity2 activity) {
-		this.listView = listView;
+	public PaymentOnClickListener(InventoryActivity2 activity) {
 		this.activity = activity;
 	}
 
 	@Override
 	public void onClick(View v) {
 		if (Register.getInstance().getSale().getAllList().size() == 0) {
-			
+			Toast.makeText(activity.getApplicationContext(), "Add item first.", Toast.LENGTH_SHORT).show();
 		}
 		else {
-			final AlertDialog.Builder adb = new AlertDialog.Builder(
-					activity);
-			adb.setTitle("Confirm?");
-			adb.setMessage("Cancel Sale?");
-			adb.setPositiveButton("Cancel", null);
-			adb.setNegativeButton("Confirm", new CancelSaleDialogOnClickListener(activity));
-			adb.show();
+			Intent paymentActivity = new Intent(activity.getApplicationContext(), PaymentActivity.class);
+			activity.startActivityForResult(paymentActivity, PAYMENT_ACTIVITY_REQUESTCODE);
 		}
 	}
 }

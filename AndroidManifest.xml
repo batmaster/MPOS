@@ -74,6 +74,10 @@
             android:name="com.bbaf.mpos.saleledger.ui.SaleLedgerProductListActivity"
             android:label="@string/title_activity_sale_ledger_list" >
         </activity>
+        <activity
+            android:name="com.bbaf.mpos.inventory.description.ui.DescriptionActivity"
+            android:label="@string/title_activity_description" >
+        </activity>
     </application>
 
 </manifest>

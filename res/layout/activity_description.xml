@@ -163,6 +163,25 @@
             android:weightSum="6" >
 
             <Button
+                android:id="@+id/buttonDescriptionEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/light_green_btn"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:maxHeight="45dip"
+                android:minHeight="45dip"
+                android:shadowColor="#014927"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.5"
+                android:text="Edit"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/buttonDescriptionBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,24 +196,6 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="2.5"
                 android:text="Back"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/buttonDescriptionEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/light_green_btn"
-                android:gravity="center"
-                android:maxHeight="45dip"
-                android:minHeight="45dip"
-                android:shadowColor="#014927"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="2.5"
-                android:text="Edit"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />

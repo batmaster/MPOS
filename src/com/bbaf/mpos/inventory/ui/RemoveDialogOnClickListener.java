@@ -8,12 +8,12 @@ import android.content.DialogInterface.OnClickListener;
 import android.widget.ListView;
 import android.widget.TableLayout;
 
-public class DialogOnClickListener implements OnClickListener {
+public class RemoveDialogOnClickListener implements OnClickListener {
 
 	private ListView listView;
 	private InventoryActivity2 activity;
 	
-	public DialogOnClickListener(ListView listView, InventoryActivity2 activity) {
+	public RemoveDialogOnClickListener(ListView listView, InventoryActivity2 activity) {
 		this.listView = listView;
 		this.activity = activity;
 	}

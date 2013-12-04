@@ -36,8 +36,8 @@ public class RemoveOnClickListener implements OnClickListener {
 					activity);
 			adb.setTitle("Confirm?");
 			adb.setMessage("Remove item(s)?");
-			adb.setNegativeButton("Cancel", null);
-			adb.setPositiveButton("Ok", new DialogOnClickListener(listView, activity));
+			adb.setPositiveButton("Cancel", null);
+			adb.setNegativeButton("Confirm", new RemoveDialogOnClickListener(listView, activity));
 			adb.show();
 		}
 	}

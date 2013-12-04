@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/imageViewEditRowInventory"
+        android:layout_toLeftOf="@+id/imageViewDetailRowInventory"
         android:text="TextView" />
 
     <TextView
@@ -44,14 +44,14 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:layout_below="@+id/textViewRowQuantityInventory"
-        android:layout_toLeftOf="@+id/imageViewEditRowInventory"
+        android:layout_toLeftOf="@+id/imageViewDetailRowInventory"
         android:text="TextView" />
 
     <ImageView
-        android:id="@+id/imageViewEditRowInventory"
+        android:id="@+id/imageViewDetailRowInventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_action_labels" />
+        android:src="@drawable/ic_action_overflow" />
 
 </RelativeLayout>

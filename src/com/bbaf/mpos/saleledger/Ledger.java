@@ -44,7 +44,6 @@ public class Ledger {
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
 		return dbDAO.getSale(current,to);
-		
 	}
 	
 	public ArrayList<SaleLedger> getWeek(){

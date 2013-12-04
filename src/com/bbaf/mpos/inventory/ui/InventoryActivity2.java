@@ -143,19 +143,7 @@ public class InventoryActivity2 extends Activity {
 		editTextQuantity = (EditText)findViewById(R.id.editTextQuantity);
 		
 		buttonPayment = (Button)findViewById(R.id.buttonPayment);
-		buttonPayment.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if (Register.getInstance().getSale().getAllList().size() == 0) {
-					Toast.makeText(getApplicationContext(), "Add item first.", Toast.LENGTH_SHORT).show();
-				}
-				else {
-					Intent paymentActivity = new Intent(getApplicationContext(), PaymentActivity.class);
-					startActivityForResult(paymentActivity, PAYMENT_ACTIVITY_REQUESTCODE);
-				}
-			}
-		});
+		buttonPayment.setOnClickListener(new PaymentOnClickListener(this));
 		
 		buttonRemoveEach = (Button)findViewById(R.id.buttonRemoveEach);
 		buttonRemoveEach.setOnClickListener(new RemoveOnClickListener(listViewSale, this));
