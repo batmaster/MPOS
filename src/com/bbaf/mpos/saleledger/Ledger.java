@@ -15,18 +15,29 @@ import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
 import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {
-	private Calendar date;
-	
+	private Calendar dateDaily;
+	private Calendar dateWeek;
+	private Calendar dateMonth;
 	private SaleLedgerDBHepler dbDAO;
 	
 	public Ledger() {
 		dbDAO = SaleLedgerDBHepler.getInstance();
-		date = Calendar.getInstance();
+		if(dateDaily == null)
+			dateDaily = Calendar.getInstance();
+		if(dateWeek == null)
+			dateWeek = Calendar.getInstance();
+		if(dateMonth == null)
+			dateMonth = Calendar.getInstance();
 	}
 	
 	public Ledger(Context context) {
 		dbDAO = SaleLedgerDBHepler.getInstance(context);
-		date = Calendar.getInstance();
+		if(dateDaily == null)
+			dateDaily = Calendar.getInstance();
+		if(dateWeek == null)
+			dateWeek = Calendar.getInstance();
+		if(dateMonth == null)
+			dateMonth = Calendar.getInstance();
 	}
 	
 	public void record(Sale sale){
@@ -39,34 +50,37 @@ public class Ledger {
 	
 	public ArrayList<SaleLedger> getDaily() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
-		String current = sdf.format(date.getTime());
-		Calendar from = (Calendar) date.clone();
+		String current = sdf.format(dateDaily.getTime());
+		Calendar from = (Calendar) dateDaily.clone();
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
+		dateDaily.add(Calendar.DATE, -1);
 		return dbDAO.getSale(current,to);
 	}
 	
 	public ArrayList<SaleLedger> getWeek(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
-		Calendar from = (Calendar) date.clone();
-		Calendar temp = (Calendar) date.clone();
+		Calendar from = (Calendar) dateMonth.clone();
+		Calendar temp = (Calendar) dateMonth.clone();
 		temp.set(Calendar.DAY_OF_WEEK, 0);
 		if(temp.get(Calendar.DATE) > from.get(Calendar.DATE))
 			temp.add(Calendar.DATE, -7);
 		String current = sdf.format(temp.getTime());
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
+		dateMonth.add(Calendar.WEEK_OF_YEAR, -1);
 		return dbDAO.getSale(current,to);
 	}
 	
 	public ArrayList<SaleLedger> getMonth(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
-		Calendar from = (Calendar) date.clone();
-		Calendar temp = (Calendar) date.clone();
+		Calendar from = (Calendar) dateMonth.clone();
+		Calendar temp = (Calendar) dateMonth.clone();
 		temp.set(Calendar.DATE, 1);
 		String current = sdf.format(temp.getTime());
 		from.add(Calendar.DATE,1);
 		String to = sdf.format(from.getTime());
+		dateMonth.add(Calendar.MONTH, -1);
 		return dbDAO.getSale(current,to);
 	}
 	
