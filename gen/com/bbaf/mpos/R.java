@@ -32,15 +32,16 @@ public final class R {
         public static final int ic_action_download=0x7f020005;
         public static final int ic_action_labels=0x7f020006;
         public static final int ic_action_new_label=0x7f020007;
-        public static final int ic_action_search=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int light_blue_btn=0x7f02000a;
-        public static final int light_green_btn=0x7f02000b;
-        public static final int light_red_btn=0x7f02000c;
-        public static final int light_yellow_btn=0x7f02000d;
-        public static final int testbackground=0x7f02000e;
-        public static final int testbg=0x7f02000f;
-        public static final int testtab=0x7f020010;
+        public static final int ic_action_overflow=0x7f020008;
+        public static final int ic_action_search=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int light_blue_btn=0x7f02000b;
+        public static final int light_green_btn=0x7f02000c;
+        public static final int light_red_btn=0x7f02000d;
+        public static final int light_yellow_btn=0x7f02000e;
+        public static final int testbackground=0x7f02000f;
+        public static final int testbg=0x7f020010;
+        public static final int testtab=0x7f020011;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
@@ -60,8 +61,8 @@ public final class R {
         public static final int buttonClearX=0x7f09000c;
         public static final int buttonDateNext=0x7f090041;
         public static final int buttonDatePrevious=0x7f090040;
-        public static final int buttonDescriptionBack=0x7f09001a;
-        public static final int buttonDescriptionEdit=0x7f09001b;
+        public static final int buttonDescriptionBack=0x7f09001b;
+        public static final int buttonDescriptionEdit=0x7f09001a;
         public static final int buttonEditSalePriceCancel=0x7f09006a;
         public static final int buttonEditSalePriceConfirm=0x7f090069;
         public static final int buttonInventory2=0x7f090062;
@@ -101,7 +102,7 @@ public final class R {
         public static final int edit_editTextProductId=0x7f09001d;
         public static final int edit_editTextProductName=0x7f09001f;
         public static final int edit_editTextQuantity=0x7f090025;
-        public static final int imageViewEditRowInventory=0x7f090077;
+        public static final int imageViewDetailRowInventory=0x7f090077;
         public static final int imageViewEditRowSale=0x7f090086;
         public static final int left_drawer=0x7f090056;
         public static final int listViewInventory=0x7f090037;
