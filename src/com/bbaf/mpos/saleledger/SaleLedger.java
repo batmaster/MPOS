@@ -31,11 +31,7 @@ public class SaleLedger implements Serializable {
 	public double getTotal() {
 		return total;
 	}
-
-	public ArrayList<ProductLedger> getProductLedgerList() {
-		return productLedgerList;
-	}
-
+	
 	public void setDate(String date) {
 		this.date = date;
 	}

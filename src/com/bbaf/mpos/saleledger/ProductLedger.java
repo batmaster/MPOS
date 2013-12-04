@@ -47,5 +47,4 @@ public class ProductLedger implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
 }
