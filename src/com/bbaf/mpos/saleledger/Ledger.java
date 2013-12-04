@@ -64,13 +64,13 @@ public class Ledger {
 	}
 	
 	public ArrayList<SaleLedger> getWeek(){
-		Calendar from = (Calendar) dateMonth.clone();
-		Calendar temp = (Calendar) dateMonth.clone();
+		Calendar from = (Calendar) dateWeek.clone();
+		Calendar temp = (Calendar) dateWeek.clone();
 		temp.set(Calendar.DAY_OF_WEEK, 0);
-		if(temp.get(Calendar.DATE) > from.get(Calendar.DATE))
-			temp.add(Calendar.DATE, -7);
+		if(temp.get(Calendar.DATE) >= from.get(Calendar.DATE))
+			temp.add(Calendar.DATE, -7);		
+		temp.add(Calendar.DATE,1);
 		String current = SDF.format(temp.getTime());
-		from.add(Calendar.DATE,1);
 		String to = SDF.format(from.getTime());
 		week = String.format("%s to %s", current, to);
 		return dbDAO.getSale(current,to);
@@ -79,11 +79,13 @@ public class Ledger {
 	public ArrayList<SaleLedger> getMonth(){
 		Calendar from = (Calendar) dateMonth.clone();
 		Calendar temp = (Calendar) dateMonth.clone();
-		temp.set(Calendar.DATE, 1);
+		int mtemp = temp.get(Calendar.MONTH);
+		temp.set(Calendar.DATE,1);
+		temp.set(Calendar.MONTH, mtemp);
 		String current = SDF.format(temp.getTime());
-		from.add(Calendar.DATE,1);
 		String to = SDF.format(from.getTime());
 		month = String.format("%s %s", current.split(" ")[1], current.split(" ")[0]);
+		Log.d("month", current + " to " + to);
 		return dbDAO.getSale(current,to);
 	}
 	
@@ -96,19 +98,25 @@ public class Ledger {
 	}
 	
 	public void prevWeek(){
+		dateWeek.set(Calendar.DAY_OF_WEEK, 0);
 		dateWeek.add(Calendar.WEEK_OF_YEAR, -1);
 	}
 	
 	public void nextWeek(){
+		dateWeek.set(Calendar.DAY_OF_WEEK, 0);
 		dateWeek.add(Calendar.WEEK_OF_YEAR, 1);
 	}
 	
 	public void prevMonth(){
-		dateMonth.add(Calendar.MONTH, -1);
+		int temp = dateMonth.get(Calendar.MONTH);
+		dateMonth.set(Calendar.DATE, 0);
+		dateMonth.set(Calendar.MONTH, temp);
 	}
 	
 	public void nextMonth(){
-		dateMonth.add(Calendar.MONTH, 1);
+		int temp = dateMonth.get(Calendar.MONTH);
+		dateMonth.set(Calendar.DATE, 0);
+		dateMonth.set(Calendar.MONTH, temp+2);
 	}
 	
 	public String getDateS() {
