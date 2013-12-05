@@ -14,7 +14,7 @@ import com.bbaf.mpos.saleledger.Ledger;
 
 /**
  * Register is controlled for sale.
- * @author Atit Leelasuksan 5510546221
+ * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 29, 2013
  */
 public class Register implements Serializable {
@@ -34,11 +34,20 @@ public class Register implements Serializable {
 		this.inventory = inventory;
 	}
 	
+	/**
+	 * get register if null create new one
+	 * @param inventory set Inventory
+	 * @return register
+	 */
 	public static Register getInstance(Inventory inventory) {
 		if(register==null) register = new Register(inventory);
 		return register;
 	}
 	
+	/**
+	 * get register if null create new one
+	 * @return register
+	 */
 	public static Register getInstance() {
 		if(register==null) register = new Register(new Inventory());
 		return register;
@@ -135,27 +144,53 @@ public class Register implements Serializable {
 	public boolean isSale() {
 		return !(sale==null);
 	}
-
+	
+	/**
+	 * get inventory.
+	 * @return inventory
+	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
 	
+	/**
+	 * Decrease amount of item that match with this id.
+	 * @param id key that match with item
+	 * @param quantity amount of item
+	 */
 	public void decrease(String id,int quantity) {
 		inventory.setQuantity(inventory.getProduct(id), inventory.getQuantity(id) - quantity);
 	}
 	
+	/**
+	 * get sale
+	 * @return sale
+	 */
 	public Sale getSale() {
 		return sale;	
 	}
 	
+	/**
+	 * set ledger
+	 * @param ledger set Ledger
+	 */
 	public void setLedger(Ledger ledger) {
 		this.ledger = ledger;
 	}
 	
+	/**
+	 * get ledger
+	 * @return ledger
+	 */
 	public Ledger getLedger() {
 		return ledger;
 	}
 	
+	/**
+	 * return change
+	 * @param input amount of money that get paid
+	 * @return change
+	 */
 	public double change(double input){
 		return input - getTotal();
 	}
