@@ -39,6 +39,15 @@ public class ProductDescription implements Serializable {
 	private double cost;
 	private String dateModified;
 	
+	/**
+	 * Constructor of this class
+	 * @param key refer to key
+	 * @param id refer to id
+	 * @param name refer to name
+	 * @param price refer to price
+	 * @param cost refer to cost
+	 * @param dateModified refer to dateModified
+	 */
 	public ProductDescription(int key, String id, String name, double price, double cost, String dateModified) {
 		this.key = key;
 		this.id = id;
@@ -48,30 +57,61 @@ public class ProductDescription implements Serializable {
 		this.dateModified = dateModified;
 	}
 	
+	/**
+	 * Constructor of this class
+	 * @param id refer to id
+	 * @param name refer to name
+	 * @param price refer to price
+	 * @param cost refer to cost
+	 */
 	public ProductDescription(String id, String name, double price, double cost) {
 		this(0, id, name, price, cost, "");
 	}
 	
+	/**
+	 * return key
+	 * @return key
+	 */
 	public int getKey() {
 		return key;
 	}
 	
+	/**
+	 * return id
+	 * @return id
+	 */
 	public String getId() {
 		return id;
 	}
 	
+	/**
+	 * return name
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * return price
+	 * @return price
+	 */
 	public double getPrice() {
 		return price;
 	}
 	
+	/**
+	 * return cost
+	 * @return cost
+	 */
 	public double getCost() {
 		return cost;
 	}
 	
+	/**
+	 * return date type string
+	 * @return date
+	 */
 	public String getDateModified() {
 		return dateModified;
 	}

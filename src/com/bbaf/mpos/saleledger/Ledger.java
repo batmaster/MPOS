@@ -26,6 +26,9 @@ public class Ledger {
 	private String week;
 	private String month;
 	
+	/**
+	 * if dateDaily,dateWeek,dateMonth are null initialize them.
+	 */
 	public Ledger() {
 		dbDAO = SaleLedgerDBHelper.getInstance();
 		if(dateDaily == null)
@@ -36,6 +39,10 @@ public class Ledger {
 			dateMonth = Calendar.getInstance();
 	}
 	
+	/**
+	 * if dateDaily,dateWeek,dateMonth are null initialize them and set context.
+	 * @param context of calling Activity
+	 */
 	public Ledger(Context context) {
 		dbDAO = SaleLedgerDBHelper.getInstance(context);
 		if(dateDaily == null)
@@ -46,14 +53,26 @@ public class Ledger {
 			dateMonth = Calendar.getInstance();
 	}
 	
+	/**
+	 * Add sale in saleLedger connector.
+	 * @param sale is sale to add.
+	 */
 	public void record(Sale sale){
 		dbDAO.addSale(sale);
 	}
 	
+	/**
+	 * return all sale.
+	 * @return all sale
+	 */
 	public ArrayList<SaleLedger> getAllSaleLedger() {
 		return dbDAO.getAllSale();
 	}
 	
+	/**
+	 * return sale that time length equal 1 day.
+	 * @return sale that time length equal 1 day
+	 */
 	public ArrayList<SaleLedger> getDaily() {
 		String current = SDF.format(dateDaily.getTime());
 		Calendar from = (Calendar) dateDaily.clone();
@@ -63,6 +82,10 @@ public class Ledger {
 		return dbDAO.getSale(current,to);
 	}
 	
+	/**
+	 * return sale that time length equal 1 week.
+	 * @return sale that time length equal 1 week
+	 */
 	public ArrayList<SaleLedger> getWeek(){
 		Calendar from = (Calendar) dateWeek.clone();
 		Calendar temp = (Calendar) dateWeek.clone();
@@ -76,6 +99,10 @@ public class Ledger {
 		return dbDAO.getSale(current,to);
 	}
 	
+	/**
+	 * return sale that time length equal 1 month.
+	 * @return sale that time length equal 1 month
+	 */
 	public ArrayList<SaleLedger> getMonth(){
 		Calendar from = (Calendar) dateMonth.clone();
 		Calendar temp = (Calendar) dateMonth.clone();
@@ -88,30 +115,48 @@ public class Ledger {
 		return dbDAO.getSale(current,to);
 	}
 	
+	/**
+	 * decrease dateDaily by 1 day.
+	 */
 	public void prevDaily(){
 		dateDaily.add(Calendar.DATE, -1);
 	}
-	
+
+	/**
+	 * increase dateDaily by 1 day.
+	 */
 	public void nextDaily(){
 		dateDaily.add(Calendar.DATE, 1);
 	}
 	
+	/**
+	 * decrease dateWeek by 1 week.
+	 */
 	public void prevWeek(){
 		dateWeek.set(Calendar.DAY_OF_WEEK, 0);
 		dateWeek.add(Calendar.WEEK_OF_YEAR, -1);
 	}
 	
+	/**
+	 * decrease dateWeek by 1 week.
+	 */
 	public void nextWeek(){
 		dateWeek.set(Calendar.DAY_OF_WEEK, 0);
 		dateWeek.add(Calendar.WEEK_OF_YEAR, 1);
 	}
 	
+	/**
+	 * decrease dateMonth by 1 month.
+	 */
 	public void prevMonth(){
 		int temp = dateMonth.get(Calendar.MONTH);
 		dateMonth.set(Calendar.DATE, 0);
 		dateMonth.set(Calendar.MONTH, temp);
 	}
-	
+
+	/**
+	 * increase dateMonth by 1 month.
+	 */
 	public void nextMonth(){
 		int temp = dateMonth.get(Calendar.MONTH);
 		dateMonth.set(Calendar.DATE, 0);

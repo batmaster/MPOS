@@ -84,17 +84,25 @@ public class SaleLineItem implements Serializable {
 	}
 	
 	/**
-	 * Calculate price of this item
+	 * Calculate price of this item.
 	 * @return total item price
 	 */
 	public double getTotal(){
 		return quantity * unitPrice;
 	}
 	
+	/**
+	 * return unitPrice.
+	 * @return unitPrice
+	 */
 	public double getUnitPrice() {
 		return unitPrice;
 	}
 	
+	/**
+	 * set unitPrice
+	 * @param price that use for set unitPrice
+	 */
 	public void setUnitPrice(double price){
 		this.unitPrice = price;
 	}

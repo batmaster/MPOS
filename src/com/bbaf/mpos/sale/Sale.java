@@ -33,12 +33,20 @@ public class Sale implements Serializable {
 		lineOfItem = new ArrayList<SaleLineItem>();
 	}
 	
+	/**
+	 * initialize sale with empty List of SaleLineItem and set date.
+	 * @param sdate date
+	 */
 	public Sale(String sdate) {
 		date = Calendar.getInstance().getTime();
 		setDate(sdate);
 		lineOfItem = new ArrayList<SaleLineItem>();
 	}
 	
+	/**
+	 * initialize sale with empty List of SaleLineItem and set inventory.
+	 * @param inventory
+	 */
 	public Sale(Inventory inventory){
 		this();
 		this.inventory = inventory;
@@ -62,6 +70,11 @@ public class Sale implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * remove saleLineItem that match with productDesc
+	 * @param productDesc productDescription that want to remove
+	 * @return return true if can remove else false
+	 */
 	public boolean removeSaleLineItem(ProductDescription productDesc) {
 		try {
 			boolean canRemove = lineOfItem.remove(productDesc);
@@ -73,6 +86,10 @@ public class Sale implements Serializable {
 		}
 	}
 	
+	/**
+	 * remove all saleLineItem.
+	 * @return return true if can remove else false
+	 */
 	public boolean removeAllSaleLineItem() {
 		try {
 			lineOfItem.clear();
@@ -147,10 +164,18 @@ public class Sale implements Serializable {
 		return null;
 	}
 	
+	/**
+	 * return date
+	 * @return date
+	 */
 	public Date getDate(){
 		return date;
 	}
 	
+	/**
+	 * set date
+	 * @param s date
+	 */
 	private void setDate(String s){
 		String[] temp = s.split(" ");
 		date.setYear(Integer.parseInt(temp[0]));

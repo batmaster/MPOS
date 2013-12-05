@@ -97,11 +97,22 @@ public class Inventory implements Serializable {
 		return dbDAO.getQuantity(id);
 	}
 
+	/**
+	 * edit productDescription
+	 * @param oldProduct the old one
+	 * @param newProduct the new one
+	 */
 	public void editProduct(ProductDescription oldProduct,
 			ProductDescription newProduct) {
 		dbDAO.editProduct(oldProduct, newProduct);
 	}
 
+	/**
+	 * edit quantity
+	 * @param oldProduct the old one
+	 * @param newProduct the new one
+	 * @param quantity amount of item
+	 */
 	public void editQuantity(ProductDescription oldProduct,
 			ProductDescription newProduct, int quantity) {
 		dbDAO.editQuantity(oldProduct, newProduct, quantity);
@@ -111,10 +122,18 @@ public class Inventory implements Serializable {
 		return dbDAO.getProductBySomething(something);
 	}
 	
+	/**
+	 * remove productDescription
+	 * @param product that want to remove
+	 */
 	public void removeProduct(ProductDescription product) {
 		dbDAO.removeProduct(product);
 	}
 	
+	/**
+	 * return all productDescription
+	 * @return all productDescription
+	 */
 	public ArrayList<ProductDescription> getAllProduct() {
 		return dbDAO.getAllProduct();
 	}
