@@ -83,6 +83,6 @@ class SaleListRow extends RemovableListRow {
 
 	@Override
 	public void remove() {
-		Register.getInstance().getSale().RemoveSaleLineItem(line.getProductDescription());
+		Register.getInstance().getSale().removeSaleLineItem(line.getProductDescription());
 	}
 }

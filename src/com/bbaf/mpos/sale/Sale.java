@@ -52,7 +52,7 @@ public class Sale implements Serializable {
 	 * @return true if add new SaleLineItem.
 	 * 		false if add quantity instead.
 	 */
-	public boolean AddSaleLineItem(ProductDescription productDesc,int quantity) {
+	public boolean addSaleLineItem(ProductDescription productDesc,int quantity) {
 		SaleLineItem line = checkItemInLine(new SaleLineItem(productDesc,quantity));
 		if(!(line == null)) {
 			line.addQuantity(quantity);
@@ -62,7 +62,7 @@ public class Sale implements Serializable {
 		return true;
 	}
 	
-	public boolean RemoveSaleLineItem(ProductDescription productDesc) {
+	public boolean removeSaleLineItem(ProductDescription productDesc) {
 		try {
 			boolean canRemove = lineOfItem.remove(productDesc);
 			Log.d("remove", canRemove + "");
@@ -73,7 +73,7 @@ public class Sale implements Serializable {
 		}
 	}
 	
-	public boolean RemoveAllSaleLineItem() {
+	public boolean removeAllSaleLineItem() {
 		try {
 			lineOfItem.clear();
 		}

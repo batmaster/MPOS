@@ -69,7 +69,7 @@ public class Register implements Serializable {
 	 */
 	public boolean addItem(ProductDescription productDesc,int quantity) {
 		if(!sale.equals(null)) {
-			sale.AddSaleLineItem(productDesc,quantity);
+			sale.addSaleLineItem(productDesc,quantity);
 			return true;
 		}
 		return false;
@@ -82,7 +82,7 @@ public class Register implements Serializable {
 	 */
 	public boolean removeItem(ProductDescription productDesc) {
 		if(!sale.equals(null)) {
-			sale.RemoveSaleLineItem(productDesc);
+			sale.removeSaleLineItem(productDesc);
 			return true;
 		}
 		return false;
@@ -95,7 +95,7 @@ public class Register implements Serializable {
 	 */
 	public boolean removeAllItem() {
 		if(!sale.equals(null)) {
-			sale.RemoveAllSaleLineItem();
+			sale.removeAllSaleLineItem();
 			return true;
 		}
 		return false;
