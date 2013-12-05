@@ -21,25 +21,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
-public class SaleLedgerDBHepler extends SQLiteOpenHelper {
+public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "bbafmpos2.db";
 	private static final String TABLE_SALE_LEDGER = "saleledger";
 	private static final String TABLE_PRODUCT_LEDGER = "productledger";
 	private static final int DATABASE_VERSION = 1;
-	private static SaleLedgerDBHepler dao;
+	private static SaleLedgerDBHelper dao;
 
-	private SaleLedgerDBHepler(Context context) {
+	private SaleLedgerDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
-	public static SaleLedgerDBHepler getInstance(Context context) {
+	public static SaleLedgerDBHelper getInstance(Context context) {
 		if (dao == null)
-			dao = new SaleLedgerDBHepler(context);
+			dao = new SaleLedgerDBHelper(context);
 		return dao;
 	}
 
-	public static SaleLedgerDBHepler getInstance() {
+	public static SaleLedgerDBHelper getInstance() {
 		return dao;
 	}
 

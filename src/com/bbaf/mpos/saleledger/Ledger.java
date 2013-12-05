@@ -11,7 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.bbaf.mpos.DAO.InventoryDBHelper;
-import com.bbaf.mpos.DAO.SaleLedgerDBHepler;
+import com.bbaf.mpos.DAO.SaleLedgerDBHelper;
 import com.bbaf.mpos.sale.Sale;
 
 public class Ledger {
@@ -20,14 +20,14 @@ public class Ledger {
 	private Calendar dateDaily;
 	private Calendar dateWeek;
 	private Calendar dateMonth;
-	private SaleLedgerDBHepler dbDAO;
+	private SaleLedgerDBHelper dbDAO;
 	
 	private String date;
 	private String week;
 	private String month;
 	
 	public Ledger() {
-		dbDAO = SaleLedgerDBHepler.getInstance();
+		dbDAO = SaleLedgerDBHelper.getInstance();
 		if(dateDaily == null)
 			dateDaily = Calendar.getInstance();
 		if(dateWeek == null)
@@ -37,7 +37,7 @@ public class Ledger {
 	}
 	
 	public Ledger(Context context) {
-		dbDAO = SaleLedgerDBHepler.getInstance(context);
+		dbDAO = SaleLedgerDBHelper.getInstance(context);
 		if(dateDaily == null)
 			dateDaily = Calendar.getInstance();
 		if(dateWeek == null)
