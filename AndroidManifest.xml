@@ -18,19 +18,10 @@
             android:value="AEdPqrEAAAAIz-FrnMNfwhsnjVbsLtJmWSwjqCnAvEmZQ3Donw" />
 
         <activity
-            android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
-            android:label="Old1"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
             android:label="Edit Description"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
-        </activity>
-        <activity
-            android:name="com.bbaf.mpos.sale.ui.SaleActivity"
-            android:label="Old2" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.InventoryActivity2"
@@ -38,6 +29,7 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.menu.ui.MenuActivity"
+            android:screenOrientation="portrait"
             android:label="BBAF-POS" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,35 +39,42 @@
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.LedgerUIActivity"
-            android:label="SaleLedger" >
+            android:label="SaleLedger"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.ui.AddProductActivity"
             android:label="Add Product"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.PaymentActivity"
             android:label="Payment"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity"
             android:label="Payment Success"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.sale.payment.ui.SaleEditActivity"
             android:label="Special Edit"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.saleledger.ui.SaleLedgerProductListActivity"
+            android:screenOrientation="portrait"
             android:label="Sale List" >
         </activity>
         <activity
             android:name="com.bbaf.mpos.inventory.description.ui.DescriptionActivity"
             android:label="Product Description"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
