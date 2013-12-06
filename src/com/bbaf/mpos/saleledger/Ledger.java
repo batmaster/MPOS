@@ -94,6 +94,7 @@ public class Ledger {
 			temp.add(Calendar.DATE, -7);		
 		temp.add(Calendar.DATE,1);
 		String current = SDF.format(temp.getTime());
+		from.add(Calendar.DATE,1);
 		String to = SDF.format(from.getTime());
 		week = String.format("Week : %s/%s/%s ~ %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0], to.split(" ")[2], to.split(" ")[1], to.split(" ")[0]);
 		return dbDAO.getSale(current,to);
@@ -109,6 +110,7 @@ public class Ledger {
 		int mtemp = temp.get(Calendar.MONTH);
 		temp.set(Calendar.DATE,1);
 		temp.set(Calendar.MONTH, mtemp);
+		from.add(Calendar.DATE,1);
 		String current = SDF.format(temp.getTime());
 		String to = SDF.format(from.getTime());
 		month = String.format("Month : %s/%s", current.split(" ")[1], current.split(" ")[0]);
@@ -160,7 +162,7 @@ public class Ledger {
 	public void nextMonth(){
 		int temp = dateMonth.get(Calendar.MONTH);
 		dateMonth.set(Calendar.DATE, 0);
-		dateMonth.set(Calendar.MONTH, temp+2);
+		dateMonth.set(Calendar.MONTH, (temp+2)%12);
 	}
 	
 	public String getDateS() {

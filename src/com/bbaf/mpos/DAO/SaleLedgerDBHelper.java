@@ -202,7 +202,7 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 			}
 			cursorSL.close();
 			db.close();
-		return saleList;
+			return saleList;
 		} catch (Exception e) {
 			return saleList;
 		}

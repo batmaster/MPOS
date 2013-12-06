@@ -106,4 +106,8 @@ public class SaleLineItem implements Serializable {
 	public void setUnitPrice(double price){
 		this.unitPrice = price;
 	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 }

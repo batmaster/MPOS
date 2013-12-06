@@ -1,16 +1,22 @@
 package com.bbaf.mpos.inventory.ui;
 
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddProductActivity extends Activity {
 	
@@ -20,11 +26,11 @@ public class AddProductActivity extends Activity {
 	private EditText editTextPrice;
 	private EditText editTextQuantity;
 	private Button buttonAddX;
-	private Button buttonClearX;
+	private Button buttonScanX;
 	private Button buttonCancelX;
 	
-	
 	private static final int ADD_CANCEL = 0;
+	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +46,8 @@ public class AddProductActivity extends Activity {
 		buttonAddX = (Button)findViewById(R.id.buttonAddX);
 		buttonAddX.setOnClickListener(new AddOnClickListener(this));
 		
-		buttonClearX = (Button)findViewById(R.id.buttonClearX);
-		buttonClearX.setOnClickListener(new ClearOnClickListener(this));
+		buttonScanX = (Button)findViewById(R.id.buttonScanX);
+		buttonScanX.setOnClickListener(new ScanOnClickListener(this));
 		
 		buttonCancelX = (Button)findViewById(R.id.buttonCancelX);
 		buttonCancelX.setOnClickListener(new OnClickListener() {
@@ -55,6 +61,31 @@ public class AddProductActivity extends Activity {
 		
 		setResult(ADD_CANCEL);
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		// bat: for tracking whether from which Activity and what is the result
+		Log.d("result", "requestCode " + requestCode);
+		Log.d("result", "resultCode " + resultCode);
+		//
+		if (requestCode == SCANNER_ACTIVITY_REQUESTCODE) {
+			IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        	if (scanningResult != null) {
+        		if (Register.getInstance().getInventory().getProduct(scanningResult.getContents()) == null) {
+        			editTextProductId.setText(scanningResult.getContents());
+	        		editTextQuantity.requestFocus();
+        		}
+        		else {
+        			Toast.makeText(getApplicationContext(),"ID has been registered already.", Toast.LENGTH_SHORT).show();
+        		}
+        	}
+        	else {
+        	    Toast.makeText(getApplicationContext(),"No scanned data received!", Toast.LENGTH_SHORT).show();
+        	}
+		}
+	}
+		
 	
 	public EditText[] getAllEditText() {
 		return new EditText[] {editTextProductId, editTextProductName, editTextPrice, editTextCost, editTextQuantity};

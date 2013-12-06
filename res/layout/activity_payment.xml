@@ -55,10 +55,11 @@
                 android:id="@+id/editTextPay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ems="8"
                 android:hint="Amount of Money"
                 android:inputType="number"
-                android:textSize="20sp"
-                android:ems="8" >
+                android:maxLines="1"
+                android:textSize="20sp" >
 
                 <requestFocus />
             </EditText>

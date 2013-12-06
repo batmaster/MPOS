@@ -2,14 +2,15 @@ package com.bbaf.mpos.inventory.ui;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 public class ScanOnClickListener implements OnClickListener {
 
-	private InventoryActivity2 activity;
+	private Activity activity;
 
-	public ScanOnClickListener(InventoryActivity2 activity) {
+	public ScanOnClickListener(Activity activity) {
 		this.activity = activity;
 	}
 

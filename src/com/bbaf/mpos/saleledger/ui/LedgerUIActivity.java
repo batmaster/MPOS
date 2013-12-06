@@ -10,6 +10,7 @@ import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.sale.Sale;
 import com.bbaf.mpos.saleledger.Ledger;
+import com.bbaf.mpos.saleledger.SaleLedger;
 
 import android.os.Bundle;
 import android.app.Activity;

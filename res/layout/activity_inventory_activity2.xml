@@ -80,15 +80,16 @@
                                 android:layout_marginRight="4dip"
                                 android:layout_weight="3"
                                 android:background="#0D000000"
+                                android:ems="5"
                                 android:hint=" IDNumber"
+                                android:maxLines="1"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
                                 android:shadowRadius="2.5"
                                 android:textColor="#000000"
                                 android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:ems="5" >
+                                android:textStyle="bold" >
 
                                 <requestFocus />
                             </EditText>
@@ -116,6 +117,7 @@
                                 android:ems="5"
                                 android:hint=" 1"
                                 android:inputType="numberSigned"
+                                android:maxLines="1"
                                 android:shadowColor="#FFFFFF"
                                 android:shadowDx="0.0"
                                 android:shadowDy="0.0"
@@ -303,6 +305,7 @@
                         android:background="#0D000000"
                         android:drawableRight="@drawable/ic_action_search"
                         android:hint=" Enter product name or ID"
+                        android:maxLines="1"
                         android:textColor="#000000"
                         android:textSize="22sp" />
 

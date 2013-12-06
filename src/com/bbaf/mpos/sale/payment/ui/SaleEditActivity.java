@@ -18,6 +18,7 @@ public class SaleEditActivity extends Activity {
 	private TextView textViewEditUnitPriceId;
 	private TextView textViewEditUnitPriceName;
 	private EditText editTextUnitPrice;
+	private EditText editTextEditQuantity;
 	private Button buttonEditSalePriceConfirm;
 	private Button buttonEditSalePriceCancel;
 	
@@ -40,12 +41,20 @@ public class SaleEditActivity extends Activity {
 		editTextUnitPrice = (EditText)findViewById(R.id.editTextUnitPrice);
 		editTextUnitPrice.setHint(String.valueOf(Register.getInstance().getInventory().getProduct(product.getId()).getPrice()));
 		
+		editTextEditQuantity = (EditText)findViewById(R.id.editTextEditQuantity);
+		editTextEditQuantity.setHint(String.valueOf(Register.getInstance().getSale().getList(Register.getInstance().getInventory().getProduct(product.getId())).getQuantity()));
+		
 		buttonEditSalePriceConfirm = (Button)findViewById(R.id.buttonEditSalePriceConfirm);
 		buttonEditSalePriceConfirm.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Register.getInstance().getSale().getList(product).setUnitPrice(Double.parseDouble(editTextUnitPrice.getText().toString()));
+				if (!editTextUnitPrice.getText().toString().equals(""))
+					Register.getInstance().getSale().getList(product).setUnitPrice(Double.parseDouble(editTextUnitPrice.getText().toString()));
+				
+				if (!editTextEditQuantity.getText().toString().equals(""))
+					Register.getInstance().getSale().getList(Register.getInstance().getInventory().getProduct(product.getId())).setQuantity(Integer.parseInt(editTextEditQuantity.getText().toString()));
+					
 				setResult(EDIT_SUCCESS);
 				finish();
 			}

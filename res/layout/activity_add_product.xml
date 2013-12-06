@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLines="1"
             android:textSize="20sp" >
 
             <requestFocus />
@@ -55,7 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLines="1"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +81,9 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
+            android:maxLines="1"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +106,9 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
+            android:maxLines="1"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -125,7 +132,9 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="1"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLines="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -153,13 +162,13 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/buttonClearX"
+            android:id="@+id/buttonScanX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dip"
             android:layout_marginRight="3dip"
             android:layout_weight="3"
-            android:background="@drawable/light_yellow_btn"
+            android:background="@drawable/light_blue_btn"
             android:gravity="center"
             android:maxHeight="45dip"
             android:minHeight="45dip"
@@ -167,7 +176,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="2.5"
-            android:text="Clear"
+            android:text="Scan"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
