@@ -162,6 +162,7 @@ public class Ledger {
 	public void nextMonth(){
 		int temp = dateMonth.get(Calendar.MONTH);
 		dateMonth.set(Calendar.DATE, 0);
+		if(temp+2 >= 12) dateMonth.add(Calendar.YEAR, 2);
 		dateMonth.set(Calendar.MONTH, (temp+2)%12);
 	}
 	
