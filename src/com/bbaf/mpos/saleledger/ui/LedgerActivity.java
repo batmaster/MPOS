@@ -26,7 +26,7 @@ import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TableLayout;
 
-public class LedgerUIActivity extends Activity {
+public class LedgerActivity extends Activity {
 	
 	private TabHost tabLedger;
 	private TabSpec tabByDate;

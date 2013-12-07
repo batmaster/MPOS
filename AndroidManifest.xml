@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bbaf.mpos.saleledger.ui.LedgerUIActivity"
+            android:name="com.bbaf.mpos.saleledger.ui.LedgerActivity"
             android:label="SaleLedger"
             android:screenOrientation="portrait" >
         </activity>

@@ -13,7 +13,7 @@ import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity;
 import com.bbaf.mpos.saleledger.Ledger;
-import com.bbaf.mpos.saleledger.ui.LedgerUIActivity;
+import com.bbaf.mpos.saleledger.ui.LedgerActivity;
 
 public class MenuActivity extends Activity {
 	
@@ -49,7 +49,7 @@ public class MenuActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent toLedger = new Intent(getApplicationContext(),
-						LedgerUIActivity.class);
+						LedgerActivity.class);
 				startActivity(toLedger);
 			}
 		});
