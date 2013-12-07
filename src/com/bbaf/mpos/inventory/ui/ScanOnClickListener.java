@@ -1,10 +1,10 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+
+import com.google.zxing.integration.android.IntentIntegrator;
 
 public class ScanOnClickListener implements OnClickListener {
 

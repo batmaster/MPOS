@@ -1,6 +1,5 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.sale.payment.ui;
 
-import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
 
 import android.view.View;
 import android.view.View.OnClickListener;

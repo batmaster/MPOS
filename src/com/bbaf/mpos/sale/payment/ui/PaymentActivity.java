@@ -4,8 +4,6 @@ import com.bbaf.mpos.R;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
 import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.inventory.ui.PaymentCancelOnClickListener;
-import com.bbaf.mpos.inventory.ui.PaymentConfirmOnClickListener;
 
 import android.os.Bundle;
 import android.app.Activity;

@@ -1,9 +1,9 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-
 import android.content.Context;
 import android.widget.RelativeLayout;
+
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public abstract class RemovableListRow extends RelativeLayout {
 

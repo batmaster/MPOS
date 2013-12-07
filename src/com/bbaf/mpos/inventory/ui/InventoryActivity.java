@@ -2,44 +2,33 @@
 
 import java.util.ArrayList;
 
-import com.bbaf.mpos.R;
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-import com.bbaf.mpos.R.layout;
-import com.bbaf.mpos.R.menu;
-import com.bbaf.mpos.sale.SaleLineItem;
-import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.TabHost.TabSpec;
 
-public class InventoryActivity2 extends Activity {
+import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.bbaf.mpos.sale.payment.ui.PaymentOnClickListener;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+public class InventoryActivity extends Activity {
 
 	private TabHost tabHost;
 
@@ -102,7 +91,7 @@ public class InventoryActivity2 extends Activity {
 					Toast.makeText(getApplicationContext(), "ID must not be empty.", Toast.LENGTH_SHORT).show();
 				}
 				else {
-					ProductDescription product = Store.getInstance().getProduct(id);
+					ProductDescription product = Register.getInstance().getInventory().getProduct(id);
 					if (product == null) {
 						Toast.makeText(getApplicationContext(), "ID has not registered.", Toast.LENGTH_SHORT).show();
 					}

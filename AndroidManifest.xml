@@ -24,7 +24,7 @@
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="com.bbaf.mpos.inventory.ui.InventoryActivity2"
+            android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
             android:screenOrientation="portrait"
             android:label="Sale and Inventory" >
         </activity>

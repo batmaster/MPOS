@@ -1,20 +1,17 @@
 package com.bbaf.mpos.inventory.ui;
 
 
-import com.bbaf.mpos.FacadeController.Store;
-
 import android.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import android.widget.TableLayout;
 
 public class RemoveOnClickListener implements OnClickListener {
 
 	private ListView listView;
-	private InventoryActivity2 activity;
+	private InventoryActivity activity;
 
-	public RemoveOnClickListener(ListView listView, InventoryActivity2 activity) {
+	public RemoveOnClickListener(ListView listView, InventoryActivity activity) {
 		this.listView = listView;
 		this.activity = activity;
 	}

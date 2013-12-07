@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.bbaf.mpos.R;
+import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.inventory.ui.InventoryActivity2;
+import com.bbaf.mpos.inventory.ui.InventoryActivity;
 import com.bbaf.mpos.saleledger.Ledger;
 import com.bbaf.mpos.saleledger.ui.LedgerUIActivity;
 
@@ -24,7 +24,8 @@ public class MenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
-		Store.getInstance().initInventoryDB(getApplicationContext());
+		Register.getInstance().getInventory().setDB((InventoryDBHelper.getInstance(getApplicationContext())));
+		
 		buttonToInvenSale = (Button)findViewById(R.id.buttonToInvenSale);
 		buttonToLedger = (Button)findViewById(R.id.buttonToLedger);
 		
@@ -38,7 +39,7 @@ public class MenuActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent toInvenSale = new Intent(getApplicationContext(),
-						InventoryActivity2.class);
+						InventoryActivity.class);
 				startActivity(toInvenSale);
 			}
 		});

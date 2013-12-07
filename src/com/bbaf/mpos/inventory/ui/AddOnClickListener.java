@@ -1,14 +1,12 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public class AddOnClickListener implements OnClickListener {
 

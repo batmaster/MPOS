@@ -1,25 +1,21 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.sale.payment.ui;
 
 
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ListView;
-import android.widget.TableLayout;
 import android.widget.Toast;
+
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.inventory.ui.InventoryActivity;
 
 public class PaymentOnClickListener implements OnClickListener {
 
-	private InventoryActivity2 activity;
+	private InventoryActivity activity;
 	
 	private static final int PAYMENT_ACTIVITY_REQUESTCODE = 2;
 
-	public PaymentOnClickListener(InventoryActivity2 activity) {
+	public PaymentOnClickListener(InventoryActivity activity) {
 		this.activity = activity;
 	}
 

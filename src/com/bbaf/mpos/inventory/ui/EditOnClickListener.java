@@ -1,13 +1,13 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TableLayout;
+
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public class EditOnClickListener implements OnClickListener {
 
@@ -38,7 +38,7 @@ public class EditOnClickListener implements OnClickListener {
 					
 					ProductDescription product = row.getProduct();
 					editActivity.putExtra("ProductDescription", product);
-					int quantity = Store.getInstance().getQuantity(product
+					int quantity = Register.getInstance().getInventory().getQuantity(product
 							.getId());
 					editActivity.putExtra("ProductQuantity", quantity);
 

@@ -1,25 +1,21 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.R;
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TableLayout;
 import android.widget.Toast;
+
+import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 public class ATSOnClickListener implements OnClickListener {
 
 	private ListView listViewInventory;
-	private InventoryActivity2 activity;
+	private InventoryActivity activity;
 
-	public ATSOnClickListener(ListView listViewInventory, InventoryActivity2 activity) {
+	public ATSOnClickListener(ListView listViewInventory, InventoryActivity activity) {
 		this.listViewInventory = listViewInventory;
 		this.activity = activity;
 	}

@@ -1,15 +1,8 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.R;
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.R.layout;
-import com.bbaf.mpos.R.menu;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -17,6 +10,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class AddProductActivity extends Activity {
 	

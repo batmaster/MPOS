@@ -1,11 +1,9 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.sale.payment.ui;
 
 import java.util.ArrayList;
 
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
-import com.bbaf.mpos.sale.payment.ui.PaymentActivity;
-import com.bbaf.mpos.sale.payment.ui.SuccessPaymentActivity;
 
 import android.content.Intent;
 import android.view.View;

@@ -1,22 +1,20 @@
 package com.bbaf.mpos.inventory.ui;
 
-import com.bbaf.mpos.R;
-import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.FacadeController.Store;
-import com.bbaf.mpos.ProductDescription.ProductDescription;
-import com.bbaf.mpos.inventory.Inventory;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.bbaf.mpos.R;
+import com.bbaf.mpos.FacadeController.Register;
+import com.bbaf.mpos.ProductDescription.ProductDescription;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class EditProductActivity extends Activity {
 
@@ -76,7 +74,7 @@ public class EditProductActivity extends Activity {
 							.show();
 				}
 				else {
-					if (Store.getInstance().getProduct(id) != null && !id.equals(oldProduct.getId())) {
+					if (Register.getInstance().getInventory().getProduct(id) != null && !id.equals(oldProduct.getId())) {
 						Toast.makeText(
 								getApplicationContext(),
 								String.format("Product : %s is already added.",
@@ -90,10 +88,10 @@ public class EditProductActivity extends Activity {
 								.toString());
 						ProductDescription newProduct = new ProductDescription(
 								id, name, price, cost);
-						Store.getInstance().editProduct(oldProduct, newProduct);
+						Register.getInstance().getInventory().editProduct(oldProduct, newProduct);
 						int quantity = Integer.parseInt(editTextQuantity
 								.getText().toString());
-						Store.getInstance().editQuantity(oldProduct, newProduct, quantity);
+						Register.getInstance().getInventory().editQuantity(oldProduct, newProduct, quantity);
 						setResult(EDIT_SUCCESS);
 						finish();
 					}
