@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.inventory.ui.InventoryActivity;
+import com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity;
 import com.bbaf.mpos.saleledger.Ledger;
 import com.bbaf.mpos.saleledger.ui.LedgerUIActivity;
 
@@ -39,7 +39,7 @@ public class MenuActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent toInvenSale = new Intent(getApplicationContext(),
-						InventoryActivity.class);
+						InventoryandSaleActivity.class);
 				startActivity(toInvenSale);
 			}
 		});

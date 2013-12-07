@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -7,9 +7,9 @@ import com.bbaf.mpos.FacadeController.Register;
 
 public class CancelSaleDialogOnClickListener implements OnClickListener {
 
-	private InventoryActivity activity;
+	private InventoryandSaleActivity activity;
 	
-	public CancelSaleDialogOnClickListener(InventoryActivity activity) {
+	public CancelSaleDialogOnClickListener(InventoryandSaleActivity activity) {
 		this.activity = activity;
 	}
 	

@@ -5,7 +5,7 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.R.layout;
 import com.bbaf.mpos.R.menu;
-import com.bbaf.mpos.inventory.ui.EditProductActivity;
+import com.bbaf.mpos.inventoryAndSale.ui.EditProductActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

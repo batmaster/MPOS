@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;

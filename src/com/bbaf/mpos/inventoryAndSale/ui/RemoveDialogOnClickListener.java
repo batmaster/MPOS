@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -7,9 +7,9 @@ import android.widget.ListView;
 public class RemoveDialogOnClickListener implements OnClickListener {
 
 	private ListView listView;
-	private InventoryActivity activity;
+	private InventoryandSaleActivity activity;
 	
-	public RemoveDialogOnClickListener(ListView listView, InventoryActivity activity) {
+	public RemoveDialogOnClickListener(ListView listView, InventoryandSaleActivity activity) {
 		this.listView = listView;
 		this.activity = activity;
 	}

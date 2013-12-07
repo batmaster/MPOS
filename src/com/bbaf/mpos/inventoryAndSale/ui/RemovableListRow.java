@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import android.content.Context;
 import android.widget.RelativeLayout;

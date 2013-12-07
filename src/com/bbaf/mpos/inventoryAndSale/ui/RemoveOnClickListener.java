@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 
 import android.app.AlertDialog;
@@ -9,9 +9,9 @@ import android.widget.ListView;
 public class RemoveOnClickListener implements OnClickListener {
 
 	private ListView listView;
-	private InventoryActivity activity;
+	private InventoryandSaleActivity activity;
 
-	public RemoveOnClickListener(ListView listView, InventoryActivity activity) {
+	public RemoveOnClickListener(ListView listView, InventoryandSaleActivity activity) {
 		this.listView = listView;
 		this.activity = activity;
 	}

@@ -1,4 +1,4 @@
-package com.bbaf.mpos.inventory.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,9 +13,9 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 public class ATSOnClickListener implements OnClickListener {
 
 	private ListView listViewInventory;
-	private InventoryActivity activity;
+	private InventoryandSaleActivity activity;
 
-	public ATSOnClickListener(ListView listViewInventory, InventoryActivity activity) {
+	public ATSOnClickListener(ListView listViewInventory, InventoryandSaleActivity activity) {
 		this.listViewInventory = listViewInventory;
 		this.activity = activity;
 	}

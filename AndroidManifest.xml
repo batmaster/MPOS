@@ -18,13 +18,13 @@
             android:value="AEdPqrEAAAAIz-FrnMNfwhsnjVbsLtJmWSwjqCnAvEmZQ3Donw" />
 
         <activity
-            android:name="com.bbaf.mpos.inventory.ui.EditProductActivity"
+            android:name="com.bbaf.mpos.inventoryAndSale.ui.EditProductActivity"
             android:label="Edit Description"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="com.bbaf.mpos.inventory.ui.InventoryActivity"
+            android:name="com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity"
             android:screenOrientation="portrait"
             android:label="Sale and Inventory" >
         </activity>
@@ -44,7 +44,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.bbaf.mpos.inventory.ui.AddProductActivity"
+            android:name="com.bbaf.mpos.inventoryAndSale.ui.AddProductActivity"
             android:label="Add Product"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >

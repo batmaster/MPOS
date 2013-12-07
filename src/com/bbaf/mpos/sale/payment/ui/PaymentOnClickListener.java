@@ -7,15 +7,15 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.bbaf.mpos.FacadeController.Register;
-import com.bbaf.mpos.inventory.ui.InventoryActivity;
+import com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity;
 
 public class PaymentOnClickListener implements OnClickListener {
 
-	private InventoryActivity activity;
+	private InventoryandSaleActivity activity;
 	
 	private static final int PAYMENT_ACTIVITY_REQUESTCODE = 2;
 
-	public PaymentOnClickListener(InventoryActivity activity) {
+	public PaymentOnClickListener(InventoryandSaleActivity activity) {
 		this.activity = activity;
 	}
 

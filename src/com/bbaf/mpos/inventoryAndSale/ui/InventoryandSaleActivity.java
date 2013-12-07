@@ -1,4 +1,4 @@
-	package com.bbaf.mpos.inventory.ui;
+	package com.bbaf.mpos.inventoryAndSale.ui;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ import com.bbaf.mpos.sale.payment.ui.PaymentOnClickListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class InventoryActivity extends Activity {
+public class InventoryandSaleActivity extends Activity {
 
 	private TabHost tabHost;
 
