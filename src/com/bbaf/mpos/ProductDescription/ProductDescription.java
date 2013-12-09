@@ -6,6 +6,11 @@ import com.bbaf.mpos.sale.SaleLineItem;
 
 import android.util.Log;
 
+/**
+ * Class for product detail.
+ * @author Atit Leelasuksan 5510546221
+ * @version Dec 9, 2013
+ */
 public class ProductDescription implements Serializable {
 	
 	@Override
@@ -31,12 +36,17 @@ public class ProductDescription implements Serializable {
 		
 		return false;
 	}
-
+	
 	private int key;
+	/** id of product. */
 	private String id;
+	/** name of product. */
 	private String name;
+	/** price of product. */
 	private double price;
+	/** cost of product. */
 	private double cost;
+	/** last date modified of product. */
 	private String dateModified;
 	
 	/**

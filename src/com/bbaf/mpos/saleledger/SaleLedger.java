@@ -4,10 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * SaleLedger is class for sale to use in Ledger.
+ * @author Atit Leelasuksan 5510546221
+ * @version Dec 9, 2013
+ */
 public class SaleLedger implements Serializable {
 	
+	/** date of sale. */
 	private String date;
+	/** total price of sale. */
 	private double total;
+	/** list of product in sale. */
 	private ArrayList<ProductLedger> productLedgerList;
 	
 	/**

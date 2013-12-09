@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 /**
- * SaleLineItem to Show Detail of line item in sale
+ * SaleLineItem to Show Detail of line item in sale.
  * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 28, 2013
  */
@@ -31,7 +31,7 @@ public class SaleLineItem implements Serializable {
 	private ProductDescription productDesc;
 	/** Quantity of product in this line item. */
 	private int quantity;
-	
+	/** unit price for product in SaleLineItem. */
 	private double unitPrice;
 	/**
 	 * initialize SaleLineItem with ProductDescription.
@@ -107,6 +107,10 @@ public class SaleLineItem implements Serializable {
 		this.unitPrice = price;
 	}
 	
+	/**
+	 * set quantity of product in SaleLineItem.
+	 * @param quantity to set.
+	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}

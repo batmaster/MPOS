@@ -22,9 +22,12 @@ public class Register implements Serializable {
 	/** sale for register. */
 	private Sale sale;
 	
+	/** Inventory for register. */
 	private Inventory inventory;
+	/** Ledger for register. */
 	private Ledger ledger;
 	
+	/** instance of register to be singleton. */
 	private static Register register;
 	
 	/**
@@ -74,7 +77,7 @@ public class Register implements Serializable {
 	 * add item to sale.
 	 * @param productDesc is item to add.
 	 * @param quantity of item to add.
-	 * @return 
+	 * @return true if add complete otherwise false.
 	 */
 	public boolean addItem(ProductDescription productDesc,int quantity) {
 		if(!sale.equals(null)) {
@@ -87,7 +90,7 @@ public class Register implements Serializable {
 	/**
 	 * remove item in sale.
 	 * @param productDesc is item to add.
-	 * @return 
+	 * @return true if remove complete otherwise false.
 	 */
 	public boolean removeItem(ProductDescription productDesc) {
 		if(!sale.equals(null)) {
@@ -100,7 +103,7 @@ public class Register implements Serializable {
 	/**
 	 * remove all item in sale.
 	 * @param productDesc is item to add.
-	 * @return 
+	 * @return true if remove complete otherwise false.
 	 */
 	public boolean removeAllItem() {
 		if(!sale.equals(null)) {

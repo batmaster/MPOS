@@ -2,11 +2,20 @@ package com.bbaf.mpos.saleledger;
 
 import java.io.Serializable;
 
+/**
+ * ProductLedger is class for product that use in SaleLedger.
+ * @author Atit Leelasuksan 5510546221
+ * @version Dec 9, 2013
+ */
 public class ProductLedger implements Serializable {
 	
+	/** id of product. */
 	private String id;
+	/** name of product. */
 	private String name;
+	/** unit price of product. */
 	private double unitPrice;
+	/** quantity of product. */
 	private int quantity;
 	
 	/**

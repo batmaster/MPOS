@@ -13,7 +13,7 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.Inventory;
 
 /**
- * Class for sale function.
+ * Class for sale function work with SaleLineItem.
  * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 28, 2013
  */
@@ -22,9 +22,12 @@ public class Sale implements Serializable {
 	/** List of SaleLineItem in this sale. */
 	private ArrayList<SaleLineItem> lineOfItem;
 	
+	/** inventory to get or check product. */
 	private Inventory inventory;
 	
+	/** date of sale. */
 	private Date date;
+	
 	/**
 	 * initialize sale with empty List of SaleLineItem.
 	 */

@@ -9,15 +9,20 @@ import android.database.sqlite.SQLiteDatabase;
 import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
+/**
+ * Inventory class to delegate duty to inventory database access object.
+ * @author Atit Leelasuksan 5510546221
+ * @version Dec 9, 2013
+ */
 public class Inventory implements Serializable {
-	private ArrayList<ProductDescription> product;
+	/** database access object for inventory. */
 	private InventoryDBHelper dbDAO;
+	
 	/**
 	 * Constructor of inventory.
 	 * Initialize attribute of this class.
 	 */
 	public Inventory(){
-		product = new ArrayList<ProductDescription>();
 		dbDAO = InventoryDBHelper.getInstance();
 	}
 	
@@ -46,27 +51,6 @@ public class Inventory implements Serializable {
 	 */
 	public void addQuantity(ProductDescription product, int quantity) {
 		dbDAO.addQuantity(product, quantity);
-	}
-	
-	/**
-	 * return all product descriptions.
-	 * @return all product descriptions
-	 */
-	public ArrayList<ProductDescription> getProducts(){
-		return product;
-	}
-	
-	/**
-	 * Find productDescription that match with id
-	 * @param id is productDescription to find.
-	 * @return productDescription
-	 */
-	public ProductDescription search(String id){
-		for(ProductDescription p : product){
-			if(p.getId().equals(id))
-				return p;
-		}
-		return null;
 	}
 	
 	/**

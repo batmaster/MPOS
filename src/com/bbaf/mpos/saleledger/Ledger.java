@@ -14,7 +14,15 @@ import com.bbaf.mpos.DAO.InventoryDBHelper;
 import com.bbaf.mpos.DAO.SaleLedgerDBHelper;
 import com.bbaf.mpos.sale.Sale;
 
+/**
+ * Ledger to record sale.
+ * Ledger will record all complete sale detail
+ * e.g. date, total price, amount of product, list of product.
+ * @author Atit Leelasuksan 5510546221
+ * @version Dec 9, 2013
+ */
 public class Ledger {
+	/** to set format of date. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy MM dd");
 	
 	private Calendar dateDaily;
