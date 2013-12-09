@@ -21,6 +21,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * SaleLedger DAO, for contact between java object and database.
+ */
 public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "bbafmpos2.db";
@@ -33,12 +36,22 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+	/**
+	 * Get SaleLedgerDBHelper object by initializing context.
+	 * Only for first using SaleLedgerDBHelper.
+	 * @param context context of calling activity
+	 * @return SaleLedgerDBHelper object
+	 */
 	public static SaleLedgerDBHelper getInstance(Context context) {
 		if (dao == null)
 			dao = new SaleLedgerDBHelper(context);
 		return dao;
 	}
 
+	/**
+	 * Get SaleLedgerDBHelper object.
+	 * @return SaleLedgerDBHelper object
+	 */
 	public static SaleLedgerDBHelper getInstance() {
 		return dao;
 	}
@@ -64,6 +77,11 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		db.execSQL(sql);
 	}
 
+	/**
+	 * Add Sale description to database.
+	 * @param sale Sale object
+	 * @return row of added sale description in database, -1 if failed
+	 */
 	public long addSale(Sale sale) {
 		
 		ArrayList<SaleLineItem> lines = sale.getAllList();
@@ -116,6 +134,10 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		return 0;
 	}
 	
+	/**
+	 * Get all Sale in database.
+	 * @return list of all sale in database
+	 */
 	public ArrayList<SaleLedger> getAllSale() {
 		ArrayList<SaleLedger> saleList = new ArrayList<SaleLedger>();
 		try {
@@ -162,6 +184,12 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		}
 	}
 	
+	/**
+	 * Get Sale by using start and end date string
+	 * @param from start date string
+	 * @param to end date string
+	 * @return list of found sales
+	 */
 	public ArrayList<SaleLedger> getSale(String from, String to) {
 		ArrayList<SaleLedger> saleList = new ArrayList<SaleLedger>();
 		try {
@@ -208,7 +236,11 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
-	
+	/**
+	 * Remove sale in database by using date Calendar
+	 * @param calendar date as Calendar
+	 * @return row of deleted sale, -1 if failed
+	 */
 	public long removeSale(Calendar calendar) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH mm ss");
 		String current = sdf.format(calendar);
@@ -227,244 +259,5 @@ public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 		} catch (Exception e) {
 			return -1;
 		}
-	}
-
-	
+	}	
 }
-	
-	//
-	// public long addProduct(ProductDescription product) {
-	// try {
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// ContentValues value = new ContentValues();
-	// value.put("ProductId", product.getId());
-	// value.put("ProductName", product.getName());
-	// value.put("Price", product.getPrice());
-	// value.put("Cost", product.getCost());
-	//
-	// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	// String currentDateandTime = sdf.format(new Date());
-	// value.put("DateModified", currentDateandTime);
-	//
-	// long rows = db.insert(TABLE_INVENTORY, null, value);
-	//
-	// db.close();
-	// return rows; // return rows inserted.
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// public long addQuantity(ProductDescription product, int quantity) {
-	// try {
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// ContentValues value = new ContentValues();
-	// value.put("ProductId", product.getId());
-	// value.put("ProductQuantity", quantity);
-	//
-	// long rows = db.insert(TABLE_QUANTITY, null, value);
-	//
-	// db.close();
-	// return rows; // return rows inserted.
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// public long setQuantity(ProductDescription product, int quantity) {
-	// try {
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// ContentValues value = new ContentValues();
-	// value.put("ProductId", product.getId());
-	// value.put("ProductQuantity", quantity);
-	//
-	// //long rows = db.insert(TABLE_QUANTITY, null, value);
-	// long rows = db.update(TABLE_QUANTITY, value, " ProductId=?",
-	// new String[] { String.valueOf(product.getId()) });
-	//
-	// db.close();
-	// return rows; // return rows inserted.
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// public ProductDescription getProduct(String id) {
-	// try {
-	// SQLiteDatabase db = this.getReadableDatabase();
-	// ProductDescription product = null;
-	// Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" },
-	// "ProductId=?", new String[] { id }, null,
-	// null, null, null);
-	// if (cursor != null) {
-	// if (cursor.moveToFirst()) {
-	// /**
-	// * 0 = _key 1 = ProductId 2 = ProductName 3 = Price 4 = Cost
-	// * 5 = DateModified
-	// */
-	// product = new ProductDescription(cursor.getInt(0),
-	// cursor.getString(1), cursor.getString(2),
-	// cursor.getDouble(3), cursor.getDouble(4),
-	// cursor.getString(5));
-	// }
-	// }
-	// cursor.close();
-	// db.close();
-	// return product;
-	// } catch (Exception e) {
-	// Log.d("table", "ex");
-	// return null;
-	// }
-	// }
-	//
-	// public ArrayList<ProductDescription> getAllProduct() {
-	// try {
-	// ArrayList<ProductDescription> productList = new
-	// ArrayList<ProductDescription>();
-	//
-	// SQLiteDatabase db = this.getReadableDatabase();
-	//
-	// String strSQL = "SELECT  * FROM " + TABLE_INVENTORY;
-	// Cursor cursor = db.rawQuery(strSQL, null);
-	//
-	// if (cursor != null) {
-	// if (cursor.moveToFirst()) {
-	// do {
-	// ProductDescription product = new ProductDescription(
-	// cursor.getInt(0), cursor.getString(1),
-	// cursor.getString(2), cursor.getDouble(3),
-	// cursor.getDouble(4), cursor.getString(5));
-	// productList.add(product);
-	// } while (cursor.moveToNext());
-	// }
-	// }
-	// cursor.close();
-	// db.close();
-	// return productList;
-	// } catch (Exception e) {
-	// return null;
-	// }
-	// }
-	//
-	// public int getQuantity(String id) {
-	// try {
-	// SQLiteDatabase db = this.getReadableDatabase();
-	// int quantity = -1;
-	// Cursor cursor = db.query(TABLE_QUANTITY, new String[] { "*" },
-	// "ProductId=?", new String[] { id }, null,
-	// null, null, null);
-	//
-	// if (cursor != null) {
-	// if (cursor.moveToFirst()) {
-	// quantity = cursor.getInt(1);
-	// }
-	// }
-	// cursor.close();
-	// db.close();
-	// return quantity;
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// public long editProduct(ProductDescription oldProduct,
-	// ProductDescription newProduct) {
-	// try {
-	//
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// ContentValues value = new ContentValues();
-	// value.put("ProductId", newProduct.getId());
-	// value.put("ProductName", newProduct.getName());
-	// value.put("Price", newProduct.getPrice());
-	// value.put("Cost", newProduct.getCost());
-	// long rows = db.update(TABLE_INVENTORY, value, " ProductId=?",
-	// new String[] { String.valueOf(oldProduct.getId()) });
-	//
-	// db.close();
-	// return rows;
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	//
-	// }
-	//
-	// public long editQuantity(ProductDescription oldProduct,
-	// ProductDescription newProduct,
-	// int newQuantity) {
-	// try {
-	//
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// ContentValues value = new ContentValues();
-	// value.put("ProductId", newProduct.getId());
-	// value.put("ProductQuantity", newQuantity);
-	// long rows = db.update(TABLE_QUANTITY, value, " ProductId=?",
-	// new String[] { String.valueOf(oldProduct.getId()) });
-	//
-	// db.close();
-	// return rows;
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// public long removeProduct(ProductDescription product) {
-	// try {
-	//
-	// SQLiteDatabase db = this.getWritableDatabase();
-	//
-	// long rows = db.delete(TABLE_INVENTORY, "ProductId=?",
-	// new String[] { String.valueOf(product.getId()) });
-	// db.delete(TABLE_QUANTITY, "ProductId=?",
-	// new String[] { String.valueOf(product.getId()) });
-	//
-	// db.close();
-	// return rows; // return rows delete.
-	//
-	// } catch (Exception e) {
-	// return -1;
-	// }
-	// }
-	//
-	// // bat: for test, get a part of string and find the products that have
-	// the string in its name
-	// //
-	// public ArrayList<ProductDescription> getProductBySomething(String
-	// something) {
-	// try {
-	// SQLiteDatabase db = this.getReadableDatabase();
-	// ArrayList<ProductDescription> productList = new
-	// ArrayList<ProductDescription>();
-	//
-	// Cursor cursor = db.query(TABLE_INVENTORY, new String[] { "*" },
-	// "ProductName LIKE '%" + something + "%'", null, null, null, null);
-	//
-	// if (cursor != null) {
-	// if (cursor.moveToFirst()) {
-	// do {
-	// ProductDescription product = new ProductDescription(
-	// cursor.getInt(0), cursor.getString(1),
-	// cursor.getString(2), cursor.getDouble(3),
-	// cursor.getDouble(4), cursor.getString(5));
-	// productList.add(product);
-	// } while (cursor.moveToNext());
-	// }
-	// }
-	// cursor.close();
-	// db.close();
-	// return productList;
-	// } catch (Exception e) {
-	// Log.d("table", "ex");
-	// return null;
-	// }
-	// }
-

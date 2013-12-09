@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Controller of Payment view.
+ */
 public class PaymentActivity extends Activity {
 	
 	private TextView textViewPaymentTotal;
@@ -38,6 +41,10 @@ public class PaymentActivity extends Activity {
 		buttonPaymentCancel.setOnClickListener(new PaymentCancelOnClickListener(this));
 	}
 	
+	/**
+	 * Return number in EditText.
+	 * @return number in EditText
+	 */
 	public double getCash() {
 		return editTextPay.getText().toString().equals("") ? 0 : Double.parseDouble(editTextPay.getText().toString());
 	}
@@ -48,5 +55,4 @@ public class PaymentActivity extends Activity {
 		getMenuInflater().inflate(R.menu.payment, menu);
 		return true;
 	}
-
 }

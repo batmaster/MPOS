@@ -10,12 +10,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+/**
+ * ActionListener of Confirm button in Payment view.
+ */
 public class PaymentConfirmOnClickListener implements OnClickListener {
 	
 	private PaymentActivity activity;
 	
 	private final int PAYMENT_SUCCESS = 1;
 	
+	/**
+	 * Constructor, use calling activity.
+	 * @param activity calling activity
+	 */
 	public PaymentConfirmOnClickListener(PaymentActivity activity) {
 		this.activity = activity;
 	}

@@ -1,6 +1,5 @@
 package com.bbaf.mpos.inventoryAndSale.ui;
 
-
 import android.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -8,6 +7,9 @@ import android.widget.ListView;
 
 import com.bbaf.mpos.FacadeController.Register;
 
+/**
+ * ActionListener of Cancel button in confirm dialog in Sale view.
+ */
 public class CancelSaleOnClickListener implements OnClickListener {
 
 	private ListView listView;

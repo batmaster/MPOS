@@ -15,6 +15,9 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.inventory.description.ui.DescriptionActivity;
 
+/**
+ * Prototype of ListRow in Inventory.
+ */
 class InventoryListRow extends RemovableListRow {
 	
 	private ProductDescription product;
@@ -28,6 +31,11 @@ class InventoryListRow extends RemovableListRow {
 
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 	
+	/**
+	 * Constructor.
+	 * @param activity creating activity 
+	 * @param product ProductDescription to be shown
+	 */
 	public InventoryListRow(final Activity activity, ProductDescription product) {
 		super(activity.getApplicationContext());
 		LayoutInflater inflater = (LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -70,16 +78,25 @@ class InventoryListRow extends RemovableListRow {
 		});
 	}
 	
+	/**
+	 * @see RemovableListRow#isChecked()
+	 */
 	@Override
 	public boolean isChecked() {
 		return checkBoxRowInventory.isChecked();
 	}
 	
+	/**
+	 * @see RemovableListRow#getProduct()
+	 */
 	@Override
 	public ProductDescription getProduct() {
 		return product;
 	}
 
+	/**
+	 * @see RemovableListRow#remove()
+	 */
 	@Override
 	public void remove() {
 		Register.getInstance().getInventory().removeProduct(product);

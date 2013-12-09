@@ -4,10 +4,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
+/**
+ * ActionListener of Clear button in Inventory view.
+ */
 public class ClearOnClickListener implements OnClickListener {
 
 	private AddProductActivity activity;
 	
+	/**
+	 * Constructor, use calling activity as a context.
+	 * @param activity calling activity
+	 */
 	public ClearOnClickListener(AddProductActivity activity) {
 		this.activity = activity;
 	}
@@ -17,6 +24,9 @@ public class ClearOnClickListener implements OnClickListener {
 		clear();
 	}
 	
+	/**
+	 * Clear text in EditTexts
+	 */
 	private void clear() {
 		EditText[] text = activity.getAllEditText();
 		EditText editTextProductId = text[0];

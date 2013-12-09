@@ -172,15 +172,26 @@ public class Ledger {
 		dateMonth.set(Calendar.DATE, 0);
 		dateMonth.set(Calendar.MONTH,temp+2);
 	}
-	
+	/**
+	 * return date as string format
+	 * @return date as string
+	 */
 	public String getDateS() {
 		return date;
 	}
 	
+	/**
+	 * return date range in week as string format
+	 * @return date range in week as string
+	 */
 	public String getWeekS() {
 		return week;
 	}
 	
+	/**
+	 * return date range in month as string format
+	 * @return date range in month as string
+	 */
 	public String getMonthS() {
 		return month;
 	}

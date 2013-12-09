@@ -16,6 +16,9 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ * Controller of EditProductActivity.
+ */
 public class EditProductActivity extends Activity {
 
 	private EditText editTextProductId;
@@ -27,7 +30,6 @@ public class EditProductActivity extends Activity {
 	private Button buttonSave;
 	private Button buttonCancel;
 
-	//private Inventoryinventory inventory;
 	private static final int SCANNER_ACTIVITY_REQUESTCODE = 49374;
 	private static final int EDIT_CANCEL = 0;
 	private static final int EDIT_SUCCESS = 1;
@@ -133,5 +135,4 @@ public class EditProductActivity extends Activity {
         	}
 		}
 	}
-
 }

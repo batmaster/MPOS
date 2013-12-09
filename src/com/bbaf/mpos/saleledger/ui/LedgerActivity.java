@@ -26,6 +26,9 @@ import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TableLayout;
 
+/**
+ * Controller of Ledger view.
+ */
 public class LedgerActivity extends Activity {
 	
 	private TabHost tabLedger;
@@ -150,18 +153,27 @@ public class LedgerActivity extends Activity {
 		refreshWeekListView();
 	}
 	
+	/**
+	 * Refresh elements in Date ListView.
+	 */
 	public void refreshDateListView() {
 		saleLedgerListViewAdapterDate.notifyDataSetChanged(Register.getInstance().getLedger().getDaily());
 		textViewDate.setText(Register.getInstance().getLedger().getDateS());
 		textViewTotalByDate.setText(String.format("Total : %.2f", saleLedgerListViewAdapterDate.getTotal()));
 	}
 	
+	/**
+	 * Refresh elements in Week ListView.
+	 */
 	public void refreshWeekListView() {
 		saleLedgerListViewAdapterWeek.notifyDataSetChanged(Register.getInstance().getLedger().getWeek());
 		textViewWeek.setText(Register.getInstance().getLedger().getWeekS());
 		textViewTotalByWeek.setText(String.format("Total : %.2f", saleLedgerListViewAdapterWeek.getTotal()));
 	}
 	
+	/**
+	 * Refresh elements in Month ListView.
+	 */
 	public void refreshMonthListView() {
 		saleLedgerListViewAdapterMonth.notifyDataSetChanged(Register.getInstance().getLedger().getMonth());
 		textViewMonth.setText(Register.getInstance().getLedger().getMonthS());

@@ -14,6 +14,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Inventory DAO, for contact between java object and database.
+ */
 public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable {
 
 	private static final String DATABASE_NAME = "bbafmpos.db";
@@ -26,11 +29,21 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
+	/**
+	 * Get InventoryDBHelper object by initializing context.
+	 * Only for first using InventoryDBHelper.
+	 * @param context context of calling activity
+	 * @return InventoryDBHelper object
+	 */
 	public static InventoryDBHelper getInstance(Context context) {
 		if(dao==null) dao = new InventoryDBHelper(context);
 		return dao;
 	}
 	
+	/**
+	 * Get InventoryDBHelper object.
+	 * @return InventoryDBHelper object
+	 */
 	public static InventoryDBHelper getInstance() {
 		return dao;
 	}
@@ -58,6 +71,12 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		db.execSQL(sql);
 	}
 
+	/**
+	 * Add ProductDescription to database.
+	 * @param product ProductDescription
+	 * @param quantity quantity of product
+	 * @return row of added ProductDescription to database, -1 if failed
+	 */
 	public long addProduct(ProductDescription product,int quantity) {
 		try {
 			long rows = 0;
@@ -92,6 +111,12 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 	
+	/**
+	 * Add quantity of ProductDescription to database.
+	 * @param product ProductDescription
+	 * @param quantity quantity of product
+	 * @return row of added quantity to database, -1 if failed
+	 */
 	public long addQuantity(ProductDescription product, int quantity) {
 		try {
 			SQLiteDatabase db = this.getWritableDatabase();
@@ -110,6 +135,12 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Set quantity of ProductDescription in database.
+	 * @param product ProductDescription
+	 * @param quantity new quantity of product
+	 * @return row of added quantity to database, -1 if failed
+	 */
 	public long setQuantity(ProductDescription product, int quantity) {
 		try {
 			SQLiteDatabase db = this.getWritableDatabase();
@@ -130,6 +161,11 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Return ProductDescription using id text as key.
+	 * @param id id text of product
+	 * @return ProductDescription object
+	 */
 	public ProductDescription getProduct(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
@@ -158,6 +194,10 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Get all ProductDescription in database.
+	 * @return list of all product in database
+	 */
 	public ArrayList<ProductDescription> getAllProduct() {
 		try {
 			ArrayList<ProductDescription> productList = new ArrayList<ProductDescription>();
@@ -186,6 +226,11 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Get quantity of product by using id text as key.
+	 * @param id id text of product
+	 * @return quantity of product, -1 if failed
+	 */
 	public int getQuantity(String id) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
@@ -207,6 +252,12 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Edit ProductDescription in database.
+	 * @param oldProduct old product description
+	 * @param newProduct new product description
+	 * @return row of updated product description, -1 if failed
+	 */
 	public long editProduct(ProductDescription oldProduct,
 			ProductDescription newProduct) {
 		try {
@@ -230,6 +281,14 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 
 	}
 
+	/**
+	 * Edit quantity by using old and new product description.
+	 * Used when edit both id and quantity at the same time
+	 * @param oldProduct old product description
+	 * @param newProduct new product description
+	 * @param newQuantity new quantity of product
+	 * @return row of updated product quantity, -1 if failed
+	 */
 	public long editQuantity(ProductDescription oldProduct, ProductDescription newProduct,
 			int newQuantity) {
 		try {
@@ -250,6 +309,11 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 
+	/**
+	 * Remove ProductDescription in database.
+	 * @param product ProductDescription
+	 * @return row of deleted product in database, -1 if failed
+	 */
 	public long removeProduct(ProductDescription product) {
 		try {
 
@@ -268,8 +332,11 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 		}
 	}
 	
-	// bat: for test, get a part of string and find the products that have the string in its name
-	// 
+	/**
+	 * Get ProductDescription by using a part of product id or name.
+	 * @param something some part of product id or name
+	 * @return list of found products
+	 */
 	public ArrayList<ProductDescription> getProductBySomething(String something) {
 		try {
 			SQLiteDatabase db = this.getReadableDatabase();
@@ -297,5 +364,4 @@ public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable 
 			return null;
 		}
 	}
-
 }

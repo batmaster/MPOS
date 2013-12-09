@@ -19,6 +19,9 @@ import com.bbaf.mpos.sale.Sale;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.SaleLedger;
 
+/**
+ * Prototype of ListRow in SaleLedger.
+ */
 class SaleLedgerListRow extends RelativeLayout {
 	
 	private SaleLedger sale;
@@ -58,6 +61,10 @@ class SaleLedgerListRow extends RelativeLayout {
 		});
 	}
 	
+	/**
+	 * Return SaleLedger which is stored in itself
+	 * @return SaleLedger object
+	 */
 	public SaleLedger getSale() {
 		return sale;
 	}

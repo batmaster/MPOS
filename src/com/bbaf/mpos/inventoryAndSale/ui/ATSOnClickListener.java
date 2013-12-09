@@ -9,12 +9,19 @@ import android.widget.Toast;
 import com.bbaf.mpos.R;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
-
+/**
+ * ActionListener of AddToSale button in Sale view.
+ */
 public class ATSOnClickListener implements OnClickListener {
 
 	private ListView listViewInventory;
 	private InventoryandSaleActivity activity;
 
+	/**
+	 * Constructor, use calling activity as a context.
+	 * @param listViewInventory ListView of items in Inventory
+	 * @param activity calling activity
+	 */
 	public ATSOnClickListener(ListView listViewInventory, InventoryandSaleActivity activity) {
 		this.listViewInventory = listViewInventory;
 		this.activity = activity;

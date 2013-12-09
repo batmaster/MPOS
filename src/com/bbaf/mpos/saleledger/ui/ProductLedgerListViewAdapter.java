@@ -26,11 +26,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * A class adapt ArrayList<ProductLedger> to be ListView shown in Sale view.
+ */
 public class ProductLedgerListViewAdapter extends BaseAdapter {
 	
 	private Activity activity;
 	private ArrayList<ProductLedger> productList;
 
+	/**
+	 * Constructor, using calling activity.
+	 * @param activity calling activity
+	 * @param saleList list of ProductLedger
+	 */
 	public ProductLedgerListViewAdapter(Activity activity, ArrayList<ProductLedger> productList) {
 		this.activity = activity;
 		this.productList = productList;

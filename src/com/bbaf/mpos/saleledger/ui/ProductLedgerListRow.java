@@ -20,6 +20,9 @@ import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.ProductLedger;
 import com.bbaf.mpos.saleledger.SaleLedger;
 
+/**
+ * Prototype of ListRow in ProductLedger. 
+ */
 class ProductLedgerListRow extends RelativeLayout {
 	
 	private ProductLedger product;
@@ -58,6 +61,10 @@ class ProductLedgerListRow extends RelativeLayout {
         textViewRowUnitPriceProductLedger.setTextColor(Color.GRAY);
 	}
 	
+	/**
+	 * Return ProductLedger which is stored in itself
+	 * @return ProductLedger object
+	 */
 	public ProductLedger getProduct() {
 		return product;
 	}

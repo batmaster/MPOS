@@ -25,11 +25,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * A class adapt ArrayList<SaleLedger> to be ListView shown in Sale view.
+ */
 public class SaleLedgerListViewAdapter extends BaseAdapter {
 	
 	private Activity activity;
 	private ArrayList<SaleLedger> saleList;
 
+	/**
+	 * Constructor, using calling activity.
+	 * @param activity calling activity
+	 * @param saleList list of SaleLedger
+	 */
 	public SaleLedgerListViewAdapter(Activity activity, ArrayList<SaleLedger> saleList) {
 		this.activity = activity;
 		this.saleList = saleList;
@@ -55,11 +63,19 @@ public class SaleLedgerListViewAdapter extends BaseAdapter {
 		return new SaleLedgerListRow(activity, saleList.get(position));
 	}
 
+	/**
+	 * Notify ListView to show new row lists by using list of SaleLedger lists
+	 * @param saleList list of SaleLedger
+	 */
 	public void notifyDataSetChanged(ArrayList<SaleLedger> saleList) {
 		this.saleList = saleList;
 		super.notifyDataSetChanged();
 	}
 	
+	/**
+	 * Return total of Sale lists
+	 * @return total of Sale lists
+	 */
 	public double getTotal() {
 		double total = 0;
 		for (int i = 0; i < saleList.size(); i++) {

@@ -5,10 +5,17 @@ import android.content.DialogInterface.OnClickListener;
 
 import com.bbaf.mpos.FacadeController.Register;
 
+/**
+ * ActionListener of CancelSale button in Sale view.
+ */
 public class CancelSaleDialogOnClickListener implements OnClickListener {
 
 	private InventoryandSaleActivity activity;
 	
+	/**
+	 * Constructor, use calling activity as a context.
+	 * @param activity calling activity
+	 */
 	public CancelSaleDialogOnClickListener(InventoryandSaleActivity activity) {
 		this.activity = activity;
 	}
@@ -19,5 +26,4 @@ public class CancelSaleDialogOnClickListener implements OnClickListener {
 		activity.clearSaleTab();
 		activity.refreshSaleListView();
 	}
-
 }

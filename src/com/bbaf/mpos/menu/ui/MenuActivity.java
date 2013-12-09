@@ -15,6 +15,9 @@ import com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity;
 import com.bbaf.mpos.saleledger.Ledger;
 import com.bbaf.mpos.saleledger.ui.LedgerActivity;
 
+/**
+ * Controller of Menu view.
+ */
 public class MenuActivity extends Activity {
 	
 	private Button buttonToInvenSale; 
@@ -28,11 +31,8 @@ public class MenuActivity extends Activity {
 		
 		buttonToInvenSale = (Button)findViewById(R.id.buttonToInvenSale);
 		buttonToLedger = (Button)findViewById(R.id.buttonToLedger);
-		
-		//// bat try to do this, otherwise cannot submit sale
+
 		Register.getInstance().setLedger(new Ledger(this));
-		
-		////
 		
 		buttonToInvenSale.setOnClickListener(new OnClickListener() {
 			
@@ -61,5 +61,4 @@ public class MenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}
-
 }

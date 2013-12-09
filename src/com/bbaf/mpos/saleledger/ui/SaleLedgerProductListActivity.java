@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Controller of ProductLedger view.
+ */
 public class SaleLedgerProductListActivity extends Activity {
 	
 	private TextView textViewLedgerProductListDate;
@@ -46,17 +49,7 @@ public class SaleLedgerProductListActivity extends Activity {
 		
 		listViewLedgerProductList = (ListView)findViewById(R.id.listViewLedgerProductList);
 		productLedgerListViewAdapter = new ProductLedgerListViewAdapter(this, productList);
-		listViewLedgerProductList.setAdapter(productLedgerListViewAdapter);
-		
-//		buttonLedgerProductBack = (Button)findViewById(R.id.buttonLedgerProductBack);
-//		buttonLedgerProductBack.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View arg0) {
-//				finish();
-//			}
-//		});
-		
+		listViewLedgerProductList.setAdapter(productLedgerListViewAdapter);	
 	}
 
 	@Override
@@ -65,5 +58,4 @@ public class SaleLedgerProductListActivity extends Activity {
 		getMenuInflater().inflate(R.menu.sale_ledger_list, menu);
 		return true;
 	}
-
 }

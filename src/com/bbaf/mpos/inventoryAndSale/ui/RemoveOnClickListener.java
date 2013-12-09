@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
+/**
+ * ActionListener of Remove button in confirm dialog.
+ */
 public class RemoveOnClickListener implements OnClickListener {
 
 	private ListView listView;

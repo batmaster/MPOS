@@ -6,10 +6,17 @@ import android.view.View.OnClickListener;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+/**
+ * ActionListener of Scan button.
+ */
 public class ScanOnClickListener implements OnClickListener {
 
 	private Activity activity;
 
+	/**
+	 * Constructor, use calling activity.
+	 * @param activity calling activity
+	 */
 	public ScanOnClickListener(Activity activity) {
 		this.activity = activity;
 	}
@@ -19,5 +26,4 @@ public class ScanOnClickListener implements OnClickListener {
 		IntentIntegrator scanIntegrator = new IntentIntegrator(activity);
 		scanIntegrator.initiateScan();
 	}
-
 }

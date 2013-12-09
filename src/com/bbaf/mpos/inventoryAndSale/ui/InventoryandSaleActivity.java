@@ -1,4 +1,4 @@
-	package com.bbaf.mpos.inventoryAndSale.ui;
+package com.bbaf.mpos.inventoryAndSale.ui;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,9 @@ import com.bbaf.mpos.sale.payment.ui.PaymentOnClickListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ * Controller of InventoryandSaleActivity.
+ */
 public class InventoryandSaleActivity extends Activity {
 
 	private TabHost tabHost;
@@ -214,19 +217,31 @@ public class InventoryandSaleActivity extends Activity {
 		refreshSaleListView();
 	}
 	
+	/**
+	 * Refresh ListView in Inventory
+	 */
 	public void refreshIntenvoryListView() {
 		inventoryListViewAdapter.notifyDataSetChanged();
 	}
 	
+	/**
+	 * Refresh ListView in Inventory by using showing list
+	 */
 	public void refreshIntenvoryListView(ArrayList<ProductDescription> productList) {
 		inventoryListViewAdapter.notifyDataSetChanged(productList);
 	}
 	
+	/**
+	 * Refresh ListView in Sale
+	 */
 	public void refreshSaleListView() {
 		saleListViewAdapter.notifyDataSetChanged();
 		textViewTotalPriceText.setText(String.format("%.2f", Register.getInstance().getTotal()));
 	}
 	
+	/**
+	 * Refresh Sale Tab
+	 */
 	public void clearSaleTab() {
 		refreshSaleListView();
 		editTextInputID.setText("");
@@ -235,6 +250,9 @@ public class InventoryandSaleActivity extends Activity {
 		textViewTotalPriceText.setText("0.0");
 	}
 	
+	/**
+	 * Clear Sale Tab
+	 */
 	public void clearInventoryTab() {
 		refreshIntenvoryListView();
 		editTextSearchInventory.setText("");
@@ -303,7 +321,6 @@ public class InventoryandSaleActivity extends Activity {
         	    Toast.makeText(getApplicationContext(),"No scanned data received!", Toast.LENGTH_SHORT).show();
         	}
 		}
-		
 	}
 
 	@Override
@@ -312,5 +329,4 @@ public class InventoryandSaleActivity extends Activity {
 		getMenuInflater().inflate(R.menu.inventory_activity2, menu);
 		return true;
 	}
-
 }

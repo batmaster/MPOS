@@ -10,11 +10,18 @@ import android.widget.BaseAdapter;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
+/**
+ * A class adapt ArrayList<ProductDescription> to be ListView shown in Inventory view.
+ */
 public class InventoryListViewAdapter extends BaseAdapter {
 	
 	private Activity activity;
 	private ArrayList<ProductDescription> productList;
 
+	/**
+	 * Constructor, using calling activity.
+	 * @param activity calling activity
+	 */
 	public InventoryListViewAdapter(Activity activity) {
 		this.activity = activity;
 		this.productList = Register.getInstance().getInventory().getAllProduct();
@@ -40,15 +47,20 @@ public class InventoryListViewAdapter extends BaseAdapter {
 		return new InventoryListRow(activity, productList.get(position));
 	}
 
+	/**
+	 * Notify ListView to show new row lists
+	 */
 	public void notifyDataSetChanged() {
 		productList = Register.getInstance().getInventory().getAllProduct();
 		super.notifyDataSetChanged();
 	}
 	
+	/**
+	 * Notify ListView to show new row lists by using list of ProductDescription lists
+	 * @param productList list of ProductDescription
+	 */
 	public void notifyDataSetChanged(ArrayList<ProductDescription> productList) {
 		this.productList = productList;
 		super.notifyDataSetChanged();
 	}
-	
-	
 }

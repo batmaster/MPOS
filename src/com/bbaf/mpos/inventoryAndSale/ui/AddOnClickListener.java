@@ -8,12 +8,19 @@ import android.widget.Toast;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
+/**
+ * ActionListener of Add button in Inventory view.
+ */
 public class AddOnClickListener implements OnClickListener {
 
 	private AddProductActivity activity;
 	
 	private static final int ADD_SUCCESS = 1;
 	
+	/**
+	 * Constructor, use calling activity as a context.
+	 * @param activity calling activity
+	 */
 	public AddOnClickListener(AddProductActivity activity) {
 		this.activity = activity;
 	}
@@ -50,8 +57,7 @@ public class AddOnClickListener implements OnClickListener {
 								"Product add to row %d successfully.",
 								row), Toast.LENGTH_SHORT).show();
 				activity.setResult(ADD_SUCCESS);
-	
-				// bat: moved from clear() in InventoryActivity
+				
 				editTextProductId.setText("");
 				editTextProductName.setText("");
 				editTextPrice.setText("");

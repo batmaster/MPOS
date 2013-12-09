@@ -16,6 +16,9 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ * Controller of AddProductActivity.
+ */
 public class AddProductActivity extends Activity {
 	
 	private EditText editTextProductId;
@@ -84,7 +87,10 @@ public class AddProductActivity extends Activity {
 		}
 	}
 		
-	
+	/**
+	 * Return all EditText in activity.
+	 * @return all EditText in activity
+	 */
 	public EditText[] getAllEditText() {
 		return new EditText[] {editTextProductId, editTextProductName, editTextPrice, editTextCost, editTextQuantity};
 	}
@@ -95,5 +101,4 @@ public class AddProductActivity extends Activity {
 		getMenuInflater().inflate(R.menu.add_product, menu);
 		return true;
 	}
-
 }

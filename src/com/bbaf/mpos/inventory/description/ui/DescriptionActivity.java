@@ -73,16 +73,6 @@ public class DescriptionActivity extends Activity {
 				startActivityForResult(editActivity, EDIT_ACTIVITY_REQUESTCODE);
 			}
 		});
-		
-//		buttonDescriptionBack = (Button)findViewById(R.id.buttonDescriptionBack);
-//		buttonDescriptionBack.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				setResult(0);
-//				finish();
-//			}
-//		});
 	}
 
 	@Override

@@ -4,11 +4,19 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ListView;
 
+/**
+ * ActionListener of Remove button.
+ */
 public class RemoveDialogOnClickListener implements OnClickListener {
 
 	private ListView listView;
 	private InventoryandSaleActivity activity;
 	
+	/**
+	 * Constructor, use calling activity as a context.
+	 * @param listView ListView of removing list row
+	 * @param activity calling activity
+	 */
 	public RemoveDialogOnClickListener(ListView listView, InventoryandSaleActivity activity) {
 		this.listView = listView;
 		this.activity = activity;
@@ -26,5 +34,4 @@ public class RemoveDialogOnClickListener implements OnClickListener {
 		activity.refreshIntenvoryListView();
 		activity.refreshSaleListView();
 	}
-
 }

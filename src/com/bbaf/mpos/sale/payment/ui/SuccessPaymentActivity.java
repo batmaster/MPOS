@@ -12,6 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Controller of SuccessPayment view.
+ */
 public class SuccessPaymentActivity extends Activity {
 	
 	private TextView textViewChange;
@@ -34,15 +37,13 @@ public class SuccessPaymentActivity extends Activity {
 				finish();
 				
 			}
-		});
-		
+		});	
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.success_payment, menu);
 		return true;
 	}
-
 }

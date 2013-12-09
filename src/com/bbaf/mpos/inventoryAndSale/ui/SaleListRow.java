@@ -16,6 +16,9 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.sale.payment.ui.SaleEditActivity;
 
+/**
+ * Prototype of ListRow in Sale.
+ */
 class SaleListRow extends RemovableListRow {
 	
 	private SaleLineItem line;
@@ -31,6 +34,11 @@ class SaleListRow extends RemovableListRow {
 	
 	private static final int EDIT_UNITPRICE_ACTIVITY_REQUESTCODE = 3;
 	
+	/**
+	 * Constructor.
+	 * @param activity creating activity 
+	 * @param SaleLineItem SaleLineItem to be shown
+	 */
 	public SaleListRow(final Activity activity, SaleLineItem line) {
 		super(activity.getApplicationContext());
 		LayoutInflater inflater = (LayoutInflater)activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -70,16 +78,25 @@ class SaleListRow extends RemovableListRow {
 		});
 	}
 	
+	/**
+	 * @see RemovableListRow#isChecked()
+	 */
 	@Override
 	public boolean isChecked() {
 		return checkBoxRowSale.isChecked();
 	}
-	
+
+	/**
+	 * @see RemovableListRow#getProduct()
+	 */
 	@Override
 	public ProductDescription getProduct() {
 		return line.getProductDescription();
 	}
 
+	/**
+	 * @see RemovableListRow#remove()
+	 */
 	@Override
 	public void remove() {
 		Register.getInstance().getSale().removeSaleLineItem(line.getProductDescription());

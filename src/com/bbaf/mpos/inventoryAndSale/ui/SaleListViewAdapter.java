@@ -10,11 +10,18 @@ import android.widget.BaseAdapter;
 import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.sale.SaleLineItem;
 
+/**
+ * A class adapt ArrayList<SaleLineItem> to be ListView shown in Sale view.
+ */
 public class SaleListViewAdapter extends BaseAdapter {
 	
 	private Activity activity;
 	private ArrayList<SaleLineItem> lineList;
 
+	/**
+	 * Constructor, using calling activity.
+	 * @param activity calling activity
+	 */
 	public SaleListViewAdapter(Activity activity) {
 		this.activity = activity;
 		this.lineList = Register.getInstance().getSale().getAllList();
@@ -40,10 +47,11 @@ public class SaleListViewAdapter extends BaseAdapter {
 		return new SaleListRow(activity, lineList.get(position));
 	}
 
+	/**
+	 * Notify ListView to show new row lists
+	 */
 	public void notifyDataSetChanged() {
 		lineList = Register.getInstance().getSale().getAllList();
 		super.notifyDataSetChanged();
 	}
-	
-	
 }

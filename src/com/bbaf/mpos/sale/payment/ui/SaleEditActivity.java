@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Controller of EditSale in Sale view.
+ */
 public class SaleEditActivity extends Activity {
 	
 	private TextView textViewEditUnitPriceId;
@@ -77,5 +80,4 @@ public class SaleEditActivity extends Activity {
 		getMenuInflater().inflate(R.menu.sale_edit, menu);
 		return true;
 	}
-
 }
