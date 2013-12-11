@@ -104,7 +104,10 @@ public class Ledger {
 		String current = SDF.format(temp.getTime());
 		from.add(Calendar.DATE,1);
 		String to = SDF.format(from.getTime());
-		week = String.format("Week : %s/%s/%s ~ %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0], to.split(" ")[2], to.split(" ")[1], to.split(" ")[0]);
+		Calendar temp2 = (Calendar)from.clone();
+		temp2.add(Calendar.DATE, -1);
+		String to2 = SDF.format(temp2.getTime());
+		week = String.format("Week : %s/%s/%s ~ %s/%s/%s", current.split(" ")[2], current.split(" ")[1], current.split(" ")[0], to2.split(" ")[2], to2.split(" ")[1], to2.split(" ")[0]);
 		return dbDAO.getSale(current,to);
 	}
 	
