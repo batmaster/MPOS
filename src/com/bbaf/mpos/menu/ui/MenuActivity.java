@@ -16,7 +16,9 @@ import com.bbaf.mpos.saleledger.Ledger;
 import com.bbaf.mpos.saleledger.ui.LedgerActivity;
 
 /**
- * Controller of Menu view.
+ * Menu for choosing the option. Controller of Menu view.
+ * 
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class MenuActivity extends Activity {
 	

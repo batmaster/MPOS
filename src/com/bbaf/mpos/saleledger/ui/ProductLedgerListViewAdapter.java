@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 /**
  * A class adapt ArrayList<ProductLedger> to be ListView shown in Sale view.
+ * @author Poramet Homprakob 5510546077
  */
 public class ProductLedgerListViewAdapter extends BaseAdapter {
 	

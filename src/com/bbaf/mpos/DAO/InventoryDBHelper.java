@@ -15,7 +15,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Inventory DAO, for contact between java object and database.
+ * Inventory DAO, for contacting between java object and database.
+ * @author Poramet Homprakob 5510546077
  */
 public class InventoryDBHelper extends SQLiteOpenHelper implements Serializable {
 

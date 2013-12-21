@@ -18,6 +18,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 /**
  * Controller of AddProductActivity.
+ * @author Poramet Homprakob 5510546077
  */
 public class AddProductActivity extends Activity {
 	

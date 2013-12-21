@@ -19,17 +19,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 /**
- * @author Sarathit Sangtaweep 5510546182
+ * Description Activity for showing the product description.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class DescriptionActivity extends Activity {
 	
+	/** Description */
 	private TextView textViewDescriptionID;
 	private TextView textViewDescriptionName;
 	private TextView textViewDescriptionPrice;
 	private TextView textViewDescriptionCost;
 	private TextView textViewDescriptionQuantity;
 	private Button buttonDescriptionEdit;
-	private Button buttonDescriptionBack;
+	//private Button buttonDescriptionBack;
 	
 	private static final int EDIT_ACTIVITY_REQUESTCODE = 1;
 

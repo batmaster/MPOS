@@ -12,6 +12,7 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 /**
  * A class adapt ArrayList<ProductDescription> to be ListView shown in Inventory view.
+ *  @author Poramet Homprakob 5510546077
  */
 public class InventoryListViewAdapter extends BaseAdapter {
 	

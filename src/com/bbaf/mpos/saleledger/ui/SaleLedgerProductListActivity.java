@@ -19,7 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * Controller of ProductLedger view.
+ * Activity for showing the sale list in a ledger. Controller of ProductLedger view.
+ *  @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class SaleLedgerProductListActivity extends Activity {
 	
@@ -27,7 +28,7 @@ public class SaleLedgerProductListActivity extends Activity {
 	private TextView textViewLedgerProductListTotal;
 	private ListView listViewLedgerProductList;
 	private ProductLedgerListViewAdapter productLedgerListViewAdapter;
-	private Button buttonLedgerProductBack;
+	//private Button buttonLedgerProductBack;
 	
 	private SaleLedger sale;
 	private ArrayList<ProductLedger> productList;

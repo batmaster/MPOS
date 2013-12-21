@@ -17,6 +17,7 @@ import com.bbaf.mpos.inventory.description.ui.DescriptionActivity;
 
 /**
  * Prototype of ListRow in Inventory.
+ * @author Poramet Homprakob 5510546077
  */
 class InventoryListRow extends RemovableListRow {
 	

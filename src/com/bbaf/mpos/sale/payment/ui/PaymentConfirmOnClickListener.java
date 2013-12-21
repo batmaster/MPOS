@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 /**
  * ActionListener of Confirm button in Payment view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class PaymentConfirmOnClickListener implements OnClickListener {
 	

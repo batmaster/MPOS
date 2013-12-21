@@ -6,7 +6,9 @@ import android.widget.RelativeLayout;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 /**
- * Abstract of ListRow which has CheckBox and can use description in itself to remove data in database.
+ * Abstract of ListRow which has CheckBox and can use
+ * description in itself to remove data in database.
+ * @author Poramet Homprakob 5510546077
  */
 public abstract class RemovableListRow extends RelativeLayout {
 

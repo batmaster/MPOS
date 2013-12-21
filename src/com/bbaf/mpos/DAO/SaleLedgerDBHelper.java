@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 /**
  * SaleLedger DAO, for contact between java object and database.
+ * @author Poramet Homprakob 5510546077
  */
 public class SaleLedgerDBHelper extends SQLiteOpenHelper {
 

@@ -10,6 +10,7 @@ import com.bbaf.mpos.inventoryAndSale.ui.InventoryandSaleActivity;
 
 /**
  * ActionListener of Payment in Sale view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class PaymentOnClickListener implements OnClickListener {
 

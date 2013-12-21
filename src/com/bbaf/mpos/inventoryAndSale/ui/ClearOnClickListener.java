@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 /**
  * ActionListener of Clear button in Inventory view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class ClearOnClickListener implements OnClickListener {
 

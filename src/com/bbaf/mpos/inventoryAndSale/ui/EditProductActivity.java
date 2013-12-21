@@ -18,6 +18,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 /**
  * Controller of EditProductActivity.
+ * @author Poramet Homprakob 5510546077
  */
 public class EditProductActivity extends Activity {
 

@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Controller of SuccessPayment view.
+ * Activity for showing success payment. Controller of SuccessPayment view.
+ * @author Poramet Homprakob 5510546077
  */
 public class SuccessPaymentActivity extends Activity {
 	

@@ -21,7 +21,8 @@ import com.bbaf.mpos.saleledger.ProductLedger;
 import com.bbaf.mpos.saleledger.SaleLedger;
 
 /**
- * Prototype of ListRow in ProductLedger. 
+ * Prototype of ListRow in ProductLedger.
+ * @author Poramet Homprakob 5510546077
  */
 class ProductLedgerListRow extends RelativeLayout {
 	

@@ -11,6 +11,7 @@ import com.bbaf.mpos.FacadeController.Register;
 import com.bbaf.mpos.ProductDescription.ProductDescription;
 /**
  * ActionListener of AddToSale button in Sale view.
+ * @author Poramet Homprakob 5510546077
  */
 public class ATSOnClickListener implements OnClickListener {
 

@@ -30,6 +30,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 /**
  * Controller of InventoryandSaleActivity.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class InventoryandSaleActivity extends Activity {
 

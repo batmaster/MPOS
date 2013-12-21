@@ -10,6 +10,7 @@ import com.bbaf.mpos.ProductDescription.ProductDescription;
 
 /**
  * ActionListener of Add button in Inventory view.
+ * @author Poramet Homprakob 5510546077
  */
 public class AddOnClickListener implements OnClickListener {
 

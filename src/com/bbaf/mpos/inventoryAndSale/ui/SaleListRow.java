@@ -18,6 +18,7 @@ import com.bbaf.mpos.sale.payment.ui.SaleEditActivity;
 
 /**
  * Prototype of ListRow in Sale.
+ * @author Poramet Homprakob 5510546077
  */
 class SaleListRow extends RemovableListRow {
 	

@@ -15,7 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Controller of Payment view.
+ * Activity for showing Payment. Controller of Payment view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class PaymentActivity extends Activity {
 	

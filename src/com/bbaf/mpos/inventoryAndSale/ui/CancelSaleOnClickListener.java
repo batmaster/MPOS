@@ -9,6 +9,7 @@ import com.bbaf.mpos.FacadeController.Register;
 
 /**
  * ActionListener of Cancel button in confirm dialog in Sale view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class CancelSaleOnClickListener implements OnClickListener {
 

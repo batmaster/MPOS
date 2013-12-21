@@ -12,6 +12,7 @@ import com.bbaf.mpos.sale.SaleLineItem;
 
 /**
  * A class adapt ArrayList<SaleLineItem> to be ListView shown in Sale view.
+ * @author Poramet Homprakob 5510546077
  */
 public class SaleListViewAdapter extends BaseAdapter {
 	

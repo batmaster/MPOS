@@ -13,7 +13,7 @@ import com.bbaf.mpos.sale.SaleLineItem;
 import com.bbaf.mpos.saleledger.Ledger;
 
 /**
- * Register is controlled for sale.
+ * Register is a controller for sale.
  * @author Atit Leelasuksan 5510546221 , Rungroj Maipradit 5510546654
  * @version Oct 29, 2013
  */

@@ -21,6 +21,7 @@ import com.bbaf.mpos.saleledger.SaleLedger;
 
 /**
  * Prototype of ListRow in SaleLedger.
+ * @author Poramet Homprakob 5510546077
  */
 class SaleLedgerListRow extends RelativeLayout {
 	

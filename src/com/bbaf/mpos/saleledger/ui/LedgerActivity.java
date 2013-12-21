@@ -27,7 +27,8 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TableLayout;
 
 /**
- * Controller of Ledger view.
+ * Activity for showing the ledger. Controller of Ledger view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class LedgerActivity extends Activity {
 	

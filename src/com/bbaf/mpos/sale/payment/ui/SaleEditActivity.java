@@ -14,7 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Controller of EditSale in Sale view.
+ * Activity for editing the price while in sale process. Controller of EditSale in Sale view.
+ * @author Sarathit Sangtaweep 5510546182, Poramet Homprakob 5510546077
  */
 public class SaleEditActivity extends Activity {
 	

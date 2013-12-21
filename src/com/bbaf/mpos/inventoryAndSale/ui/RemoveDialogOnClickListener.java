@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 /**
  * ActionListener of Remove button.
+ * @author Poramet Homprakob 5510546077
  */
 public class RemoveDialogOnClickListener implements OnClickListener {
 

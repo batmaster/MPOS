@@ -5,6 +5,7 @@ import android.view.View.OnClickListener;
 
 /**
  * ActionListener of Cancel in Payment view.
+ * @author Poramet Homprakob 5510546077
  */
 public class PaymentCancelOnClickListener implements OnClickListener {
 	
