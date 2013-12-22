@@ -102,6 +102,11 @@ public class Inventory implements Serializable {
 		dbDAO.editQuantity(oldProduct, newProduct, quantity);
 	}
 	
+	/**
+	 * test method.
+	 * @param something to test.
+	 * @return all product.
+	 */
 	public ArrayList<ProductDescription> getProductBySomething(String something) {
 		return dbDAO.getProductBySomething(something);
 	}
